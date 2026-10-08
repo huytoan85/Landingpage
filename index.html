@@ -1046,7 +1046,7 @@
       display: grid;
       grid-template-columns: 360px 1fr;
       gap: 36px;
-      align-items: center;
+      align-items: start;
       position: relative;
       overflow: hidden;
     }
@@ -1073,9 +1073,10 @@
     }
 
     .sp-img-frame {
-      position: relative;
+      position: sticky;
+      top: 96px;
       width: 100%;
-      height: 470px;
+      height: 540px;
       border-radius: 18px;
       overflow: hidden;
       border: 1.5px solid rgba(167, 139, 250, 0.35);
@@ -1123,16 +1124,56 @@
       font-family: "Be Vietnam Pro", sans-serif;
       font-weight: 800;
       font-size: 13px;
-      letter-spacing: .06em;
+      letter-spacing: .05em;
       text-transform: uppercase;
       color: #c084fc;
+      line-height: 1.45;
+    }
+
+    .sp-headline {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: #fde047;
+      letter-spacing: .01em;
+      margin: 2px 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       line-height: 1.4;
     }
 
     .sp-bio {
       font-size: 14.8px;
-      line-height: 1.6;
+      line-height: 1.65;
       color: #e2e8f0;
+      display: grid;
+      gap: 10px;
+    }
+    .sp-bio p {
+      margin: 0;
+      line-height: 1.65;
+    }
+    .sp-bio b {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .sp-section-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: #a78bfa;
+      letter-spacing: .02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed rgba(167, 139, 250, 0.25);
+    }
+    .sp-sec-icon {
+      font-size: 17px;
     }
 
     .sp-bullets {
@@ -1146,13 +1187,65 @@
       align-items: baseline;
       gap: 10px;
       font-size: 14.5px;
-      line-height: 1.5;
+      line-height: 1.55;
       color: #f1f5f9;
     }
     .sp-bullet-icon {
       color: #f59e0b;
       font-size: 14px;
       flex: none;
+    }
+
+    .sp-method-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(124, 58, 237, 0.22));
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: #fef08a;
+    }
+    .sp-method-banner b {
+      font-weight: 800;
+      color: #fef08a;
+    }
+
+    .sp-bio-desc {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #e2e8f0;
+      margin: 0;
+    }
+
+    .sp-quote-box {
+      background: rgba(124, 58, 237, 0.15);
+      border-left: 3.5px solid #a855f7;
+      border-radius: 0 12px 12px 0;
+      padding: 12px 16px;
+      font-style: italic;
+      color: #f3e8ff;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .sp-quote-text {
+      font-weight: 600;
+    }
+
+    .sp-slogan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #7c3aed, #d97706);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: .03em;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+      margin: 4px 0 2px;
+      width: fit-content;
     }
 
     .sp-btn-phone {
@@ -1260,7 +1353,8 @@
         gap: 24px;
       }
       .sp-img-frame {
-        height: 360px;
+        position: static;
+        height: 380px;
         max-width: 340px;
         margin: 0 auto;
       }
@@ -2085,7 +2179,7 @@
       <!-- Speaker 1: Lê Huy Toàn -->
       <div class="speaker-card">
         <div class="sp-img-frame">
-          <img src="images/vo_quoc_tri_profile.jpg" alt="Chuyên gia Lê Huy Toàn - Giám Đốc Phát Triển Thị Trường Astronixa Việt Nam" width="800" height="800" loading="lazy" style="object-position: center 12%;">
+          <img src="images/vo_quoc_tri_profile.jpg" alt="Chuyên gia Lê Huy Toàn - Giảng viên đào tạo ứng dụng AI trong công việc và kinh doanh" width="800" height="800" loading="lazy" style="object-position: center 12%;">
         </div>
 
         <div class="sp-details">
@@ -2097,22 +2191,53 @@
           </div>
 
           <div class="sp-role-tag">
-            GIÁM ĐỐC PHÁT TRIỂN THỊ TRƯỜNG ASTRONIXA VIỆT NAM · CHUYÊN GIA CHIẾN LƯỢC AI VÀ XÂY DỰNG CỘNG ĐỒNG
+            CHUYÊN GIA AI THỰC CHIẾN | GIẢNG VIÊN ĐÀO TẠO ỨNG DỤNG AI TRONG CÔNG VIỆC VÀ KINH DOANH
           </div>
 
-          <p class="sp-bio">
-            Chuyên gia hàng đầu trong phát triển thị trường công nghệ, tiên phong ứng dụng AI &amp; xây dựng hệ thống vào vận hành doanh nghiệp và phát triển hệ sinh thái Affiliate toàn cầu — đồng hành giúp hàng nghìn đối tác bứt phá tài chính.
-          </p>
+          <div class="sp-headline">
+            ✨ AI không khó – Quan trọng là học đúng cách!
+          </div>
+
+          <div class="sp-bio">
+            <p>Xin chào! Tôi là <b>Lê Huy Toàn</b>, người đồng hành cùng bạn trên hành trình khám phá và làm chủ trí tuệ nhân tạo (AI).</p>
+            <p>Với hơn <b>18 năm kinh nghiệm trong kinh doanh, quản lý và phát triển thị trường</b>, cùng hơn <b>5 năm kinh nghiệm đào tạo và phát triển đội ngũ</b>, tôi hiểu rằng công nghệ chỉ thực sự có giá trị khi giúp chúng ta giải quyết được những vấn đề trong công việc và cuộc sống.</p>
+            <p>Từng đảm nhiệm các vị trí quản lý cấp cao trong lĩnh vực Ngân hàng, Bảo hiểm và phát triển hệ thống kinh doanh, tôi có cơ hội trực tiếp đào tạo, huấn luyện và đồng hành cùng nhiều đội ngũ bán hàng.</p>
+            <p>Ngày hôm nay, tôi lựa chọn chia sẻ kiến thức và kinh nghiệm của mình thông qua chương trình <b>“AI Thực Chiến Cùng Toàn Lê”</b>, với mong muốn giúp mọi người tiếp cận AI một cách đơn giản, thực tế và hiệu quả.</p>
+          </div>
+
+          <div class="sp-section-title">
+            <span class="sp-sec-icon">🎯</span>
+            <span>Bạn sẽ học được gì cùng tôi?</span>
+          </div>
 
           <ul class="sp-bullets">
-            <li><span class="sp-bullet-icon">✦</span><span><b>Giám Đốc Phát Triển Thị Trường</b> Astronixa Việt Nam</span></li>
-            <li><span class="sp-bullet-icon">✦</span><span><b>Chuyên gia cố vấn chiến lược</b> kinh doanh AI &amp; Công nghệ số</span></li>
-            <li><span class="sp-bullet-icon">✦</span><span><b>Trưởng Ban điều hành phát triển thị trường</b> Super App Ohana</span></li>
-            <li><span class="sp-bullet-icon">✦</span><span><b>Đào tạo &amp; dẫn dắt</b> hệ sinh thái Affiliate toàn cầu</span></li>
-            <li><span class="sp-bullet-icon">✦</span><span><b>Kinh nghiệm hơn 5 năm:</b> Đào Tạo Sale, Marketing &amp; AI chuyển đổi số cho doanh nghiệp</span></li>
-            <li><span class="sp-bullet-icon">✦</span><span><b>Hơn 15 năm kinh nghiệm</b> bán hàng &amp; Phát triển thị trường ở vị trí Quản lý Cấp Cao</span></li>
-            <li><span class="sp-bullet-icon">✦</span><span><b>Thành tích xây dựng và phát triển</b> hệ thống User hơn 13.000 thành viên trong 6 tháng.</span></li>
+            <li><span class="sp-bullet-icon">✦</span><span><b>Ứng dụng ChatGPT và các công cụ AI</b> vào công việc hằng ngày.</span></li>
+            <li><span class="sp-bullet-icon">✦</span><span><b>Tạo hình ảnh, video và nội dung bằng AI</b> phục vụ kinh doanh, marketing.</span></li>
+            <li><span class="sp-bullet-icon">✦</span><span><b>Xây dựng thương hiệu cá nhân</b> trên Facebook, TikTok và YouTube.</span></li>
+            <li><span class="sp-bullet-icon">✦</span><span><b>Ứng dụng AI vào bán hàng</b>, sáng tạo nội dung và chăm sóc khách hàng.</span></li>
+            <li><span class="sp-bullet-icon">✦</span><span><b>Tối ưu thời gian làm việc</b>, nâng cao năng suất và phát triển kỹ năng số.</span></li>
           </ul>
+
+          <div class="sp-section-title">
+            <span class="sp-sec-icon">💡</span>
+            <span>Phương pháp đào tạo của tôi</span>
+          </div>
+
+          <div class="sp-method-banner">
+            ⚡ <b>Không lý thuyết dài dòng – Không cần giỏi công nghệ – Học đến đâu, thực hành đến đó.</b>
+          </div>
+
+          <p class="sp-bio-desc">
+            Tôi luôn hướng đến việc biến những công cụ AI tưởng chừng phức tạp thành những kỹ năng đơn giản mà bất kỳ ai cũng có thể tiếp cận, kể cả người chưa từng sử dụng AI.
+          </p>
+
+          <div class="sp-quote-box">
+            <div class="sp-quote-text">“Tôi không chỉ muốn bạn biết AI là gì. Tôi muốn bạn tự tin sử dụng AI để làm việc tốt hơn, sáng tạo hơn và tạo ra những giá trị thực tế.”</div>
+          </div>
+
+          <div class="sp-slogan-badge">
+            🚀 <b>TOÀN LÊ – ĐỒNG HÀNH CÙNG BẠN LÀM CHỦ AI!</b>
+          </div>
 
           <a class="sp-btn-phone" href="tel:0933750577">
             <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.28-.27.36-.67.25-1.02A11.36 11.36 0 019 4.31c0-.55-.45-1-1-1H4.5c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-.99-1z"/></svg>
