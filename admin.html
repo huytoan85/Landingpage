@@ -735,7 +735,13 @@
 <script>
 (function(){
   const $ = (id) => document.getElementById(id);
-  const TICKET_MAP = { THUONG: "STANDARD", VIP: "VIP", VVIP: "SUPERVIP" };
+  const TICKET_MAP = {
+    AI_SALES: "AI Sales & Văn Phòng",
+    MASTER_VIDEO_999K: "Master Video AI (999k)",
+    THUONG: "STANDARD",
+    VIP: "VIP",
+    VVIP: "SUPERVIP"
+  };
   const STATUS = {
     moi: "Mới",
     da_goi: "Đã gọi",
@@ -1042,9 +1048,9 @@
 
     const countTicket = (t) => leads.filter((l) => l.ticket === t).length;
     $("sTotal").textContent = leads.length;
-    $("sThuong").textContent = countTicket("THUONG");
+    $("sThuong").textContent = countTicket("THUONG") + countTicket("AI_SALES");
     $("sVip").textContent = countTicket("VIP");
-    $("sVvip").textContent = countTicket("VVIP");
+    $("sVvip").textContent = countTicket("VVIP") + countTicket("MASTER_VIDEO_999K");
 
     $("rows").innerHTML = list.map((l, i) => {
       const ticketName = TICKET_MAP[l.ticket] || l.ticket;

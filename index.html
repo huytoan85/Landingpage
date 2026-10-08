@@ -644,117 +644,192 @@
       line-height: 1.4;
     }
 
-    /* Venue Showcase */
-    .venue { margin-top: 56px; }
-    .venue-head { text-align: center; margin-bottom: 24px; }
-    .venue-eyebrow {
+    /* ================= COURSES SECTION ================= */
+    .courses-sec {
+      margin-top: 48px;
+    }
+    .courses-sec-head {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .courses-sec-eyebrow {
       font-family: "Be Vietnam Pro", sans-serif;
       font-weight: 800;
       font-size: 12px;
-      letter-spacing: .2em;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--gold-2);
+      color: var(--amber);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(124, 58, 237, .08);
+      border: 1px solid rgba(124, 58, 237, .2);
+      border-radius: 999px;
     }
-    .venue-title {
-      font-weight: 800;
-      font-size: 28px;
+    .courses-sec-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 900;
+      font-size: 30px;
       line-height: 1.25;
       color: var(--amber);
-      margin-top: 6px;
+      margin-top: 10px;
+      letter-spacing: -.01em;
     }
-    .venue-grid {
+    .courses-sec-subtitle {
+      font-size: 15.5px;
+      color: var(--w80);
+      max-width: 680px;
+      margin: 8px auto 0;
+      line-height: 1.5;
+    }
+    
+    .courses-grid {
       display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: stretch;
     }
-    .vframe {
-      position: relative;
-      margin: 0;
-      height: 400px;
-      border-radius: 18px;
-      padding: 6px;
-      background: linear-gradient(140deg, rgba(124, 58, 237, .8), rgba(124, 58, 237, .15) 40%, rgba(56, 189, 248, .2) 70%, rgba(124, 58, 237, .8));
-      box-shadow: var(--shadow-lg);
+    @media (max-width: 860px) {
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
     }
-    .kb {
-      position: relative;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      border-radius: 13px;
-      background: #0f071d;
-    }
-    .kb img {
-      display: block;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      will-change: transform;
-      transition: transform 0.6s ease;
-    }
-    .kb-a img { animation: kbA 16s ease-in-out infinite alternate; }
-    .kb-b img { animation: kbB 16s ease-in-out infinite alternate; animation-delay: -4s; object-position: 50% 40%; }
-    .kb::after {
-      content: "";
-      position: absolute;
-      top: 0; bottom: 0; width: 35%;
-      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .2), transparent);
-      animation: shine 9s ease-in-out infinite;
-    }
-    .kb-b::after { animation-delay: 4.5s; }
 
-    @keyframes kbA { 0% { transform: scale(1.04) translate(0, 0); } 100% { transform: scale(1.15) translate(-2%, -1.5%); } }
-    @keyframes kbB { 0% { transform: scale(1.15) translate(2%, 1%); } 100% { transform: scale(1.04) translate(0, 0); } }
-    @keyframes shine { 0%, 70% { transform: translateX(-120%); } 100% { transform: translateX(220%); } }
-
-    .vframe figcaption {
-      position: absolute;
-      left: 6px; right: 6px; bottom: 6px;
-      padding: 42px 22px 18px;
-      border-radius: 0 0 13px 13px;
-      background: linear-gradient(180deg, transparent, rgba(20, 6, 40, .9));
+    .course-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(124, 58, 237, .16);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(124, 58, 237, .08);
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
     }
-    .vframe figcaption b { font-family: "Be Vietnam Pro", sans-serif; font-weight: 800; font-size: 18px; color: #ffffff; }
-    .vframe figcaption span { font-size: 14px; color: rgba(255, 255, 255, .85); }
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(124, 58, 237, .16);
+      border-color: rgba(124, 58, 237, .35);
+    }
+    .course-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #f97316, #ef4444, #7c3aed);
+      opacity: 0.9;
+    }
 
-    .map-wrap {
-      display: grid;
-      grid-template-columns: 1.55fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
+    .course-poster {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0f172a;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+      border: 1px solid rgba(0, 0, 0, .06);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .map-frame { height: 350px; }
-    .map-frame .kb::after { display: none; }
-    .map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
-    .map-card { padding: 26px; display: flex; flex-direction: column; }
-    .map-card h3 { font-weight: 800; font-size: 22px; color: var(--amber); margin: 6px 0 16px; }
-    .map-info { list-style: none; display: grid; gap: 12px; }
-    .map-info li { display: flex; gap: 12px; font-size: 14.5px; line-height: 1.45; color: var(--w80); }
-    .map-info li svg { margin-top: 2px; }
-    .map-btns { display: grid; gap: 10px; margin-top: auto; padding-top: 20px; }
-    .map-btn {
+    .course-poster img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .course-card:hover .course-poster img {
+      transform: scale(1.02);
+    }
+
+    .course-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 23px;
+      line-height: 1.35;
+      color: #ea580c;
+      margin-bottom: 16px;
+    }
+    .course-meta {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #334155;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .course-meta-row {
+      display: block;
+    }
+    .course-meta-row b, .course-meta-row strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .course-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 4px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .course-list li {
+      position: relative;
+      padding-left: 18px;
+      color: #475569;
+      line-height: 1.5;
+    }
+    .course-list li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: #0f172a;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    
+    .course-price-box {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 18.5px;
+      line-height: 1.4;
+      color: #dc2626;
+      margin: 14px 0 6px;
+      padding: 12px 14px;
+      background: rgba(239, 68, 68, .06);
+      border-left: 4px solid #ef4444;
+      border-radius: 8px;
+    }
+
+    .course-btn {
+      margin-top: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      height: 46px;
+      height: 48px;
       border-radius: 10px;
-      background: var(--amber);
+      background: linear-gradient(180deg, #2b6cb0, #1e4e8c);
       color: #ffffff;
       font-family: "Be Vietnam Pro", sans-serif;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 15px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
       text-decoration: none;
+      box-shadow: 0 6px 18px rgba(30, 78, 140, .28);
       transition: all .25s ease;
+      cursor: pointer;
+      border: none;
+      width: 100%;
     }
-    .map-btn:hover { background: var(--amber-2); transform: translateY(-1px); }
-    .map-btn.ghost {
-      background: transparent;
-      border: 1.5px solid var(--amber);
-      color: var(--amber);
+    .course-btn:hover {
+      background: linear-gradient(180deg, #3182ce, #2b6cb0);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(30, 78, 140, .42);
     }
-    .map-btn.ghost:hover { background: rgba(124, 58, 237, .08); }
 
     /* Key Topics / Pillars */
     .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -1899,7 +1974,7 @@
     </a>
     
     <div class="links">
-      <a href="#dia-diem">Địa điểm</a>
+      <a href="#khoa-hoc">Khóa học</a>
       <a href="#noi-dung">Nội dung</a>
       <a href="#chuong-trinh">Chương trình</a>
       <a href="#hang-ve">Hạng thư mời</a>
@@ -1954,7 +2029,7 @@
       <p class="theme" data-cms="hero-theme">Học dễ hiểu – Làm được ngay – Ứng dụng thực tế</p>
       <p class="lead" data-cms="hero-lead">Đồng hành cùng bạn làm chủ ChatGPT/Gemini và các công cụ AI để sáng tạo nội dung, hình ảnh, video, xây dựng thương hiệu cá nhân và phát triển kinh doanh.</p>
       <div class="hero-actions">
-        <a href="#noi-dung" class="btn-hero-explore">
+        <a href="#khoa-hoc" class="btn-hero-explore">
           <span data-cms="hero-cta-btn">Khám phá khóa học</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1964,61 +2039,86 @@
       </div>
     </div>
 
-    <!-- Key Info Cards -->
+    <!-- Key Course Highlights -->
     <div class="info glass">
       <div>
-        <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-        <div><div class="k">Ngày tổ chức</div><div class="v">Thứ Bảy, 10/10/2026</div><div class="s">Check-in: 08h00 - 08h30</div></div>
-      </div>
-      <div>
         <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        <div><div class="k">Thời gian</div><div class="v">08h30 – 17h00</div><div class="s">Trọn vẹn 2 phiên chuyên đề</div></div>
+        <div><div class="k">Hình thức đào tạo</div><div class="v">Online &amp; Kèm 1:1</div><div class="s">Linh hoạt, thực hành trực tiếp</div></div>
       </div>
       <div>
-        <svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-        <div><div class="k">Địa điểm tổ chức</div><div class="v">Khách sạn Athena Hotel</div><div class="s">280 Tô Hiến Thành, Cư xá Bắc Hải, Hòa Hưng, TP. HCM</div></div>
+        <svg class="ic" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div><div class="k">Phương pháp học</div><div class="v">Cầm tay chỉ việc</div><div class="s">Học dễ hiểu – Làm được ngay</div></div>
+      </div>
+      <div>
+        <svg class="ic" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div><div class="k">Quà tặng đặc biệt</div><div class="v">Tặng bộ Tool AI</div><div class="s">Tạo video &amp; ảnh tự động đa ngành</div></div>
       </div>
     </div>
 
-    <!-- Venue Gallery & Interactive Map -->
-    <div class="venue" id="dia-diem">
-      <div class="venue-head">
-        <div class="venue-eyebrow">Không gian sự kiện đẳng cấp</div>
-        <h2 class="venue-title">Athena Hotel – Sang trọng giữa lòng Sài Gòn</h2>
-      </div>
-      <div class="venue-grid">
-        <figure class="vframe">
-          <div class="kb kb-a"><img src="images/athena-sanh.jpg" alt="Sảnh đón khách Athena Hotel" width="1400" height="934" loading="lazy"></div>
-          <figcaption><b>Sảnh đón khách VIP</b><span>Không gian Check-in sang trọng &amp; Networking doanh nhân</span></figcaption>
-        </figure>
-        <figure class="vframe">
-          <div class="kb kb-b"><img src="images/athena-hoi-truong.jpg" alt="Hội trường sự kiện Athena Hotel" width="1400" height="1050" loading="lazy"></div>
-          <figcaption><b>Hội trường sự kiện</b><span>Khu vực Business Meeting &amp; Workshop AI thực chiến</span></figcaption>
-        </figure>
+    <!-- ================= CÁC KHÓA HỌC AI NỔI BẬT ================= -->
+    <div class="courses-sec" id="khoa-hoc">
+      <div class="courses-sec-head">
+        <div class="courses-sec-eyebrow">
+          <svg style="width:16px;height:16px;stroke:var(--amber);fill:none;stroke-width:2.2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Chương Trình Đào Tạo Thực Chiến</span>
+        </div>
+        <h2 class="courses-sec-title">CÁC KHÓA HỌC AI NỔI BẬT</h2>
+        <p class="courses-sec-subtitle">Học dễ hiểu – Làm được ngay – Tối ưu năng suất lên 300% cho công việc và kinh doanh</p>
       </div>
 
-      <div class="map-wrap">
-        <div class="vframe map-frame">
-          <div class="kb"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4385099409005!2d106.6623800751003!3d10.777687789371146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752edad6f20151%3A0xb7f722dccb49616b!2sAthena%20Hotel!5e0!3m2!1svi!2s!4v1786463754281!5m2!1svi!2s" title="Bản đồ chỉ đường Khách sạn Athena Hotel" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
-        </div>
-        <div class="map-card glass">
-          <div class="venue-eyebrow">Vị trí trung tâm</div>
-          <h3>Khách sạn Athena Hotel</h3>
-          <ul class="map-info">
-            <li><svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>280 Tô Hiến Thành, Cư xá Bắc Hải, Hòa Hưng, TP. Hồ Chí Minh</span></li>
-            <li><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Thứ Bảy, 10/10/2026 · 08h30 – 17h00</span></li>
-            <li><svg class="ic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Hotline Ban tổ chức: 0933.750.577</span></li>
-          </ul>
-          <div class="map-btns">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Athena+Hotel,+280+T%C3%B4+Hi%E1%BA%BFn+Th%C3%A0nh,+H%C3%B2a+H%C6%B0ng,+H%E1%BB%93+Ch%C3%AD+Minh" target="_blank" rel="noopener">
-              <svg class="ic" style="stroke:#fff;width:18px;height:18px" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-              Chỉ đường Google Maps
-            </a>
-            <a class="map-btn ghost" href="tel:0933750577">
-              <svg class="ic" style="width:18px;height:18px" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-              Gọi hotline hỗ trợ
-            </a>
+      <div class="courses-grid">
+        <!-- Khóa học 1: AI Thực Chiến Cho Sales & Văn Phòng -->
+        <div class="course-card">
+          <div class="course-poster">
+            <img src="images/course-ai-sales.png" alt="Workshop AI Thực Chiến Cho Sales & Văn Phòng" loading="lazy">
           </div>
+          <h3 class="course-title">AI Thực Chiến Cho Sales &amp; Văn Phòng</h3>
+          <div class="course-meta">
+            <div class="course-meta-row">
+              <b>Dành cho:</b> <span>Người làm sales, tư vấn viên, nhân viên văn phòng và người mới bắt đầu.</span>
+            </div>
+            <div class="course-meta-row">
+              <b>Nội dung dự kiến:</b>
+              <ul class="course-list">
+                <li>Viết yêu cầu cho AI rõ ràng, đúng mục tiêu.</li>
+                <li>Soạn email, bài giới thiệu sản phẩm và kịch bản tư vấn.</li>
+                <li>Tóm tắt tài liệu, lên kế hoạch và chuẩn bị nội dung thuyết trình.</li>
+                <li>Kiểm tra, chỉnh sửa kết quả AI trước khi sử dụng.</li>
+              </ul>
+            </div>
+            <div class="course-meta-row">
+              <b>Hình thức:</b> <span>Online</span>
+            </div>
+          </div>
+          <a href="#dang-ky" class="course-btn" onclick="selectCourse('AI Thực Chiến Cho Sales & Văn Phòng')">
+            <span>ĐĂNG KÝ NGAY</span>
+          </a>
+        </div>
+
+        <!-- Khóa học 2: Khóa Đồng Hành Master Video AI + 3 ngày -->
+        <div class="course-card">
+          <div class="course-poster">
+            <img src="images/course-master-video.png" alt="Khóa Đồng Hành Master Video AI + 3 ngày" loading="lazy">
+          </div>
+          <h3 class="course-title">Khóa Đồng Hành Master Video AI + 3 ngày</h3>
+          <div class="course-meta">
+            <div class="course-meta-row">
+              <b>Dành cho:</b> <span>Người làm sales, tư vấn viên, nhân viên văn phòng và người mới bắt đầu.</span>
+            </div>
+            <div class="course-meta-row">
+              <b>Nội dung dự kiến:</b>
+              <p style="margin-top: 6px; color: #475569; line-height: 1.55;">Lộ trình 5 ngày đồng hành làm chủ, tạo hình ảnh, poster và thumbnail, video AI bán hàng</p>
+            </div>
+            <div class="course-meta-row">
+              <b>Hình thức:</b> <span>Kèm 1:1 online</span>
+            </div>
+            <div class="course-price-box">
+              Học phí: 999k tặng kèm Tool tạo video đa ngành, tool tạo ảnh tự động
+            </div>
+          </div>
+          <a href="#dang-ky" class="course-btn" onclick="selectCourse('Khóa Đồng Hành Master Video AI + 3 ngày')">
+            <span>ĐĂNG KÝ NGAY</span>
+          </a>
         </div>
       </div>
     </div>
@@ -2331,36 +2431,6 @@
               <svg style="width:15px;height:15px;stroke:#fbbf24;fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
               <span>Hotline <span data-cms="hotline-text">0933.750.577</span></span>
             </a>
-          </div>55-.45-1-.99-1z"/></svg>
-            Hotline / Zalo: 0933.750.577
-          </a>
-
-          <a class="sp-btn-cta" href="#dang-ky">
-            <svg style="width:18px;height:18px;fill:currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            Liên hệ đồng hành cùng Chuyên Gia Lê Huy Toàn
-          </a>
-
-          <div class="sp-channels-label">
-            <span>📢 KÊNH CỦA CHUYÊN GIA LÊ HUY TOÀN</span>
-          </div>
-
-          <div class="sp-channels-grid">
-            <a class="sp-ch-btn zalo" href="https://zalo.me/0933750577" target="_blank" rel="noopener">
-              <span class="badge">Z</span>
-              <span>Zalo Trực Tiếp</span>
-            </a>
-            <a class="sp-ch-btn fb" href="https://facebook.com" target="_blank" rel="noopener">
-              <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              <span>Facebook</span>
-            </a>
-            <a class="sp-ch-btn yt" href="https://youtube.com" target="_blank" rel="noopener">
-              <svg style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              <span>YouTube</span>
-            </a>
-            <a class="sp-ch-btn" href="tel:0933750577">
-              <svg style="width:15px;height:15px;stroke:#fbbf24;fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-              <span>Hotline 0933.750.577</span>
-            </a>
           </div>
         </div>
       </div>
@@ -2398,12 +2468,14 @@
               <input id="f-company" name="company" autocomplete="organization" placeholder="Công ty ABC · Giám đốc">
             </div>
             <div class="field">
-              <label for="f-ticket">Hạng thư mời quan tâm <i>*</i></label>
+              <label for="f-ticket">Khóa học / Hạng vé quan tâm <i>*</i></label>
               <select id="f-ticket" name="ticket" required>
-                <option value="">— Chọn hạng thư mời —</option>
-                <option value="THUONG">STANDARD · 339.000đ</option>
-                <option value="VIP">VIP · 699.000đ</option>
-                <option value="VVIP">SUPERVIP · 1.299.000đ</option>
+                <option value="">— Chọn khóa học hoặc hạng vé —</option>
+                <option value="AI_SALES">AI Thực Chiến Cho Sales &amp; Văn Phòng (Online)</option>
+                <option value="MASTER_VIDEO_999K" selected>Khóa Đồng Hành Master Video AI + 3 ngày · 999.000đ</option>
+                <option value="THUONG">Vé STANDARD · 339.000đ</option>
+                <option value="VIP">Vé VIP · 699.000đ</option>
+                <option value="VVIP">Vé SUPERVIP · 1.299.000đ</option>
               </select>
             </div>
             <div class="field">
@@ -2774,7 +2846,7 @@
       }
     });
 
-    /* ===== 4. Quick Select Ticket Helper ===== */
+    /* ===== 4. Quick Select Ticket & Course Helper ===== */
     function selectTicket(val) {
       const select = document.getElementById("f-ticket");
       if (select) {
@@ -2785,6 +2857,20 @@
         if (nameInput) setTimeout(() => nameInput.focus(), 600);
       }
     }
+    window.selectCourse = function(courseName) {
+      const select = document.getElementById("f-ticket");
+      if (select) {
+        if (courseName && courseName.includes("Sales")) {
+          select.value = "AI_SALES";
+        } else if (courseName && courseName.includes("Video")) {
+          select.value = "MASTER_VIDEO_999K";
+        }
+      }
+      const regSec = document.getElementById("dang-ky");
+      if (regSec) regSec.scrollIntoView({ behavior: "smooth" });
+      const nameInput = document.getElementById("f-name");
+      if (nameInput) setTimeout(() => nameInput.focus(), 600);
+    };
 
     /* ===== 5. Registration Form Handler ===== */
     (function(){

@@ -225,8 +225,13 @@ app.get('/api/export-csv', (req, res) => {
     return res.status(401).send('Mật khẩu quản trị không hợp lệ.');
   }
 
-  const leads = readLeads();
-  const TICKET_MAP = { THUONG: 'STANDARD', VIP: 'VIP', VVIP: 'SUPERVIP' };
+  const TICKET_MAP = {
+    AI_SALES: 'Khóa AI Sales & Văn Phòng',
+    MASTER_VIDEO_999K: 'Khóa Master Video AI (999k)',
+    THUONG: 'STANDARD',
+    VIP: 'VIP',
+    VVIP: 'SUPERVIP'
+  };
   const STATUS_MAP = {
     moi: 'Mới',
     da_goi: 'Đã gọi',
