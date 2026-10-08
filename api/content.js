@@ -16,8 +16,8 @@ const DEFAULT_CONTENT = {
     badge: "QUÀ TẶNG",
     title: "Tặng bạn 100 mã code tạo ảnh/video siêu đẹp miễn phí",
     desc: "Quét mã QR vào nhóm Zalo — link tải 100 mã code sẽ hiện ngay sau khi bạn vào nhóm. Muốn đi xa hơn? Bộ 2000 mã code và các quyền lợi đồng hành đang chờ ở bên dưới.",
-    cta_btn: "Nhận quà trong nhóm Zalo",
-    zalo_link: "https://zalo.me/g/4akhl5xv4arle8pmrdtb"
+    cta_btn: "NHẬN QUÀ",
+    zalo_link: "https://mjp2c90dzeo7.jp.larksuite.com/wiki/K8aWwxLGfiY74JkmdOej0TIupDe?from=from_copylink"
   },
   brand: {
     title: "AI Thực Chiến",
