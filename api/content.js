@@ -55,6 +55,16 @@ const DEFAULT_CONTENT = {
     standard_price: "339.000đ",
     vip_price: "699.000đ",
     supervip_price: "1.299.000đ"
+  },
+  pillars: {
+    col1_lbl: "Đồng Hành Cùng Toàn Lê",
+    col1_title: "Chuyên Gia AI Thực Chiến",
+    col1_desc1: "Công nghệ đang thay đổi cách chúng ta làm việc, kinh doanh và kết nối. Điều quan trọng là biết lựa chọn những công cụ và cơ hội phù hợp để phát triển năng lực, xây dựng cộng đồng và tạo thêm giá trị.",
+    col1_callout: "Bạn muốn dùng AI để viết nội dung, tạo hình ảnh, lên kịch bản video hoặc hỗ trợ công việc, nhưng chưa biết bắt đầu từ đâu?",
+    col1_desc2: "Khóa học giúp bạn tiếp cận AI bằng những tình huống quen thuộc, hướng dẫn dễ hiểu và bài tập thực hành trên chính thiết bị của mình. Mỗi phần học gắn với một việc cụ thể để bạn từng bước tự tin sử dụng công nghệ.",
+    col2_lbl: "Chương Trình Đào Tạo Thực Chiến",
+    col2_title: "Nội Dung Bài Giảng",
+    col2_lessons: "Hiểu AI và sử dụng đúng cách: Nhận biết khả năng, giới hạn của AI và cách kiểm tra kết quả trước khi sử dụng.\nViết câu lệnh rõ ràng: Thực hành giao nhiệm vụ cho AI bằng mục tiêu, thông tin đầu vào và yêu cầu đầu ra cụ thể.\nSáng tạo nội dung phục vụ công việc: Ứng dụng AI để viết bài đăng, nội dung giới thiệu sản phẩm và kịch bản video ngắn.\nThực hành tạo hình ảnh: Học cách mô tả chủ thể, bối cảnh, phong cách và bố cục để tạo hình ảnh phù hợp với mục đích sử dụng.\nXây dựng kế hoạch ứng dụng cá nhân: Chọn một công việc đang làm để thử áp dụng AI sau khóa học.\nĐặc quyền đào tạo: Học 1:1 cùng Toàn đến khi thành thạo AI."
   }
 };
 

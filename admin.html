@@ -736,6 +736,47 @@
           </div>
         </div>
 
+        <!-- Card 5: Nội dung & Quyền lợi trọng tâm (Mục 01) -->
+        <div class="cms-card">
+          <div class="cms-card-title">
+            <span>📚 5. Nội Dung &amp; Quyền Lợi Trọng Tâm (Mục 01)</span>
+          </div>
+          <div class="cms-grid">
+            <div class="cms-field">
+              <label for="cms_pillar_c1_lbl">Cột 1 - Nhãn trên cùng:</label>
+              <input id="cms_pillar_c1_lbl" placeholder="VD: Đồng Hành Cùng Toàn Lê">
+            </div>
+            <div class="cms-field">
+              <label for="cms_pillar_c1_title">Cột 1 - Tiêu đề chính:</label>
+              <input id="cms_pillar_c1_title" placeholder="VD: Chuyên Gia AI Thực Chiến">
+            </div>
+            <div class="cms-field" style="grid-column: 1 / -1;">
+              <label for="cms_pillar_c1_desc1">Cột 1 - Đoạn mở đầu:</label>
+              <textarea id="cms_pillar_c1_desc1" rows="2" placeholder="Công nghệ đang thay đổi..."></textarea>
+            </div>
+            <div class="cms-field" style="grid-column: 1 / -1;">
+              <label for="cms_pillar_c1_callout">Cột 1 - Câu hỏi nổi bật (Callout):</label>
+              <input id="cms_pillar_c1_callout" placeholder="Bạn muốn dùng AI để viết nội dung...">
+            </div>
+            <div class="cms-field" style="grid-column: 1 / -1;">
+              <label for="cms_pillar_c1_desc2">Cột 1 - Định hướng khóa học:</label>
+              <textarea id="cms_pillar_c1_desc2" rows="2" placeholder="Khóa học giúp bạn tiếp cận AI bằng những tình huống quen thuộc..."></textarea>
+            </div>
+            <div class="cms-field">
+              <label for="cms_pillar_c2_lbl">Cột 2 - Nhãn trên cùng:</label>
+              <input id="cms_pillar_c2_lbl" placeholder="VD: Chương Trình Đào Tạo Thực Chiến">
+            </div>
+            <div class="cms-field">
+              <label for="cms_pillar_c2_title">Cột 2 - Tiêu đề chính:</label>
+              <input id="cms_pillar_c2_title" placeholder="VD: Nội Dung Bài Giảng">
+            </div>
+            <div class="cms-field" style="grid-column: 1 / -1;">
+              <label for="cms_pillar_c2_lessons">Cột 2 - Danh sách bài giảng &amp; quyền lợi (mỗi ý 1 dòng dạng Tiêu đề: Nội dung):</label>
+              <textarea id="cms_pillar_c2_lessons" rows="6" placeholder="Hiểu AI và sử dụng đúng cách: Nhận biết khả năng..."></textarea>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Action Floating Bar -->
@@ -1325,6 +1366,17 @@
       $("cms_ticket_vip_price").value = c.tickets.vip_price || "";
       $("cms_ticket_supervip_price").value = c.tickets.supervip_price || "";
     }
+    // Pillars (Mục 01)
+    if (c.pillars) {
+      if ($("cms_pillar_c1_lbl")) $("cms_pillar_c1_lbl").value = c.pillars.col1_lbl || "";
+      if ($("cms_pillar_c1_title")) $("cms_pillar_c1_title").value = c.pillars.col1_title || "";
+      if ($("cms_pillar_c1_desc1")) $("cms_pillar_c1_desc1").value = c.pillars.col1_desc1 || "";
+      if ($("cms_pillar_c1_callout")) $("cms_pillar_c1_callout").value = c.pillars.col1_callout || "";
+      if ($("cms_pillar_c1_desc2")) $("cms_pillar_c1_desc2").value = c.pillars.col1_desc2 || "";
+      if ($("cms_pillar_c2_lbl")) $("cms_pillar_c2_lbl").value = c.pillars.col2_lbl || "";
+      if ($("cms_pillar_c2_title")) $("cms_pillar_c2_title").value = c.pillars.col2_title || "";
+      if ($("cms_pillar_c2_lessons")) $("cms_pillar_c2_lessons").value = c.pillars.col2_lessons || "";
+    }
   }
 
   async function saveCms() {
@@ -1384,6 +1436,16 @@
         standard_price: $("cms_ticket_standard_price").value.trim(),
         vip_price: $("cms_ticket_vip_price").value.trim(),
         supervip_price: $("cms_ticket_supervip_price").value.trim()
+      },
+      pillars: {
+        col1_lbl: $("cms_pillar_c1_lbl") ? $("cms_pillar_c1_lbl").value.trim() : "",
+        col1_title: $("cms_pillar_c1_title") ? $("cms_pillar_c1_title").value.trim() : "",
+        col1_desc1: $("cms_pillar_c1_desc1") ? $("cms_pillar_c1_desc1").value.trim() : "",
+        col1_callout: $("cms_pillar_c1_callout") ? $("cms_pillar_c1_callout").value.trim() : "",
+        col1_desc2: $("cms_pillar_c1_desc2") ? $("cms_pillar_c1_desc2").value.trim() : "",
+        col2_lbl: $("cms_pillar_c2_lbl") ? $("cms_pillar_c2_lbl").value.trim() : "",
+        col2_title: $("cms_pillar_c2_title") ? $("cms_pillar_c2_title").value.trim() : "",
+        col2_lessons: $("cms_pillar_c2_lessons") ? $("cms_pillar_c2_lessons").value.trim() : ""
       }
     };
 
