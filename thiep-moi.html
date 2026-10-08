@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tạo Thiệp Mời VIP — BUSINESS MEETING 2026 (Astronixa & Ohana)</title>
+  <meta name="description" content="Tạo thiệp mời VIP cá nhân hóa tham dự sự kiện Business Meeting 2026 — Offline TP. Hồ Chí Minh. Tải ảnh đại diện, nhập tên và xuất thiệp mời siêu nét.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ASTRONIXA & OHANA COMMUNITY">
+  <meta property="og:title" content="Tạo Thiệp Mời VIP — Business Meeting 2026">
+  <meta property="og:description" content="Sự kiện Business Meeting & Workshop AI ngày 10/10/2026 tại Khách sạn Athena Hotel, TP. HCM. Tạo thiệp mời cá nhân của bạn và tải về ngay!">
+  <meta property="og:image" content="images/athena-hoi-truong.jpg">
+  
+  <link rel="icon" type="image/png" href="images/astronixa-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Oswald:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Arimo:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #070412;
+      --bg-card: rgba(19, 11, 38, 0.85);
+      --purple-neon: #a020f0;
+      --purple-glow: #c084fc;
+      --cyan-neon: #00f0ff;
+      --cyan-deep: #0284c7;
+      --gold-neon: #fbbf24;
+      --gold-dark: #d97706;
+      --text-main: #f3f0ff;
+      --text-muted: #a39cb8;
+      --border-line: rgba(160, 32, 240, 0.28);
+      --border-glow: rgba(0, 240, 255, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Be Vietnam Pro', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-image: 
+        radial-gradient(900px 500px at 15% 10%, rgba(160, 32, 240, 0.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(0, 240, 255, 0.14), transparent 60%),
+        radial-gradient(1000px 700px at 50% 90%, rgba(236, 72, 153, 0.12), transparent 65%),
+        linear-gradient(180deg, #090518 0%, #05020c 100%);
+      background-attachment: fixed;
+    }
+
+    /* Ambient animated sky */
+    .bg-stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+      background-image:
+        radial-gradient(1.5px 1.5px at 10% 20%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 30% 70%, #00f0ff, transparent),
+        radial-gradient(1px 1px at 70% 30%, #e0b0ff, transparent),
+        radial-gradient(2px 2px at 85% 80%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 50% 40%, #ffd873, transparent);
+      background-repeat: repeat;
+      background-size: 400px 400px;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(12, 7, 26, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(160, 32, 240, 0.3);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .nav-logo {
+      height: 38px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
+    }
+
+    .nav-title {
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, #ffffff 30%, #e0b0ff 70%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .nav-title small {
+      display: block;
+      font-size: 11px;
+      color: #00f0ff;
+      letter-spacing: 0.1em;
+      -webkit-text-fill-color: #00f0ff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #d1c9e8;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(160, 32, 240, 0.3);
+      background: rgba(160, 32, 240, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #00f0ff;
+      border-color: #00f0ff;
+      background: rgba(0, 240, 255, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.primary {
+      background: linear-gradient(135deg, #a020f0 0%, #00f0ff 100%);
+      color: #ffffff;
+      border: none;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(160, 32, 240, 0.4);
+    }
+
+    .nav-link.primary:hover {
+      filter: brightness(1.15);
+      box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
+    }
+
+    /* Main Container - Centered Studio Layout */
+    .app-wrap {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 20px 48px;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Left Control Panel */
+    .control-panel {
+      width: 380px;
+      flex: none;
+      position: sticky;
+      top: 76px;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-line);
+      border-radius: 20px;
+      padding: 22px 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(160, 32, 240, 0.4) transparent;
+    }
+
+    .control-panel::-webkit-scrollbar { width: 6px; }
+    .control-panel::-webkit-scrollbar-thumb { background: rgba(160, 32, 240, 0.4); border-radius: 4px; }
+
+    .panel-header {
+      margin-bottom: 22px;
+      border-bottom: 1px solid rgba(160, 32, 240, 0.2);
+      padding-bottom: 16px;
+    }
+
+    .panel-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #00f0ff;
+      background: rgba(0, 240, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      margin-bottom: 8px;
+    }
+
+    .panel-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #ffffff 20%, #e0b0ff 60%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .panel-header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Form Fields */
+    .field-group {
+      margin-bottom: 20px;
+    }
+
+    .field-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #00f0ff;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+    }
+
+    .field-label span.req { color: #f43f5e; margin-left: 2px; }
+
+    .input-text {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(160, 32, 240, 0.35);
+      background: #0d071f;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 14.5px;
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .input-text:focus {
+      border-color: #00f0ff;
+      box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .input-select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(160, 32, 240, 0.35);
+      background: #0d071f;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .input-select:focus {
+      border-color: #00f0ff;
+    }
+
+    /* Preset Quick Roles */
+    .quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .chip-btn {
+      background: rgba(160, 32, 240, 0.12);
+      border: 1px solid rgba(160, 32, 240, 0.3);
+      color: #c4b5fd;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .chip-btn:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: #00f0ff;
+      color: #00f0ff;
+      transform: translateY(-1px);
+    }
+
+    /* Photo Upload Box */
+    .upload-zone {
+      border: 2px dashed rgba(0, 240, 255, 0.4);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      background: rgba(160, 32, 240, 0.06);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .upload-zone:hover {
+      background: rgba(0, 240, 255, 0.08);
+      border-color: #00f0ff;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+
+    .upload-zone svg {
+      width: 28px;
+      height: 28px;
+      stroke: #00f0ff;
+    }
+
+    .upload-zone span.title {
+      font-weight: 700;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    .upload-zone span.desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .upload-zone input[type=file] {
+      display: none;
+    }
+
+    /* Slider Adjustments */
+    .sliders-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(11, 7, 25, 0.8);
+      border: 1px solid rgba(160, 32, 240, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .slider-item label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      color: #d1c9e8;
+      margin-bottom: 5px;
+    }
+
+    .slider-item label b {
+      color: #00f0ff;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 6px;
+      border-radius: 4px;
+      background: #231645;
+      outline: none;
+      accent-color: #00f0ff;
+      cursor: pointer;
+    }
+
+    /* Theme Switcher */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .theme-btn {
+      padding: 8px 6px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(160, 32, 240, 0.3);
+      background: rgba(160, 32, 240, 0.08);
+      color: #d1c9e8;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .theme-btn .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+    }
+
+    .theme-btn.active {
+      border-color: #00f0ff;
+      background: rgba(0, 240, 255, 0.15);
+      color: #00f0ff;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+    }
+
+    /* Action Buttons */
+    .actions-box {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-download-png {
+      background: linear-gradient(135deg, #a020f0 0%, #00f0ff 100%);
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(160, 32, 240, 0.4), 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+
+    .btn-download-png:hover:not(:disabled) {
+      filter: brightness(1.12);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(160, 32, 240, 0.5), 0 0 25px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-download-jpg {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1.5px solid rgba(0, 240, 255, 0.4);
+      color: #00f0ff;
+    }
+
+    .btn-download-jpg:hover:not(:disabled) {
+      background: rgba(0, 240, 255, 0.18);
+      border-color: #00f0ff;
+      transform: translateY(-1px);
+    }
+
+    .btn-copy {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1.5px solid rgba(251, 191, 36, 0.4);
+      color: #fbbf24;
+      font-size: 13.5px;
+      padding: 11px;
+    }
+
+    .btn-copy:hover:not(:disabled) {
+      background: rgba(251, 191, 36, 0.2);
+      border-color: #fbbf24;
+    }
+
+    .btn-action:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none !important;
+      filter: none !important;
+    }
+
+    .panel-tip {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #8b82a8;
+      line-height: 1.5;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* ========================================================
+       PREVIEW SCALER
+       ======================================================== */
+
+    .scaler-box {
+      flex: none;
+      position: relative;
+    }
+
+    /* ========================================================
+       POSTER CANVAS (1080px Width Target For Export)
+       ======================================================== */
+    #poster {
+      width: 1080px;
+      background: #070414;
+      position: relative;
+      overflow: hidden;
+      transform-origin: top center;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(160, 32, 240, 0.25);
+      border-radius: 20px;
+    }
+
+    /* Background Neon Effects */
+    .p-bg-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .p-glow-center {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 950px;
+      height: 950px;
+      background: radial-gradient(circle, rgba(160, 32, 240, 0.22) 0%, rgba(0, 240, 255, 0.06) 45%, transparent 70%);
+      animation: pulseGlow 8s ease-in-out infinite;
+    }
+
+    .p-glow-top-right {
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.16) 0%, transparent 65%);
+    }
+
+    .p-glow-bottom-left {
+      position: absolute;
+      bottom: -10%;
+      left: -10%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(160, 32, 240, 0.18) 0%, transparent 65%);
+    }
+
+    .p-cyber-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.45;
+      background-image: 
+        repeating-linear-gradient(58deg, rgba(160, 32, 240, 0.06) 0 1px, transparent 1px 48px),
+        repeating-linear-gradient(-58deg, rgba(0, 240, 255, 0.05) 0 1px, transparent 1px 48px);
+    }
+
+    .p-orbit-top {
+      position: absolute;
+      top: 14%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 580px;
+      height: 580px;
+      opacity: 0.35;
+      animation: orbitSpin 30s linear infinite;
+    }
+
+    .p-orbit-bottom {
+      position: absolute;
+      bottom: 12%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      width: 700px;
+      height: 700px;
+      opacity: 0.25;
+      animation: orbitSpin 45s linear infinite reverse;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.08); }
+    }
+
+    @keyframes orbitSpin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Outer Cyber Borders & Decorative Brackets */
+    .p-border-frame {
+      position: absolute;
+      inset: 16px;
+      border: 1.5px solid rgba(0, 240, 255, 0.3);
+      border-radius: 14px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .p-corner {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    .p-corner-tl { top: 16px; left: 16px; border-top: 3px solid #a020f0; border-left: 3px solid #a020f0; border-top-left-radius: 14px; }
+    .p-corner-tr { top: 16px; right: 16px; border-top: 3px solid #00f0ff; border-right: 3px solid #00f0ff; border-top-right-radius: 14px; }
+    .p-corner-bl { bottom: 16px; left: 16px; border-bottom: 3px solid #00f0ff; border-left: 3px solid #00f0ff; border-bottom-left-radius: 14px; }
+    .p-corner-br { bottom: 16px; right: 16px; border-bottom: 3px solid #a020f0; border-right: 3px solid #a020f0; border-bottom-right-radius: 14px; }
+
+    /* Star Accents */
+    .p-star {
+      position: absolute;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    /* Poster Internal Content */
+    .p-content {
+      position: relative;
+      z-index: 3;
+      padding: 34px 54px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    /* Poster Header (Brand & Official Badge) */
+    .p-top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+      padding-bottom: 18px;
+    }
+
+    .p-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .p-logo-img {
+      height: 46px;
+      width: auto;
+      filter: drop-shadow(0 2px 10px rgba(0, 240, 255, 0.4));
+    }
+
+    .p-logo-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(0, 240, 255, 0.35);
+    }
+
+    .p-brand-co {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #d8b4fe;
+    }
+
+    .p-badge-official {
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(160, 32, 240, 0.35), rgba(0, 240, 255, 0.25));
+      border: 1px solid rgba(0, 240, 255, 0.6);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00f0ff;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+
+    /* Personalised Invite Area */
+    .p-guest-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px 20px 0;
+    }
+
+    .p-kicker {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: #00f0ff;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+    }
+
+    .p-kicker-line {
+      width: 65px;
+      height: 1.5px;
+    }
+    .p-kicker-line.l { background: linear-gradient(90deg, transparent, #00f0ff); }
+    .p-kicker-line.r { background: linear-gradient(90deg, #00f0ff, transparent); }
+
+    /* Glowing Avatar Ring */
+    .p-avatar-aura {
+      margin-top: 20px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, #a020f0 0%, #38bdf8 50%, #00f0ff 100%);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 240, 255, 0.35);
+      position: relative;
+    }
+
+    .p-avatar-aura::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(0, 240, 255, 0.5);
+      animation: orbitSpin 20s linear infinite;
+    }
+
+    .p-avatar-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #0d0722;
+      background-repeat: no-repeat;
+      background-position: 50% 35%;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid #190a36;
+    }
+
+    .p-avatar-ph {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: #6d5b99;
+    }
+
+    .p-avatar-ph svg {
+      width: 80px;
+      height: 80px;
+      opacity: 0.6;
+    }
+
+    .p-avatar-ph span {
+      font-size: 14px;
+      color: #8b79b8;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* Guest Typography - Spacious & No Accent Clipping */
+    .p-guest-name {
+      margin-top: 24px;
+      margin-bottom: 6px;
+      padding: 10px 16px 8px;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 900;
+      font-size: 46px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 10%, #e0b0ff 50%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 15px rgba(160, 32, 240, 0.4));
+      white-space: nowrap;
+      max-width: 960px;
+      overflow: visible;
+    }
+
+    .p-guest-role {
+      margin-top: 8px;
+      margin-bottom: 4px;
+      font-size: 21px;
+      font-weight: 600;
+      color: #d1c9e8;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      padding: 2px 10px;
+    }
+
+    .p-guest-tier-badge {
+      margin-top: 14px;
+      margin-bottom: 6px;
+      padding: 8px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(160, 32, 240, 0.3));
+      border: 1.5px solid #fbbf24;
+      color: #fef08a;
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      box-shadow: 0 0 16px rgba(251, 191, 36, 0.3);
+    }
+
+    /* Event Main Info Block */
+    .p-event-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .p-event-tagline {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #00f0ff;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .p-event-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 78px;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      margin-top: 12px;
+      white-space: nowrap;
+      background: linear-gradient(135deg, #ffffff 0%, #e0b0ff 40%, #38bdf8 80%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 8px 25px rgba(0, 240, 255, 0.4));
+    }
+
+    .p-city-badge {
+      margin-top: 16px;
+      padding: 10px 32px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(160, 32, 240, 0.25), rgba(0, 240, 255, 0.25));
+      border: 1.5px solid rgba(0, 240, 255, 0.5);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+    }
+
+    .p-theme-quote {
+      margin-top: 16px;
+      font-weight: 800;
+      font-size: 25px;
+      letter-spacing: 0.06em;
+      color: #00f0ff;
+      text-transform: uppercase;
+      filter: drop-shadow(0 2px 8px rgba(0, 240, 255, 0.3));
+    }
+
+    .p-invitation-text {
+      margin-top: 12px;
+      max-width: 940px;
+      color: #b7add1;
+      font-size: 19px;
+      line-height: 1.55;
+    }
+
+    .p-invitation-text b {
+      color: #00f0ff;
+      font-weight: 700;
+    }
+
+    /* Key Visual / Athena Hotel Showcase */
+    .p-showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 2px;
+    }
+
+    .p-showcase-frame {
+      position: relative;
+      border-radius: 14px;
+      padding: 2px;
+      background: linear-gradient(135deg, #a020f0, #00f0ff);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.2);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+
+    .p-showcase-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .p-showcase-caption {
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      padding: 20px 14px 10px;
+      background: linear-gradient(180deg, transparent, rgba(10, 4, 25, 0.95));
+      border-radius: 0 0 12px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #f3f0ff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .p-showcase-caption span { color: #00f0ff; }
+
+    /* ========================================================
+       RIGHT PREVIEW STAGE (CENTERED)
+       ======================================================== */
+    .stage-wrap {
+      flex: none;
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: sticky;
+      top: 76px;
+      max-height: calc(100vh - 96px);
+    }
+
+    /* Event Logistics & QR Details */
+    .p-logistics-box {
+      padding: 20px 24px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(20, 10, 42, 0.85), rgba(12, 6, 28, 0.95));
+      border: 1.5px solid rgba(0, 240, 255, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(160, 32, 240, 0.15);
+      display: grid;
+      grid-template-columns: 1fr 142px 142px;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .p-log-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .p-log-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      color: #ede3ff;
+    }
+
+    .p-log-row svg {
+      width: 24px;
+      height: 24px;
+      stroke: #00f0ff;
+      flex: none;
+    }
+
+    .p-log-row b {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .p-log-row span.sub {
+      color: #b7add1;
+      font-size: 15px;
+      margin-left: 6px;
+    }
+
+    /* QR Code Wrappers */
+    .p-qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+      padding-left: 16px;
+      border-left: 1px solid rgba(0, 240, 255, 0.25);
+    }
+
+    .p-qr-wrap.zalo-wrap {
+      border-left: 1px solid rgba(0, 240, 255, 0.25);
+    }
+
+    .p-qr-code {
+      width: 104px;
+      height: 104px;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .p-qr-code img, .p-qr-code canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: contain;
+    }
+
+    .p-qr-lbl {
+      font-size: 11px;
+      font-weight: 800;
+      color: #00f0ff;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .p-qr-id {
+      font-family: monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #fef08a;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .p-qr-lbl-zalo {
+      font-size: 11px;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .p-qr-sub-zalo {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #a5f3fc;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    /* Poster Bottom Closing */
+    .p-bottom-closing {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .p-closing-msg {
+      color: #d1c9e8;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .p-closing-sign {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .p-sign-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.6));
+    }
+    .p-sign-line.r {
+      background: linear-gradient(90deg, rgba(0, 240, 255, 0.6), transparent);
+    }
+
+    .p-sign-diamond {
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(135deg, #a020f0, #00f0ff);
+      transform: rotate(45deg);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+    }
+
+    .p-sign-text {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      background: linear-gradient(135deg, #ffffff 0%, #e0b0ff 50%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 10px rgba(0, 240, 255, 0.3));
+    }
+
+    /* ========================================================
+       THEME OVERRIDES
+       ======================================================== */
+    /* Royal Gold Theme */
+    #poster.theme-gold {
+      background: #090805;
+    }
+    #poster.theme-gold .p-border-frame { border-color: rgba(251, 191, 36, 0.4); }
+    #poster.theme-gold .p-corner-tl, #poster.theme-gold .p-corner-br { border-color: #d97706; }
+    #poster.theme-gold .p-corner-tr, #poster.theme-gold .p-corner-bl { border-color: #fbbf24; }
+    #poster.theme-gold .p-badge-official {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.35), rgba(251, 191, 36, 0.25));
+      border-color: #fbbf24;
+      color: #fbbf24;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+    }
+    #poster.theme-gold .p-kicker { color: #fbbf24; }
+    #poster.theme-gold .p-kicker-line.l { background: linear-gradient(90deg, transparent, #fbbf24); }
+    #poster.theme-gold .p-kicker-line.r { background: linear-gradient(90deg, #fbbf24, transparent); }
+    #poster.theme-gold .p-avatar-aura {
+      background: linear-gradient(135deg, #d97706 0%, #fbbf24 50%, #fef08a 100%);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 40px rgba(251, 191, 36, 0.4);
+    }
+    #poster.theme-gold .p-guest-name {
+      background: linear-gradient(135deg, #ffffff 10%, #fde68a 50%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    #poster.theme-gold .p-event-title {
+      background: linear-gradient(135deg, #ffffff 0%, #fde68a 40%, #fbbf24 80%, #d97706 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    #poster.theme-gold .p-city-badge {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.3), rgba(251, 191, 36, 0.2));
+      border-color: #fbbf24;
+      color: #ffffff;
+      box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+    }
+    #poster.theme-gold .p-theme-quote { color: #fbbf24; }
+    #poster.theme-gold .p-invitation-text b { color: #fbbf24; }
+    #poster.theme-gold .p-logistics-box {
+      border-color: rgba(251, 191, 36, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(251, 191, 36, 0.1);
+    }
+    #poster.theme-gold .p-log-row svg { stroke: #fbbf24; }
+    #poster.theme-gold .p-qr-lbl { color: #fbbf24; }
+    #poster.theme-gold .p-qr-lbl-zalo { color: #fbbf24; }
+    #poster.theme-gold .p-qr-sub-zalo { color: #fef08a; }
+
+    /* Cyber Emerald Theme */
+    #poster.theme-emerald {
+      background: #030c0a;
+    }
+    #poster.theme-emerald .p-border-frame { border-color: rgba(16, 185, 129, 0.4); }
+    #poster.theme-emerald .p-corner-tl, #poster.theme-emerald .p-corner-br { border-color: #059669; }
+    #poster.theme-emerald .p-corner-tr, #poster.theme-emerald .p-corner-bl { border-color: #10b981; }
+    #poster.theme-emerald .p-badge-official {
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.35), rgba(16, 185, 129, 0.25));
+      border-color: #10b981;
+      color: #34d399;
+    }
+    #poster.theme-emerald .p-kicker { color: #34d399; }
+    #poster.theme-emerald .p-kicker-line.l { background: linear-gradient(90deg, transparent, #34d399); }
+    #poster.theme-emerald .p-kicker-line.r { background: linear-gradient(90deg, #34d399, transparent); }
+    #poster.theme-emerald .p-avatar-aura {
+      background: linear-gradient(135deg, #059669 0%, #10b981 50%, #6ee7b7 100%);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 40px rgba(160, 185, 129, 0.4);
+    }
+    #poster.theme-emerald .p-guest-name {
+      background: linear-gradient(135deg, #ffffff 10%, #a7f3d0 50%, #10b981 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    #poster.theme-emerald .p-event-title {
+      background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 40%, #34d399 80%, #059669 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    #poster.theme-emerald .p-theme-quote { color: #34d399; }
+    #poster.theme-emerald .p-invitation-text b { color: #34d399; }
+    #poster.theme-emerald .p-logistics-box { border-color: rgba(16, 185, 129, 0.4); }
+    #poster.theme-emerald .p-log-row svg { stroke: #34d399; }
+    #poster.theme-emerald .p-qr-lbl { color: #34d399; }
+    #poster.theme-emerald .p-qr-lbl-zalo { color: #34d399; }
+    #poster.theme-emerald .p-qr-sub-zalo { color: #a7f3d0; }
+
+    /* Responsive Queries */
+    @media (max-width: 1080px) {
+      .app-wrap {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 14px 40px;
+        gap: 20px;
+      }
+      .control-panel {
+        width: 100%;
+        position: static;
+        max-height: none;
+      }
+      .stage-wrap {
+        position: static;
+        max-height: none;
+        width: 100%;
+        align-self: auto;
+      }
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: #0d0722;
+      border: 1.5px solid #00f0ff;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Stars -->
+  <div class="bg-stars"></div>
+
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav">
+    <a class="nav-brand" href="/">
+      <img class="nav-logo" src="images/astronixa-logo.png" alt="ASTRONIXA Logo">
+      <div class="nav-title">
+        BUSINESS MEETING 2026
+        <small>ASTRONIXA &amp; CỘNG ĐỒNG OHANA</small>
+      </div>
+    </a>
+
+    <div class="nav-actions">
+      <a class="nav-link" href="/">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Trang Sự Kiện</span>
+      </a>
+      <a class="nav-link primary" href="/#dang-ky">
+        <span>Đăng Ký Vé VIP</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main App Shell -->
+  <div class="app-wrap">
+
+    <!-- ==================== CONTROL PANEL (LEFT) ==================== -->
+    <aside class="control-panel">
+      <div class="panel-header">
+        <span class="panel-tag">✨ VIP INVITATION MAKER</span>
+        <h1>Tạo Thiệp Mời Cá Nhân</h1>
+        <p>Nhập thông tin &amp; tải ảnh chân dung của bạn để xuất tấm thiệp mời danh dự tham dự sự kiện <b>Business Meeting 2026</b> tại Athena Hotel TP. HCM.</p>
+      </div>
+
+      <!-- Field 1: Full Name -->
+      <div class="field-group">
+        <label class="field-label" for="nameInput">
+          <span>1 · Họ và tên của bạn <span class="req">*</span></span>
+          <small style="color:var(--text-muted);font-weight:500;">Tối đa 30 ký tự</small>
+        </label>
+        <input type="text" id="nameInput" class="input-text" placeholder="VD: NGUYỄN QUỐC BẢO" maxlength="30" autocomplete="off" value="LÊ HUY TOÀN">
+      </div>
+
+      <!-- Field 2: Role / Title -->
+      <div class="field-group">
+        <label class="field-label" for="roleInput">
+          <span>2 · Chức danh / Doanh nghiệp</span>
+          <small style="color:var(--text-muted);font-weight:500;">Tuỳ chọn</small>
+        </label>
+        <input type="text" id="roleInput" class="input-text" placeholder="VD: Giám đốc Doanh nghiệp · Pioneer Partner" maxlength="48" autocomplete="off" value="CEO &amp; Nhà Đầu Tư Tiên Phong">
+        <div class="quick-chips">
+          <button type="button" class="chip-btn" onclick="setRole('CEO · Chủ Doanh Nghiệp')">CEO · Chủ DN</button>
+          <button type="button" class="chip-btn" onclick="setRole('Pioneer Partner · Affiliate Marketer')">Pioneer Partner</button>
+          <button type="button" class="chip-btn" onclick="setRole('Nhà Đầu Tư · Cổ Đông Chiến Lược')">Nhà Đầu Tư</button>
+          <button type="button" class="chip-btn" onclick="setRole('Chuyên Gia Đào Tạo AI')">Chuyên Gia AI</button>
+        </div>
+      </div>
+
+      <!-- Field 3: Ticket / Badge Tier -->
+      <div class="field-group">
+        <label class="field-label" for="tierSelect">
+          <span>3 · Danh hiệu / Hạng thư mời</span>
+        </label>
+        <select id="tierSelect" class="input-select">
+          <option value="✨ KHÁCH MỜI DANH DỰ · VIP GUEST ✨">✨ KHÁCH MỜI DANH DỰ (VIP GUEST)</option>
+          <option value="💎 SUPERVIP GUEST · ĐẠI BIỂU ĐẶC BIỆT 💎">💎 SUPERVIP GUEST (Đại Biểu Đặc Biệt)</option>
+          <option value="👑 ĐỐI TÁC TIÊN PHONG · PIONEER PARTNER 👑">👑 ĐỐI TÁC TIÊN PHONG (Pioneer Partner)</option>
+          <option value="🚀 CHUYÊN GIA &amp; CỐ VẤN CHIẾN LƯỢC 🚀">🚀 CHUYÊN GIA &amp; CỐ VẤN CHIẾN LƯỢC</option>
+          <option value="🌟 KHÁCH MỜI THÂN MẬT · OHANA COMMUNITY 🌟">🌟 THÀNH VIÊN CỘNG ĐỒNG OHANA</option>
+        </select>
+      </div>
+
+      <!-- Field 4: Photo Upload & Adjustment -->
+      <div class="field-group">
+        <label class="field-label">
+          <span>4 · Ảnh chân dung đại diện</span>
+          <small style="color:#00f0ff;font-weight:600;">Khuyên dùng ảnh rõ mặt</small>
+        </label>
+        
+        <label class="upload-zone" id="dropZone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span class="title" id="uploadBtnText">Tải ảnh đại diện lên</span>
+          <span class="desc">Kéo thả ảnh hoặc nhấp vào đây (PNG, JPG, WebP)</span>
+          <input type="file" id="fileInput" accept="image/*">
+        </label>
+
+
+
+        <!-- Fine-tune Sliders -->
+        <div class="sliders-box" id="slidersBox">
+          <div class="slider-item">
+            <label>Phóng to / Thu nhỏ ảnh <b id="zoomLabel">100%</b></label>
+            <input type="range" id="zoomRange" min="80" max="280" value="100">
+          </div>
+          <div class="slider-item">
+            <label>Căn chỉnh Lên / Xuống (Vị trí Y) <b id="posYLabel">35%</b></label>
+            <input type="range" id="posYRange" min="0" max="100" value="35">
+          </div>
+          <div class="slider-item">
+            <label>Căn chỉnh Trái / Phải (Vị trí X) <b id="posXLabel">50%</b></label>
+            <input type="range" id="posXRange" min="0" max="100" value="50">
+          </div>
+        </div>
+      </div>
+
+      <!-- Field 5: Visual Theme Selection -->
+      <div class="field-group">
+        <label class="field-label">
+          <span>5 · Chọn phong cách mẫu thiệp</span>
+        </label>
+        <div class="theme-grid">
+          <button type="button" class="theme-btn active" data-theme="cosmic" onclick="setTheme('cosmic')">
+            <div class="dot" style="background:linear-gradient(135deg,#a020f0,#00f0ff)"></div>
+            <span>Cosmic Neon</span>
+          </button>
+          <button type="button" class="theme-btn" data-theme="gold" onclick="setTheme('gold')">
+            <div class="dot" style="background:linear-gradient(135deg,#d97706,#fbbf24)"></div>
+            <span>Royal Gold</span>
+          </button>
+          <button type="button" class="theme-btn" data-theme="emerald" onclick="setTheme('emerald')">
+            <div class="dot" style="background:linear-gradient(135deg,#059669,#34d399)"></div>
+            <span>Cyber Emerald</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Export Actions -->
+      <div class="actions-box">
+        <button type="button" class="btn-action btn-download-png" id="btnDownloadPng">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>TẢI THIỆP PNG (HD SẮC NÉT)</span>
+        </button>
+
+        <button type="button" class="btn-action btn-download-jpg" id="btnDownloadJpg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Tải thiệp JPG (Đăng Story / Zalo)</span>
+        </button>
+
+        <button type="button" class="btn-action btn-copy" id="btnCopyImage">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Sao chép ảnh vào Clipboard (Dán ngay)</span>
+        </button>
+      </div>
+
+      <div class="panel-tip">
+        💡 <b>Mẹo:</b> Thiệp mời xuất ra với độ phân giải chuẩn 1080px (Ultra-HD 2x) sắc nét, thích hợp chia sẻ lên Facebook, Zalo, Story hoặc in ấn.
+      </div>
+    </aside>
+
+    <!-- ==================== PREVIEW STAGE (RIGHT) ==================== -->
+    <main class="stage-wrap">
+      <div class="scaler-box" id="scalerBox">
+
+        <!-- ==================== POSTER CANVAS (1080px) ==================== -->
+        <div id="poster">
+
+          <!-- Dynamic Glowing Backgrounds -->
+          <div class="p-bg-layer">
+            <div class="p-glow-center"></div>
+            <div class="p-glow-top-right"></div>
+            <div class="p-glow-bottom-left"></div>
+          </div>
+          <div class="p-cyber-grid"></div>
+
+          <!-- Rotating Celestial Orbit Rings -->
+          <div class="p-orbit-top">
+            <svg width="580" height="580" viewBox="0 0 580 580" fill="none">
+              <circle cx="290" cy="290" r="210" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="12 18 35 18" />
+              <circle cx="290" cy="290" r="265" stroke="#a020f0" stroke-width="1.2" stroke-dasharray="6 6" />
+            </svg>
+          </div>
+          <div class="p-orbit-bottom">
+            <svg width="700" height="700" viewBox="0 0 700 700" fill="none">
+              <circle cx="350" cy="350" r="260" stroke="#a020f0" stroke-width="1.2" stroke-dasharray="25 45" />
+              <circle cx="350" cy="350" r="315" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="12 12 6 6" />
+            </svg>
+          </div>
+
+          <!-- Star Highlights -->
+          <div class="p-star" style="top:18%;left:12%;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" fill="#00f0ff" opacity="0.85"/></svg>
+          </div>
+          <div class="p-star" style="top:28%;right:10%;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" fill="#e0b0ff" opacity="0.9"/></svg>
+          </div>
+          <div class="p-star" style="bottom:22%;left:8%;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" fill="#00f0ff" opacity="0.75"/></svg>
+          </div>
+          <div class="p-star" style="bottom:38%;right:12%;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" fill="#fde68a" opacity="0.85"/></svg>
+          </div>
+
+          <!-- Outer Cyber Frames & Brackets -->
+          <div class="p-border-frame"></div>
+          <div class="p-corner p-corner-tl"></div>
+          <div class="p-corner p-corner-tr"></div>
+          <div class="p-corner p-corner-bl"></div>
+          <div class="p-corner p-corner-br"></div>
+
+          <!-- ==================== POSTER CONTENT ==================== -->
+          <div class="p-content">
+
+            <!-- Top Brand Bar -->
+            <div class="p-top-header">
+              <div class="p-logo-wrap">
+                <img class="p-logo-img" src="images/astronixa-logo.png" alt="ASTRONIXA Logo">
+                <div class="p-logo-divider"></div>
+                <div class="p-brand-co">CỘNG ĐỒNG OHANA</div>
+              </div>
+              <div class="p-badge-official">✦ OFFICIAL INVITATION ✦</div>
+            </div>
+
+            <!-- Personalized Guest Invite Area -->
+            <div class="p-guest-section">
+              <div class="p-kicker">
+                <span class="p-kicker-line l"></span>
+                TRÂN TRỌNG KÍNH MỜI
+                <span class="p-kicker-line r"></span>
+              </div>
+
+              <!-- Avatar Ring -->
+              <div class="p-avatar-aura">
+                <div class="p-avatar-photo" id="avatarPhoto">
+                  <div class="p-avatar-ph" id="avatarPh">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg>
+                    <span>Ảnh của bạn</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Guest Name & Role -->
+              <div class="p-guest-name" id="posterGuestName">LÊ HUY TOÀN</div>
+              <div class="p-guest-role" id="posterGuestRole">CEO &amp; Nhà Đầu Tư Tiên Phong</div>
+              <div class="p-guest-tier-badge" id="posterGuestTier">✨ KHÁCH MỜI DANH DỰ · VIP GUEST ✨</div>
+            </div>
+
+            <!-- Event Main Identity -->
+            <div class="p-event-block">
+              <div class="p-event-tagline">
+                <span style="width:30px;height:1px;background:#00f0ff;"></span>
+                ASTRONIXA &amp; OHANA
+                <span style="width:30px;height:1px;background:#00f0ff;"></span>
+              </div>
+              <div class="p-event-title">BUSINESS MEETING 2026</div>
+              <div class="p-city-badge">OFFLINE TP. HỒ CHÍ MINH · ATHENA HOTEL</div>
+              <div class="p-theme-quote">TIÊN PHONG HÔM NAY – DẪN ĐẦU NGÀY MAI</div>
+              <div class="p-invitation-text">
+                Trân trọng kính mời Quý Anh/Chị tham dự chương trình <b>Business Meeting &amp; Workshop AI 2026</b> — sự kiện kết nối doanh nhân, chuyên gia và nhà quản lý tiên phong tiếp cận cơ hội đồng hành cùng doanh nghiệp công nghệ toàn cầu.
+              </div>
+            </div>
+
+            <!-- Venue Key Visual & Space Gallery -->
+            <div class="p-showcase-grid">
+              <div class="p-showcase-frame">
+                <img src="images/athena-hoi-truong.jpg" alt="Hội trường Athena Hotel">
+                <div class="p-showcase-caption">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                  <span>Hội trường Athena Hotel</span> · Workshop AI Thực Chiến
+                </div>
+              </div>
+              <div class="p-showcase-frame">
+                <img src="images/athena-sanh.jpg" alt="Sảnh đón khách VIP">
+                <div class="p-showcase-caption">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <span>Sảnh đón khách VIP</span> · Check-in &amp; Business Networking
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- Event Logistics & QR Code Block -->
+            <div class="p-logistics-box">
+              <div class="p-log-details">
+                <div class="p-log-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div><b>08:30 – 17:00</b><span class="sub">· Thứ Bảy, Ngày 10/10/2026</span></div>
+                </div>
+                <div class="p-log-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <div><b>Khách sạn Athena Hotel (4 Sao)</b><br><span class="sub" style="font-size:15px;margin-left:0;">280 Tô Hiến Thành, Cư xá Bắc Hải, P.15, Q.10, TP. Hồ Chí Minh</span></div>
+                </div>
+                <div class="p-log-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+                  <div>Hotline Ban tổ chức: <b>0933.750.577</b></div>
+                </div>
+              </div>
+
+              <!-- QR Code 1: Nhóm Zalo Sự Kiện (Ô đỏ) -->
+              <div class="p-qr-wrap zalo-wrap">
+                <div class="p-qr-code">
+                  <img src="images/zalo-group-qr.png" alt="Mã QR Nhóm Zalo Khách Mời">
+                </div>
+                <div class="p-qr-lbl-zalo">NHÓM ZALO VIP</div>
+                <div class="p-qr-sub-zalo">Quét Tham Gia</div>
+              </div>
+
+              <!-- Dynamic QR Code -->
+              <div class="p-qr-wrap">
+                <div class="p-qr-code" id="posterQrCode"></div>
+                <div class="p-qr-lbl">QR CHECK-IN VIP</div>
+                <div class="p-qr-id" id="posterQrId">BM26-VIP-8899</div>
+              </div>
+            </div>
+
+            <!-- Bottom Closing Signature -->
+            <div class="p-bottom-closing">
+              <div class="p-closing-msg">❤️ Hẹn gặp Quý Khách Hàng &amp; Đối Tác tại sự kiện.</div>
+              <div class="p-closing-sign">
+                <span class="p-sign-line"></span>
+                <span class="p-sign-diamond"></span>
+                <span class="p-sign-text">ASTRONIXA &amp; OHANA TRÂN TRỌNG ĐÓN TIẾP!</span>
+                <span class="p-sign-diamond"></span>
+                <span class="p-sign-line r"></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span id="toastText">Đã sao chép ảnh thành công!</span>
+  </div>
+
+  <!-- Client Application Logic -->
+  <script>
+    (function() {
+      // DOM Elements
+      var nameInput = document.getElementById('nameInput');
+      var roleInput = document.getElementById('roleInput');
+      var tierSelect = document.getElementById('tierSelect');
+      var fileInput = document.getElementById('fileInput');
+      var dropZone = document.getElementById('dropZone');
+      var uploadBtnText = document.getElementById('uploadBtnText');
+      
+      var zoomRange = document.getElementById('zoomRange');
+      var zoomLabel = document.getElementById('zoomLabel');
+      var posYRange = document.getElementById('posYRange');
+      var posYLabel = document.getElementById('posYLabel');
+      var posXRange = document.getElementById('posXRange');
+      var posXLabel = document.getElementById('posXLabel');
+
+      var poster = document.getElementById('poster');
+      var scalerBox = document.getElementById('scalerBox');
+      var avatarPhoto = document.getElementById('avatarPhoto');
+      var avatarPh = document.getElementById('avatarPh');
+
+      var posterGuestName = document.getElementById('posterGuestName');
+      var posterGuestRole = document.getElementById('posterGuestRole');
+      var posterGuestTier = document.getElementById('posterGuestTier');
+      var posterQrCode = document.getElementById('posterQrCode');
+      var posterQrId = document.getElementById('posterQrId');
+
+      var btnDownloadPng = document.getElementById('btnDownloadPng');
+      var btnDownloadJpg = document.getElementById('btnDownloadJpg');
+      var btnCopyImage = document.getElementById('btnCopyImage');
+      var toastMsg = document.getElementById('toastMsg');
+      var toastText = document.getElementById('toastText');
+
+      var currentPhotoData = 'images/vo_quoc_tri_profile.jpg';
+
+      // 1. Toast Notification Helper
+      function showToast(text) {
+        toastText.textContent = text;
+        toastMsg.classList.add('show');
+        setTimeout(function() {
+          toastMsg.classList.remove('show');
+        }, 3500);
+      }
+
+      // 2. Responsive Preview Scaling
+      function fitPreview() {
+        var availH = window.innerHeight - 96;
+        var availW = window.innerWidth > 1080 ? (window.innerWidth - 440) : (window.innerWidth - 32);
+        var posterH = poster.offsetHeight || 1550;
+        
+        var scale = Math.min(availW / 1080, availH / posterH, 0.65);
+        if (!(scale > 0)) scale = 0.48;
+        
+        poster.style.transform = 'scale(' + scale + ')';
+        scalerBox.style.width = (1080 * scale) + 'px';
+        scalerBox.style.height = (posterH * scale) + 'px';
+      }
+      window.addEventListener('resize', fitPreview);
+
+      // 3. Name Auto Fit Font Size
+      function updateName() {
+        var v = nameInput.value.trim();
+        posterGuestName.textContent = v ? v.toUpperCase() : 'TÊN CỦA BẠN';
+        fitNameFont();
+        generateQrCode();
+      }
+
+      function fitNameFont() {
+        var maxW = 940;
+        var size = 46;
+        posterGuestName.style.fontSize = size + 'px';
+        while (posterGuestName.scrollWidth > maxW && size > 22) {
+          size -= 2;
+          posterGuestName.style.fontSize = size + 'px';
+        }
+        fitPreview();
+      }
+      nameInput.addEventListener('input', updateName);
+
+      // 4. Role Update
+      function updateRole() {
+        var v = roleInput.value.trim();
+        if (v) {
+          posterGuestRole.textContent = v;
+          posterGuestRole.style.display = 'block';
+        } else {
+          posterGuestRole.style.display = 'none';
+        }
+        fitPreview();
+      }
+      roleInput.addEventListener('input', updateRole);
+
+      window.setRole = function(roleText) {
+        roleInput.value = roleText;
+        updateRole();
+      };
+
+      // 5. Tier / Badge Update
+      tierSelect.addEventListener('change', function() {
+        posterGuestTier.textContent = tierSelect.value;
+        fitPreview();
+      });
+
+      // 6. Photo Positioning & Zoom
+      function applyPhoto() {
+        if (!currentPhotoData) {
+          avatarPhoto.style.backgroundImage = 'none';
+          avatarPh.style.display = 'flex';
+          return;
+        }
+        avatarPhoto.style.backgroundImage = 'url("' + currentPhotoData + '")';
+        avatarPhoto.style.backgroundSize = zoomRange.value + '%';
+        avatarPhoto.style.backgroundPosition = posXRange.value + '% ' + posYRange.value + '%';
+        avatarPh.style.display = 'none';
+      }
+
+      zoomRange.addEventListener('input', function() {
+        zoomLabel.textContent = zoomRange.value + '%';
+        applyPhoto();
+      });
+
+      posYRange.addEventListener('input', function() {
+        posYLabel.textContent = posYRange.value + '%';
+        applyPhoto();
+      });
+
+      posXRange.addEventListener('input', function() {
+        posXLabel.textContent = posXRange.value + '%';
+        applyPhoto();
+      });
+
+      // 7. File Input & Drag and Drop
+      function handleImageFile(file) {
+        if (!file || !file.type.match(/^image\//i)) {
+          alert('Vui lòng chọn file hình ảnh hợp lệ (PNG, JPG, WebP).');
+          return;
+        }
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          currentPhotoData = e.target.result;
+          uploadBtnText.textContent = 'Đổi ảnh khác';
+          applyPhoto();
+          fitPreview();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      fileInput.addEventListener('change', function(e) {
+        var file = e.target.files && e.target.files[0];
+        if (file) handleImageFile(file);
+      });
+
+      dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        dropZone.style.borderColor = '#00f0ff';
+      });
+
+      dropZone.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        dropZone.style.borderColor = 'rgba(0, 240, 255, 0.4)';
+      });
+
+      dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        dropZone.style.borderColor = 'rgba(0, 240, 255, 0.4)';
+        var file = e.dataTransfer.files && e.dataTransfer.files[0];
+        if (file) handleImageFile(file);
+      });
+
+      window.setSamplePhoto = function(url) {
+        currentPhotoData = url;
+        uploadBtnText.textContent = 'Đổi ảnh khác';
+        applyPhoto();
+        fitPreview();
+      };
+
+      // 8. Theme Switcher
+      window.setTheme = function(themeName) {
+        poster.className = '';
+        if (themeName !== 'cosmic') {
+          poster.classList.add('theme-' + themeName);
+        }
+        document.querySelectorAll('.theme-btn').forEach(function(btn) {
+          btn.classList.toggle('active', btn.dataset.theme === themeName);
+        });
+      };
+
+      // 9. Generate QR Code
+      function generateQrCode() {
+        var rawName = (nameInput.value.trim() || 'KHACH-MOI');
+        var cleanCode = rawName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').replace(/[^a-zA-Z0-9]/g, '').toUpperCase().substring(0, 6) || 'VIP';
+        var randomNum = Math.floor(1000 + Math.random() * 9000);
+        var inviteCode = 'BM26-' + cleanCode + '-' + randomNum;
+        
+        posterQrId.textContent = inviteCode;
+        posterQrCode.innerHTML = '';
+
+        if (typeof QRCode !== 'undefined') {
+          new QRCode(posterQrCode, {
+            text: window.location.origin + '/?code=' + inviteCode,
+            width: 98,
+            height: 98,
+            colorDark: '#08051a',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.M
+          });
+        }
+      }
+
+      // 10. Export File Name Sanitizer
+      function getExportFileName(ext) {
+        var base = (nameInput.value.trim() || 'thiep-moi-business-meeting-2026')
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/đ/g, 'd')
+          .replace(/Đ/g, 'D')
+          .replace(/[^a-zA-Z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .toLowerCase();
+        return 'thiep-moi-business-meeting-2026-' + (base || 'vip') + '.' + ext;
+      }
+
+      // 11. High Quality Image Exporter
+      function exportPoster(type, ext, quality, isCopyClipboard) {
+        var btns = [btnDownloadPng, btnDownloadJpg, btnCopyImage];
+        btns.forEach(function(b) { b.disabled = true; });
+        
+        var originalBtnText = isCopyClipboard ? btnCopyImage.innerHTML : (type === 'image/png' ? btnDownloadPng.innerHTML : btnDownloadJpg.innerHTML);
+        if (isCopyClipboard) btnCopyImage.textContent = 'Đang xử lý ảnh...';
+        else (type === 'image/png' ? btnDownloadPng : btnDownloadJpg).textContent = 'Đang tạo thiệp HD...';
+
+        html2canvas(poster, {
+          backgroundColor: '#070414',
+          scale: 2, // 2x ultra high resolution (2160px wide)
+          useCORS: true,
+          logging: false,
+          width: 1080,
+          height: poster.offsetHeight,
+          windowWidth: 1080,
+          onclone: function(clonedDoc) {
+            var clonedPoster = clonedDoc.getElementById('poster');
+            if (clonedPoster) {
+              clonedPoster.style.transform = 'none';
+            }
+
+            // Fix gradient text rendering in html2canvas
+            var win = clonedDoc.defaultView;
+            var nodes = clonedDoc.querySelectorAll('#poster *');
+            for (var i = 0; i < nodes.length; i++) {
+              var el = nodes[i];
+              var cs = win.getComputedStyle(el);
+              var fill = cs.webkitTextFillColor;
+              if (fill === 'rgba(0, 0, 0, 0)' || fill === 'transparent') {
+                var themeIsGold = poster.classList.contains('theme-gold');
+                var themeIsEmerald = poster.classList.contains('theme-emerald');
+                var solidColor = themeIsGold ? '#fbbf24' : (themeIsEmerald ? '#34d399' : '#00f0ff');
+                
+                el.style.setProperty('-webkit-text-fill-color', solidColor, 'important');
+                el.style.setProperty('color', solidColor, 'important');
+                el.style.setProperty('background', 'none', 'important');
+                el.style.setProperty('background-image', 'none', 'important');
+                el.style.setProperty('filter', 'none', 'important');
+              }
+            }
+
+            // Fix object-fit: cover on <img> tags
+            var imgs = clonedDoc.querySelectorAll('#poster img');
+            for (var j = 0; j < imgs.length; j++) {
+              var im = imgs[j];
+              var ics = win.getComputedStyle(im);
+              if (ics.objectFit === 'cover') {
+                var box = im.parentElement;
+                box.style.backgroundImage = 'url("' + im.src + '")';
+                box.style.backgroundSize = 'cover';
+                box.style.backgroundPosition = ics.objectPosition || '50% 50%';
+                box.style.backgroundRepeat = 'no-repeat';
+                im.style.display = 'none';
+              }
+            }
+          }
+        }).then(function(canvas) {
+          if (isCopyClipboard) {
+            // Copy to clipboard
+            canvas.toBlob(function(blob) {
+              if (navigator.clipboard && window.ClipboardItem) {
+                navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]).then(function() {
+                  showToast('✅ Đã sao chép ảnh thiệp mời vào Clipboard! Bạn có thể dán (Ctrl+V) vào Zalo, Facebook hoặc Messenger.');
+                }).catch(function(err) {
+                  // Fallback: download instead
+                  downloadCanvas(canvas, 'image/png', 'png');
+                  showToast('Đã tải ảnh về máy do trình duyệt chặn quyền dán ảnh.');
+                });
+              } else {
+                downloadCanvas(canvas, 'image/png', 'png');
+                showToast('Đã tải ảnh về máy thành công!');
+              }
+            }, 'image/png');
+          } else {
+            downloadCanvas(canvas, type, ext, quality);
+            showToast('🎉 Tải thiệp mời ' + ext.toUpperCase() + ' thành công!');
+          }
+        }).catch(function(err) {
+          alert('Có lỗi khi tạo ảnh thiệp mời: ' + err.message);
+        }).then(function() {
+          btns.forEach(function(b) { b.disabled = false; });
+          if (isCopyClipboard) btnCopyImage.innerHTML = originalBtnText;
+          else if (type === 'image/png') btnDownloadPng.innerHTML = originalBtnText;
+          else btnDownloadJpg.innerHTML = originalBtnText;
+        });
+      }
+
+      function downloadCanvas(canvas, type, ext, quality) {
+        var url = canvas.toDataURL(type, quality);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = getExportFileName(ext);
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      btnDownloadPng.addEventListener('click', function() { exportPoster('image/png', 'png'); });
+      btnDownloadJpg.addEventListener('click', function() { exportPoster('image/jpeg', 'jpg', 0.95); });
+      btnCopyImage.addEventListener('click', function() { exportPoster('image/png', 'png', 1.0, true); });
+
+      // Init Lifecycle
+      function init() {
+        applyPhoto();
+        updateName();
+        updateRole();
+        generateQrCode();
+        fitPreview();
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(init);
+      }
+      window.addEventListener('load', init);
+      init();
+
+    })();
+  </script>
+</body>
+</html>

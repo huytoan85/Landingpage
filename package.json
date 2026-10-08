@@ -1,0 +1,14 @@
+{
+  "name": "ohana-business-meeting-2026",
+  "version": "1.0.0",
+  "description": "Website sự kiện Business Meeting 2026 - ASTRONIXA & Cộng Đồng Ohana",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5"
+  }
+}

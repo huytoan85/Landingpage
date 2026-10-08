@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CRM Quản Lý Đăng Ký · Business Meeting 2026</title>
+  <link rel="icon" type="image/png" href="images/astronixa-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800;900&family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #120724;
+      --card: rgba(255, 255, 255, .06);
+      --card-hover: rgba(255, 255, 255, .09);
+      --line: rgba(255, 255, 255, .14);
+      --line-focus: #a78bfa;
+      --amber: #f59e0b;
+      --amber-light: #fbbf24;
+      --purple: #8b5cf6;
+      --white: #ffffff;
+      --muted: rgba(255, 255, 255, .65);
+      --ok: #4ade80;
+      --err: #f87171;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Arimo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(160deg, #2e1065, #0f071d 65%) fixed, var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      padding: 24px 16px 40px;
+    }
+
+    .wrap { max-width: 1240px; margin: 0 auto; }
+    h1 { font-family: "Be Vietnam Pro", sans-serif; font-weight: 800; font-size: 26px; color: var(--amber); }
+    .sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+    .sub a { color: var(--amber-light); text-decoration: none; }
+    .sub a:hover { text-decoration: underline; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Login Form */
+    .login-wrap { max-width: 440px; margin: 10vh auto 0; }
+    .login { display: grid; gap: 14px; }
+    .login-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .login-logo img { height: 42px; width: auto; }
+    .login-logo b { font-family: "Be Vietnam Pro", sans-serif; font-weight: 800; font-size: 18px; color: #fff; }
+
+    input {
+      width: 100%;
+      height: 46px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .08);
+      color: var(--white);
+      font-size: 15px;
+      outline: none;
+      transition: all .2s ease;
+    }
+    input:focus { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(245, 158, 11, .2); }
+    input::placeholder { color: rgba(255, 255, 255, .4); }
+
+    button {
+      height: 44px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--amber);
+      color: #1e0838;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all .2s ease;
+    }
+    button:hover { background: var(--amber-light); transform: translateY(-1px); }
+    button.ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--line);
+    }
+    button.ghost:hover { background: rgba(255, 255, 255, .1); color: #fff; }
+
+    .msg { font-size: 14px; min-height: 20px; font-weight: 600; margin-top: 4px; }
+    .msg.err { color: var(--err); }
+    .msg.ok { color: var(--ok); }
+
+    /* Top Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .stat {
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--line);
+    }
+    .stat b {
+      display: block;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--amber);
+    }
+    .stat span { font-size: 13.5px; color: var(--muted); font-weight: 600; }
+
+    /* Pipeline Filter Pills */
+    .pipe { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .pipe button {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, .06);
+      color: var(--white);
+      border: 1px solid var(--line);
+    }
+    .pipe button.on {
+      background: var(--amber);
+      color: #1e0838;
+      border-color: var(--amber);
+      box-shadow: 0 2px 8px rgba(245, 158, 11, .3);
+    }
+
+    /* Action Bar */
+    .bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 18px 0 14px;
+    }
+    .bar input { flex: 1; min-width: 220px; }
+
+    /* Table */
+    .tbl {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .03);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 1280px;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+    }
+    th {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, .08);
+      position: sticky;
+      top: 0;
+      color: var(--amber-light);
+    }
+    tr:last-child td { border-bottom: 0; }
+    tr:hover td { background: rgba(255, 255, 255, .03); }
+    td a { color: var(--amber-light); text-decoration: none; }
+    td a:hover { text-decoration: underline; }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      font-family: "Be Vietnam Pro", sans-serif;
+      white-space: nowrap;
+    }
+    .tag-STANDARD { border: 1px solid rgba(255, 255, 255, .4); color: #ffffff; background: rgba(255, 255, 255, .08); }
+    .tag-VIP { border: 1px solid var(--amber); color: var(--amber); background: rgba(245, 158, 11, .12); }
+    .tag-SUPERVIP { border: 1.5px solid #a855f7; color: #d8b4fe; background: rgba(168, 85, 247, .18); }
+
+    .crm-sel, .crm-note {
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .08);
+      color: var(--white);
+      font-size: 13.5px;
+      padding: 0 10px;
+      font-family: "Arimo", sans-serif;
+    }
+    .crm-sel { min-width: 120px; cursor: pointer; }
+    .crm-sel option { color: #1e0838; background: #fff; }
+    .crm-note { width: 100%; min-width: 180px; }
+    .crm-sel:focus, .crm-note:focus { outline: none; border-color: var(--amber); }
+
+    .st-moi { border-color: var(--amber); color: var(--amber-light); }
+    .st-da_goi { border-color: #38bdf8; color: #7dd3fc; }
+    .st-quan_tam { border-color: #a855f7; color: #d8b4fe; }
+    .st-da_chot { border-color: var(--ok); color: var(--ok); font-weight: 700; }
+    .st-huy { border-color: rgba(255, 255, 255, .2); color: var(--muted); opacity: .7; }
+
+    .del-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, .4);
+      padding: 6px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .del-btn:hover { color: var(--err); background: rgba(248, 113, 113, .1); }
+    .del-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .empty { padding: 40px 20px; text-align: center; color: var(--muted); font-size: 15px; }
+    .hidden { display: none !important; }
+
+    .live { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-top: 8px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .3; transform: scale(.8); } }
+
+    tr.new td { background: rgba(245, 158, 11, .14); }
+    .new-tag {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      border-radius: 6px;
+      background: var(--amber);
+      color: #1e0838;
+      font-size: 10.5px;
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1000;
+      padding: 14px 20px;
+      border-radius: 12px;
+      background: var(--amber);
+      color: #1e0838;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+      transform: translateY(140%);
+      transition: transform .3s ease;
+    }
+    .toast.show { transform: none; }
+
+    @media (max-width: 768px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Login Card -->
+  <div class="login-wrap" id="loginWrap">
+    <form class="card login" id="loginForm">
+      <div class="login-logo">
+        <img src="images/astronixa-icon.png" alt="Astronixa">
+        <div>
+          <b>ASTRONIXA &amp; OHANA</b>
+          <div style="font-size: 12px; color: var(--muted);">Hệ thống Quản trị CRM</div>
+        </div>
+      </div>
+      <h1>Quản lý đăng ký</h1>
+      <p class="sub">Business Meeting 2026 · Nhập mật khẩu quản trị</p>
+      <input type="password" id="pw" placeholder="Nhập mật khẩu quản trị..." autocomplete="current-password" required>
+      <button type="submit">
+        <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+        Đăng nhập CRM
+      </button>
+      <p class="msg" id="loginMsg"></p>
+    </form>
+  </div>
+
+  <!-- Main CRM Application -->
+  <main id="app" class="hidden">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+      <div>
+        <h1>CRM · Danh sách khách đăng ký</h1>
+        <p class="sub">Business Meeting 2026 · Thứ Bảy, 10/10/2026 · Athena Hotel · <a href="/">← Xem trang sự kiện</a></p>
+        <div class="live"><span class="dot"></span><span id="liveTxt">Tự động cập nhật mỗi 20 giây</span></div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" id="csvBtn" title="Tải toàn bộ dữ liệu ra file Excel">
+          <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Xuất Excel (CSV)
+        </button>
+        <button type="button" id="logoutBtn" class="ghost" title="Đăng xuất khỏi hệ thống">Đăng xuất</button>
+      </div>
+    </div>
+
+    <!-- Stats Summary -->
+    <div class="stats">
+      <div class="stat"><b id="sTotal">0</b><span>Tổng lượt đăng ký</span></div>
+      <div class="stat"><b id="sThuong">0</b><span>Hạng STANDARD</span></div>
+      <div class="stat"><b id="sVip">0</b><span>Hạng VIP</span></div>
+      <div class="stat"><b id="sVvip">0</b><span>Hạng SUPERVIP</span></div>
+    </div>
+
+    <!-- Pipeline Filter Pills -->
+    <div class="pipe" id="pipe"></div>
+
+    <!-- Action & Search Bar -->
+    <div class="bar">
+      <input id="q" placeholder="🔍 Tìm kiếm nhanh theo tên, SĐT, email, doanh nghiệp, ghi chú...">
+      <button type="button" id="cleanTestBtn" class="ghost" style="color: #fca5a5; border-color: rgba(248, 113, 113, 0.4);" title="Dọn dẹp nhanh các khách test">
+        <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        Xóa data test
+      </button>
+      <button type="button" id="reloadBtn" class="ghost">
+        <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Tải lại
+      </button>
+    </div>
+
+    <!-- Registrations Table -->
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 40px;">#</th>
+            <th style="width: 150px;">Thời gian</th>
+            <th style="width: 180px;">Họ và tên</th>
+            <th style="width: 130px;">Số điện thoại</th>
+            <th style="width: 170px;">Email</th>
+            <th>Doanh nghiệp / Chức vụ</th>
+            <th style="width: 110px;">Hạng vé</th>
+            <th style="width: 80px;">Số người</th>
+            <th style="width: 130px;">Trạng thái CRM</th>
+            <th style="min-width: 220px;">Ghi chú chăm sóc</th>
+            <th style="width: 100px;">Nguồn</th>
+            <th style="width: 50px;">Xóa</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty hidden" id="empty">Không tìm thấy dữ liệu đăng ký phù hợp.</div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const TICKET_MAP = { THUONG: "STANDARD", VIP: "VIP", VVIP: "SUPERVIP" };
+  const STATUS = {
+    moi: "Mới",
+    da_goi: "Đã gọi",
+    quan_tam: "Quan tâm",
+    da_chot: "Đã chốt",
+    huy: "Hủy"
+  };
+
+  let pw = "";
+  let leads = [];
+  let seen = null;
+  let fresh = new Set();
+  let timer = null;
+  const POLL_MS = 15000;
+  let filter = "";
+  let pendingRender = false;
+
+  const LS_MASTER_KEY = "bm_crm_master_leads_v2";
+  const LS_DELETED_KEY = "bm_crm_deleted_ids_v2";
+  const LS_OVERRIDES_KEY = "bm_crm_overrides_v2";
+
+  function getMasterLeads() {
+    try {
+      const arr = JSON.parse(localStorage.getItem(LS_MASTER_KEY) || "[]");
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveMasterLeads(list) {
+    try {
+      localStorage.setItem(LS_MASTER_KEY, JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  function getDeletedIds() {
+    try {
+      const arr = JSON.parse(localStorage.getItem(LS_DELETED_KEY) || "[]");
+      return new Set(Array.isArray(arr) ? arr : []);
+    } catch (e) {
+      return new Set();
+    }
+  }
+
+  function saveDeletedId(id) {
+    try {
+      const s = getDeletedIds();
+      s.add(String(id));
+      localStorage.setItem(LS_DELETED_KEY, JSON.stringify(Array.from(s)));
+    } catch (e) {}
+  }
+
+  function getOverrides() {
+    try {
+      return JSON.parse(localStorage.getItem(LS_OVERRIDES_KEY) || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveOverride(id, patch) {
+    try {
+      const ov = getOverrides();
+      ov[id] = Object.assign({}, ov[id] || {}, patch);
+      localStorage.setItem(LS_OVERRIDES_KEY, JSON.stringify(ov));
+    } catch (e) {}
+  }
+
+  try { pw = sessionStorage.getItem("bm_admin_pw") || ""; } catch (e) {}
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+  const fmt = (iso) => {
+    try {
+      return new Date(iso).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
+    } catch (e) {
+      return iso;
+    }
+  };
+  const source = (l) => [l.utm_source, l.utm_medium, l.utm_campaign].filter(Boolean).join(" / ") || (l.source || "Trực tiếp");
+
+  function toast(msg) {
+    const t = $("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => t.classList.remove("show"), 4500);
+  }
+
+  // Cross-tab Realtime Sync
+  function handleIncomingLead(lead) {
+    if (!lead || !lead.id) return;
+    const deletedIds = getDeletedIds();
+    if (deletedIds.has(lead.id)) return;
+
+    const master = getMasterLeads();
+    const exists = master.some(l => l.id === lead.id || (l.phone && l.phone === lead.phone && l.full_name === lead.full_name));
+    if (!exists) {
+      master.unshift(lead);
+      saveMasterLeads(master);
+      fresh.add(lead.id);
+      leads = master;
+      toast(`🔔 Khách đăng ký mới tức thì: ${lead.full_name} (${lead.phone})`);
+      safeRender();
+    }
+  }
+
+  try {
+    const ch = new BroadcastChannel("bm_crm_channel");
+    ch.onmessage = (e) => {
+      if (e.data && e.data.type === "new_lead" && e.data.lead) {
+        handleIncomingLead(e.data.lead);
+      }
+    };
+  } catch (e) {}
+
+  window.addEventListener("storage", (e) => {
+    if (e.key === "bm_latest_lead" && e.newValue) {
+      try {
+        const lead = JSON.parse(e.newValue);
+        handleIncomingLead(lead);
+      } catch (err) {}
+    }
+  });
+
+  async function load(silent) {
+    if (!silent) {
+      $("loginMsg").textContent = "Đang kiểm tra thông tin...";
+      $("loginMsg").className = "msg";
+    }
+
+    const deletedIds = getDeletedIds();
+    const overrides = getOverrides();
+    const localSaved = getMasterLeads();
+
+    // 1. Offline-First: If we have cached leads in local storage, render them immediately so user never sees empty screen
+    if (localSaved.length > 0 && (!leads || leads.length === 0)) {
+      leads = localSaved
+        .filter(l => !deletedIds.has(l.id))
+        .map(l => overrides[l.id] ? Object.assign({}, l, overrides[l.id]) : l);
+      safeRender();
+    }
+
+    try {
+      const res = await fetch("/api/leads", {
+        headers: { "x-admin-password": pw },
+        cache: "no-store"
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || "Mật khẩu không chính xác.");
+
+      const rawLeads = data.leads || [];
+
+      // If server returned any lead that was previously deleted locally, sync tombstone to server
+      const resurrected = rawLeads.filter(l => deletedIds.has(l.id));
+      if (resurrected.length > 0) {
+        fetch("/api/leads/sync-deleted", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-admin-password": pw },
+          body: JSON.stringify({ ids: Array.from(deletedIds) })
+        }).catch(() => {});
+      }
+
+      // 2. Smart Hybrid Merge: Combine server leads with local master database
+      const mergedMap = new Map();
+
+      // Seed local saved leads first
+      localSaved.forEach(l => {
+        if (!deletedIds.has(l.id)) {
+          const key = (l.phone || '') + '_' + (l.full_name || '');
+          mergedMap.set(key, l);
+        }
+      });
+
+      // Merge server leads
+      rawLeads.forEach(sl => {
+        if (!deletedIds.has(sl.id)) {
+          const key = (sl.phone || '') + '_' + (sl.full_name || '');
+          const existing = mergedMap.get(key);
+          if (existing) {
+            mergedMap.set(key, Object.assign({}, existing, sl));
+          } else {
+            mergedMap.set(key, sl);
+          }
+        }
+      });
+
+      // Apply overrides and filter deleted
+      const mergedList = Array.from(mergedMap.values())
+        .filter(l => !deletedIds.has(l.id))
+        .map(l => overrides[l.id] ? Object.assign({}, l, overrides[l.id]) : l);
+
+      // Sort newest first
+      mergedList.sort((a, b) => new Date(b.received_at || 0) - new Date(a.received_at || 0));
+
+      leads = mergedList;
+      saveMasterLeads(leads);
+
+      // 3. Re-hydrate serverless container if local storage has more leads than freshly booted server
+      if (leads.length > rawLeads.length) {
+        fetch("/api/leads/sync-all", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-admin-password": pw },
+          body: JSON.stringify({ leads })
+        }).catch(() => {});
+      }
+
+      if (seen) {
+        const added = leads.filter((l) => !seen.has(l.id));
+        added.forEach((l) => fresh.add(l.id));
+        if (added.length) toast(`🔔 Có ${added.length} khách đăng ký mới: ${added[0].full_name}`);
+      }
+      seen = new Set(leads.map((l) => l.id));
+
+      document.title = (fresh.size ? `(${fresh.size} mới) ` : "") + "CRM Quản Lý Đăng Ký · Business Meeting 2026";
+      $("liveTxt").textContent = "Tự động cập nhật mỗi 15s · Lần cuối: " + new Date().toLocaleTimeString("vi-VN", { hour12: false });
+
+      if (!timer) timer = setInterval(() => { if (!document.hidden) load(true); }, POLL_MS);
+      try { sessionStorage.setItem("bm_admin_pw", pw); } catch (e) {}
+
+      $("loginWrap").classList.add("hidden");
+      $("app").classList.remove("hidden");
+      safeRender();
+    } catch (err) {
+      if (silent && pw) {
+        $("liveTxt").textContent = "Mất kết nối máy chủ, đang thử lại...";
+        return;
+      }
+      clearInterval(timer);
+      timer = null;
+      $("app").classList.add("hidden");
+      $("loginWrap").classList.remove("hidden");
+      $("loginMsg").textContent = err.message;
+      $("loginMsg").className = "msg err";
+    }
+  }
+
+  function safeRender() {
+    const active = document.activeElement;
+    if (active && active.closest && active.closest("#rows")) {
+      pendingRender = true;
+      return;
+    }
+    pendingRender = false;
+    render();
+  }
+
+  async function saveCrm(id, patch) {
+    saveOverride(id, patch);
+    const idx = leads.findIndex((l) => l.id === id);
+    if (idx >= 0) leads[idx] = Object.assign({}, leads[idx], patch);
+    saveMasterLeads(leads);
+    toast("✅ Đã cập nhật trạng thái CRM");
+    safeRender();
+
+    try {
+      await fetch("/api/leads", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "x-admin-password": pw },
+        body: JSON.stringify({ id, ...patch })
+      });
+    } catch (err) {
+      console.warn("Patch request warning:", err);
+    }
+  }
+
+  async function deleteLead(id, name) {
+    if (!confirm(`Bạn có chắc chắn muốn xóa đăng ký của "${name}" không?`)) return;
+    
+    // Save to local deleted list immediately so it will never reappear
+    saveDeletedId(id);
+    leads = leads.filter(l => l.id !== id);
+    saveMasterLeads(leads);
+    toast("🗑️ Đã xóa vĩnh viễn: " + name);
+    render();
+
+    try {
+      await fetch(`/api/leads/${id}`, {
+        method: "DELETE",
+        headers: { "x-admin-password": pw }
+      });
+    } catch (err) {
+      console.warn("Server delete warning:", err);
+    }
+  }
+
+  function renderPipe() {
+    const countByStatus = (k) => leads.filter((l) => (l.status || "moi") === k).length;
+    $("pipe").innerHTML = [
+      `<button data-f="" class="${filter === "" ? "on" : ""}">Tất cả (${leads.length})</button>`
+    ].concat(Object.keys(STATUS).map((k) => `
+      <button data-f="${k}" class="${filter === k ? "on" : ""}">${STATUS[k]} (${countByStatus(k)})</button>
+    `)).join("");
+  }
+
+  function render() {
+    renderPipe();
+    const q = $("q").value.trim().toLowerCase();
+    const list = leads.filter((l) => {
+      const matchFilter = !filter || (l.status || "moi") === filter;
+      const matchSearch = !q || [l.full_name, l.phone, l.email, l.company, l.note].join(" ").toLowerCase().includes(q);
+      return matchFilter && matchSearch;
+    });
+
+    const countTicket = (t) => leads.filter((l) => l.ticket === t).length;
+    $("sTotal").textContent = leads.length;
+    $("sThuong").textContent = countTicket("THUONG");
+    $("sVip").textContent = countTicket("VIP");
+    $("sVvip").textContent = countTicket("VVIP");
+
+    $("rows").innerHTML = list.map((l, i) => {
+      const ticketName = TICKET_MAP[l.ticket] || l.ticket;
+      const statusKey = l.status || "moi";
+      return `
+        <tr class="${fresh.has(l.id) ? "new" : ""}">
+          <td>${i + 1}</td>
+          <td>${esc(fmt(l.received_at))}</td>
+          <td>
+            <b>${esc(l.full_name)}</b>
+            ${fresh.has(l.id) ? '<span class="new-tag">MỚI</span>' : ""}
+          </td>
+          <td><a href="tel:${esc(l.phone)}" title="Gọi ngay">${esc(l.phone)}</a></td>
+          <td>${l.email ? `<a href="mailto:${esc(l.email)}" title="Gửi mail">${esc(l.email)}</a>` : '<span style="color:var(--muted)">—</span>'}</td>
+          <td>${esc(l.company || "—")}</td>
+          <td><span class="tag tag-${esc(ticketName)}">${esc(ticketName)}</span></td>
+          <td style="text-align:center;">${esc(l.attendees || "1")}</td>
+          <td>
+            <select class="crm-sel st-${esc(statusKey)}" data-id="${esc(l.id)}">
+              ${Object.keys(STATUS).map((k) => `
+                <option value="${k}"${statusKey === k ? " selected" : ""}>${STATUS[k]}</option>
+              `).join("")}
+            </select>
+          </td>
+          <td>
+            <input class="crm-note" data-id="${esc(l.id)}" value="${esc(l.note || '')}" placeholder="Nhập ghi chú chăm sóc..." maxlength="1000">
+          </td>
+          <td style="font-size:12px; color:var(--muted);">${esc(source(l))}</td>
+          <td>
+            <button class="del-btn" data-id="${esc(l.id)}" data-name="${esc(l.full_name)}" title="Xóa khách này">
+              <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join("");
+
+    $("empty").classList.toggle("hidden", list.length > 0);
+  }
+
+  function exportCsv() {
+    window.location.href = `/api/export-csv?pw=${encodeURIComponent(pw)}`;
+  }
+
+  // Event Listeners
+  $("loginForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    pw = $("pw").value.trim();
+    load();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && pw && seen) load(true);
+  });
+
+  $("q").addEventListener("input", render);
+
+  $("pipe").addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+    filter = btn.dataset.f;
+    render();
+  });
+
+  $("rows").addEventListener("change", (e) => {
+    const t = e.target;
+    if (t.classList.contains("crm-sel")) saveCrm(t.dataset.id, { status: t.value });
+    if (t.classList.contains("crm-note")) saveCrm(t.dataset.id, { note: t.value });
+  });
+
+  $("rows").addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && e.target.classList.contains("crm-note")) e.target.blur();
+  });
+
+  $("rows").addEventListener("click", (e) => {
+    const delBtn = e.target.closest(".del-btn");
+    if (delBtn) {
+      deleteLead(delBtn.dataset.id, delBtn.dataset.name);
+    }
+  });
+
+  $("rows").addEventListener("focusout", () => {
+    setTimeout(() => { if (pendingRender) safeRender(); }, 0);
+  });
+
+  $("reloadBtn").addEventListener("click", () => load());
+  
+  $("cleanTestBtn").addEventListener("click", async () => {
+    const isTest = (l) => {
+      const txt = [l.full_name, l.email, l.phone, l.company, l.note].join(" ").toLowerCase();
+      // Only match sample seed leads and dummy sample data
+      return (
+        l.id.startsWith("bm-lead-100") ||
+        l.phone === "0988123456" ||
+        l.phone === "0909654321" ||
+        l.phone === "0912348899" ||
+        l.phone === "0938776655" ||
+        l.phone === "0987654321" ||
+        txt.includes("dữ liệu mẫu") ||
+        txt.includes("test lead")
+      );
+    };
+    const testList = leads.filter(isTest);
+    if (!testList.length) {
+      toast("ℹ️ Hiện không tìm thấy dữ liệu mẫu nào cần dọn dẹp.");
+      return;
+    }
+    if (!confirm(`Bạn có chắc muốn xóa đồng loạt ${testList.length} dữ liệu mẫu (test data) này không?`)) return;
+    
+    testList.forEach(l => saveDeletedId(l.id));
+    leads = leads.filter(l => !isTest(l));
+    saveMasterLeads(leads);
+    toast(`🗑️ Đã dọn dẹp sạch ${testList.length} dữ liệu mẫu!`);
+    render();
+
+    try {
+      await fetch("/api/leads/sync-deleted", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-admin-password": pw },
+        body: JSON.stringify({ ids: testList.map(l => l.id) })
+      });
+    } catch (e) {}
+  });
+
+  $("csvBtn").addEventListener("click", exportCsv);
+  
+  $("logoutBtn").addEventListener("click", () => {
+    try { sessionStorage.removeItem("bm_admin_pw"); } catch (e) {}
+    pw = "";
+    leads = [];
+    seen = null;
+    fresh = new Set();
+    clearInterval(timer);
+    timer = null;
+    document.title = "CRM Quản Lý Đăng Ký";
+    $("app").classList.add("hidden");
+    $("loginWrap").classList.remove("hidden");
+    $("pw").value = "";
+    $("loginMsg").textContent = "";
+  });
+
+  if (pw) load();
+})();
+</script>
+</body>
+</html>

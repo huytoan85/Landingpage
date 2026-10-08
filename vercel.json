@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/thiep-moi", "destination": "/thiep-moi.html" },
+    { "source": "/admin", "destination": "/admin.html" }
+  ]
+}
