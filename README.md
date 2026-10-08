@@ -38,14 +38,20 @@ Hệ thống website sự kiện **AI Thực Chiến Cùng Toàn Lê** được 
 
 ---
 
-### 3. Hệ thống Quản trị CRM (`/admin` hoặc `admin.html`)
+### 3. Hệ thống Quản trị CRM & CMS (`/admin` hoặc `admin.html`)
 - **Bảo mật**: Đăng nhập bằng mật khẩu quản trị (`Duyanh1401`).
-- **Bảng thống kê**: Tổng lượt đăng ký, số lượng theo từng hạng vé Standard, VIP, SuperVIP.
-- **Bộ lọc Pipeline**: Lọc theo trạng thái *Tất cả*, *Mới*, *Đã gọi*, *Quan tâm*, *Đã chốt*, *Hủy*.
-- **Tìm kiếm đa năng**: Tìm theo tên, số điện thoại, email, doanh nghiệp, ghi chú.
-- **Chăm sóc khách hàng**: Cập nhật trạng thái và nhập ghi chú chăm sóc trực tiếp trên từng dòng, tự động lưu.
-- **Đồng bộ thời gian thực**: Sử dụng `BroadcastChannel` và `Storage Event` tự động hiển thị thông báo khi có khách đăng ký mới.
-- **Xuất dữ liệu Excel**: Xuất file CSV hỗ trợ định dạng tiếng Việt UTF-8 BOM hiển thị chuẩn xác trong Microsoft Excel.
+- **Tab 1: Quản trị khách đăng ký (CRM)**:
+  - Bảng thống kê theo từng hạng vé Standard, VIP, SuperVIP.
+  - Bộ lọc Pipeline theo trạng thái: *Tất cả*, *Mới*, *Đã gọi*, *Quan tâm*, *Đã chốt*, *Hủy*.
+  - Tìm kiếm đa năng theo tên, số điện thoại, email, ghi chú.
+  - Chăm sóc khách hàng và ghi chú tương tác tự động lưu.
+  - Xuất dữ liệu Excel (CSV) chuẩn tiếng Việt UTF-8 BOM.
+- **Tab 2: Quản trị nội dung website (CMS)**:
+  - Chỉnh sửa tức thì: Tên thương hiệu, Phụ đề, Hotline, Link Zalo, Facebook, YouTube.
+  - Chỉnh sửa thông tin sự kiện, thời gian, địa điểm tổ chức.
+  - Chỉnh sửa hồ sơ Diễn giả Lê Huy Toàn: Định vị chuyên gia, tiêu đề, bài giới thiệu, danh sách học được gì, phương châm đào tạo, quote, slogan.
+  - Chỉnh sửa tài khoản ngân hàng VietQR & Bảng giá các hạng vé.
+  - Nút **"Lưu thay đổi nội dung"** tự động cập nhật ngay lập tức ra ngoài trang chủ mà không cần sửa code.
 
 ---
 

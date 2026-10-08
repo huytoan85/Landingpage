@@ -269,9 +269,168 @@
     }
     .toast.show { transform: none; }
 
+    /* CMS Navigation Tabs & Styles */
+    .admin-nav-tabs {
+      display: flex;
+      gap: 12px;
+      margin: 22px 0 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+    .admin-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .admin-tab:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+    .admin-tab.active {
+      background: linear-gradient(135deg, #7c3aed, #d97706);
+      color: #ffffff;
+      border-color: rgba(245, 158, 11, 0.6);
+      box-shadow: 0 4px 18px rgba(124, 58, 237, 0.4);
+    }
+    .cms-container {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .cms-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .cms-card-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--amber-light);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+      padding-bottom: 10px;
+    }
+    .cms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .cms-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cms-field.full {
+      grid-column: 1 / -1;
+    }
+    .cms-field label {
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cms-field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .08);
+      color: var(--white);
+      font-size: 14.5px;
+      line-height: 1.5;
+      font-family: inherit;
+      outline: none;
+      resize: vertical;
+      transition: all .2s ease;
+    }
+    .cms-field textarea:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, .2);
+    }
+    .cms-actions-bar {
+      position: sticky;
+      bottom: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 24px;
+      background: rgba(24, 13, 46, 0.95);
+      border: 1.5px solid var(--amber);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(16px);
+      margin-top: 10px;
+    }
+    .btn-cms-save {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 46px;
+      padding: 0 26px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #1e0838;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+      transition: all .2s ease;
+    }
+    .btn-cms-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(245, 158, 11, 0.6);
+    }
+    .btn-cms-preview {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 18px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
+      color: #fff;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+      font-size: 13.5px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-cms-preview:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
     @media (max-width: 768px) {
       .stats { grid-template-columns: 1fr 1fr; }
       h1 { font-size: 22px; }
+      .admin-nav-tabs { flex-direction: column; }
+      .cms-actions-bar { flex-direction: column; align-items: stretch; }
+      .btn-cms-save { justify-content: center; width: 100%; }
+      .btn-cms-preview { justify-content: center; width: 100%; }
     }
   </style>
 </head>
@@ -316,52 +475,228 @@
       </div>
     </div>
 
-    <!-- Stats Summary -->
-    <div class="stats">
-      <div class="stat"><b id="sTotal">0</b><span>Tổng lượt đăng ký</span></div>
-      <div class="stat"><b id="sThuong">0</b><span>Hạng STANDARD</span></div>
-      <div class="stat"><b id="sVip">0</b><span>Hạng VIP</span></div>
-      <div class="stat"><b id="sVvip">0</b><span>Hạng SUPERVIP</span></div>
-    </div>
-
-    <!-- Pipeline Filter Pills -->
-    <div class="pipe" id="pipe"></div>
-
-    <!-- Action & Search Bar -->
-    <div class="bar">
-      <input id="q" placeholder="🔍 Tìm kiếm nhanh theo tên, SĐT, email, doanh nghiệp, ghi chú...">
-      <button type="button" id="cleanTestBtn" class="ghost" style="color: #fca5a5; border-color: rgba(248, 113, 113, 0.4);" title="Dọn dẹp nhanh các khách test">
-        <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-        Xóa data test
+    <!-- Main Tabs -->
+    <div class="admin-nav-tabs">
+      <button type="button" class="admin-tab active" id="tabCrmBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>📊 Quản Lý Đăng Ký (CRM)</span>
       </button>
-      <button type="button" id="reloadBtn" class="ghost">
-        <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-        Tải lại
+      <button type="button" class="admin-tab" id="tabCmsBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <span>✏️ Quản Lý Nội Dung Website (CMS)</span>
       </button>
     </div>
 
-    <!-- Registrations Table -->
-    <div class="tbl">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 40px;">#</th>
-            <th style="width: 150px;">Thời gian</th>
-            <th style="width: 180px;">Họ và tên</th>
-            <th style="width: 130px;">Số điện thoại</th>
-            <th style="width: 170px;">Email</th>
-            <th>Doanh nghiệp / Chức vụ</th>
-            <th style="width: 110px;">Hạng vé</th>
-            <th style="width: 80px;">Số người</th>
-            <th style="width: 130px;">Trạng thái CRM</th>
-            <th style="min-width: 220px;">Ghi chú chăm sóc</th>
-            <th style="width: 100px;">Nguồn</th>
-            <th style="width: 50px;">Xóa</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-      <div class="empty hidden" id="empty">Không tìm thấy dữ liệu đăng ký phù hợp.</div>
+    <!-- ================= 1. CRM SECTION ================= -->
+    <div id="crmSection">
+      <!-- Stats Summary -->
+      <div class="stats">
+        <div class="stat"><b id="sTotal">0</b><span>Tổng lượt đăng ký</span></div>
+        <div class="stat"><b id="sThuong">0</b><span>Hạng STANDARD</span></div>
+        <div class="stat"><b id="sVip">0</b><span>Hạng VIP</span></div>
+        <div class="stat"><b id="sVvip">0</b><span>Hạng SUPERVIP</span></div>
+      </div>
+
+      <!-- Pipeline Filter Pills -->
+      <div class="pipe" id="pipe"></div>
+
+      <!-- Action & Search Bar -->
+      <div class="bar">
+        <input id="q" placeholder="🔍 Tìm kiếm nhanh theo tên, SĐT, email, doanh nghiệp, ghi chú...">
+        <button type="button" id="cleanTestBtn" class="ghost" style="color: #fca5a5; border-color: rgba(248, 113, 113, 0.4);" title="Dọn dẹp nhanh các khách test">
+          <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Xóa data test
+        </button>
+        <button type="button" id="reloadBtn" class="ghost">
+          <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Tải lại
+        </button>
+      </div>
+
+      <!-- Registrations Table -->
+      <div class="tbl">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40px;">#</th>
+              <th style="width: 150px;">Thời gian</th>
+              <th style="width: 180px;">Họ và tên</th>
+              <th style="width: 130px;">Số điện thoại</th>
+              <th style="width: 170px;">Email</th>
+              <th>Doanh nghiệp / Chức vụ</th>
+              <th style="width: 110px;">Hạng vé</th>
+              <th style="width: 80px;">Số người</th>
+              <th style="width: 130px;">Trạng thái CRM</th>
+              <th style="min-width: 220px;">Ghi chú chăm sóc</th>
+              <th style="width: 100px;">Nguồn</th>
+              <th style="width: 50px;">Xóa</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty hidden" id="empty">Không tìm thấy dữ liệu đăng ký phù hợp.</div>
+      </div>
+    </div>
+
+    <!-- ================= 2. CMS CONTENT EDITOR SECTION ================= -->
+    <div id="cmsSection" class="hidden">
+      <div class="cms-container">
+
+        <!-- Card 1: Thương hiệu & Liên hệ -->
+        <div class="cms-card">
+          <div class="cms-card-title">
+            <span>🌟 1. Thương Hiệu &amp; Kênh Liên Hệ</span>
+          </div>
+          <div class="cms-grid">
+            <div class="cms-field">
+              <label for="cms_brand_title">Tên thương hiệu (dòng trên):</label>
+              <input id="cms_brand_title" placeholder="VD: AI Thực Chiến">
+            </div>
+            <div class="cms-field">
+              <label for="cms_brand_subtitle">Phụ đề thương hiệu (dòng dưới):</label>
+              <input id="cms_brand_subtitle" placeholder="VD: CÙNG TOÀN LÊ">
+            </div>
+            <div class="cms-field">
+              <label for="cms_hotline">Hotline / Zalo liên hệ:</label>
+              <input id="cms_hotline" placeholder="VD: 0933.750.577">
+            </div>
+            <div class="cms-field">
+              <label for="cms_zalo">Link Zalo trực tiếp:</label>
+              <input id="cms_zalo" placeholder="VD: https://zalo.me/0933750577">
+            </div>
+            <div class="cms-field">
+              <label for="cms_facebook">Link Facebook cá nhân / Fanpage:</label>
+              <input id="cms_facebook" placeholder="VD: https://facebook.com">
+            </div>
+            <div class="cms-field">
+              <label for="cms_youtube">Link YouTube:</label>
+              <input id="cms_youtube" placeholder="VD: https://youtube.com">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Thông tin sự kiện -->
+        <div class="cms-card">
+          <div class="cms-card-title">
+            <span>📅 2. Thông Tin Sự Kiện / Workshop</span>
+          </div>
+          <div class="cms-grid">
+            <div class="cms-field">
+              <label for="cms_event_name">Tên chương trình / Sự kiện:</label>
+              <input id="cms_event_name" placeholder="VD: AI Thực Chiến Cùng Toàn Lê">
+            </div>
+            <div class="cms-field">
+              <label for="cms_event_date">Thời gian tổ chức:</label>
+              <input id="cms_event_date" placeholder="VD: Thứ Bảy, 10/10/2026">
+            </div>
+            <div class="cms-field">
+              <label for="cms_event_time">Khung giờ diễn ra:</label>
+              <input id="cms_event_time" placeholder="VD: 08:00 – 17:30">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_event_venue">Địa điểm tổ chức:</label>
+              <input id="cms_event_venue" placeholder="VD: Khách sạn Athena Hotel, 280 Tô Hiến Thành, Phường 15, Quận 10, TP. Hồ Chí Minh">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Thông tin Diễn giả Lê Huy Toàn -->
+        <div class="cms-card">
+          <div class="cms-card-title">
+            <span>🎙️ 3. Hồ Sơ &amp; Tiểu Sử Diễn Giả</span>
+          </div>
+          <div class="cms-grid">
+            <div class="cms-field">
+              <label for="cms_speaker_name">Họ và tên diễn giả:</label>
+              <input id="cms_speaker_name" placeholder="VD: Lê Huy Toàn">
+            </div>
+            <div class="cms-field">
+              <label for="cms_speaker_role">Chức danh / Định vị chuyên môn:</label>
+              <input id="cms_speaker_role" placeholder="VD: CHUYÊN GIA AI THỰC CHIẾN | GIẢNG VIÊN ĐÀO TẠO...">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_speaker_headline">Câu tiêu đề nổi bật:</label>
+              <input id="cms_speaker_headline" placeholder="VD: ✨ AI không khó – Quan trọng là học đúng cách!">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_speaker_bio">Nội dung giới thiệu chi tiết (Mỗi đoạn cách nhau một dòng trống):</label>
+              <textarea id="cms_speaker_bio" rows="6" placeholder="Nhập các đoạn văn giới thiệu bản thân..."></textarea>
+            </div>
+            <div class="cms-field full">
+              <label for="cms_speaker_learnings">Bạn sẽ học được gì cùng tôi? (Mỗi dòng là một gạch đầu dòng):</label>
+              <textarea id="cms_speaker_learnings" rows="6" placeholder="Mỗi gạch đầu dòng viết trên 1 hàng..."></textarea>
+            </div>
+            <div class="cms-field full">
+              <label for="cms_speaker_method_banner">Phương châm đào tạo (Dòng nổi bật):</label>
+              <input id="cms_speaker_method_banner" placeholder="VD: ⚡ Không lý thuyết dài dòng – Không cần giỏi công nghệ – Học đến đâu, thực hành đến đó.">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_speaker_method_desc">Mô tả phương pháp đào tạo:</label>
+              <textarea id="cms_speaker_method_desc" rows="3" placeholder="Mô tả cách thức truyền đạt..."></textarea>
+            </div>
+            <div class="cms-field full">
+              <label for="cms_speaker_quote">Câu trích dẫn tâm đắc (Quote):</label>
+              <textarea id="cms_speaker_quote" rows="3" placeholder="Nhập câu nói / triết lý..."></textarea>
+            </div>
+            <div class="cms-field full">
+              <label for="cms_speaker_slogan">Khẩu hiệu / Slogan kết thúc:</label>
+              <input id="cms_speaker_slogan" placeholder="VD: 🚀 TOÀN LÊ – ĐỒNG HÀNH CÙNG BẠN LÀM CHỦ AI!">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Thanh toán & Giá vé -->
+        <div class="cms-card">
+          <div class="cms-card-title">
+            <span>💳 4. Thông Tin Chuyển Khoản &amp; Hạng Vé</span>
+          </div>
+          <div class="cms-grid">
+            <div class="cms-field">
+              <label for="cms_bank_name">Tên ngân hàng:</label>
+              <input id="cms_bank_name" placeholder="VD: VietinBank - Ngân hàng TMCP Công Thương Việt Nam">
+            </div>
+            <div class="cms-field">
+              <label for="cms_account_number">Số tài khoản (STK):</label>
+              <input id="cms_account_number" placeholder="VD: 101878345678">
+            </div>
+            <div class="cms-field">
+              <label for="cms_account_holder">Tên chủ tài khoản:</label>
+              <input id="cms_account_holder" placeholder="VD: LÊ HUY TOÀN">
+            </div>
+            <div class="cms-field">
+              <label for="cms_ticket_standard_price">Giá vé Standard:</label>
+              <input id="cms_ticket_standard_price" placeholder="VD: 339.000đ">
+            </div>
+            <div class="cms-field">
+              <label for="cms_ticket_vip_price">Giá vé VIP:</label>
+              <input id="cms_ticket_vip_price" placeholder="VD: 699.000đ">
+            </div>
+            <div class="cms-field">
+              <label for="cms_ticket_supervip_price">Giá vé SuperVIP:</label>
+              <input id="cms_ticket_supervip_price" placeholder="VD: 1.299.000đ">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Floating Bar -->
+      <div class="cms-actions-bar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button type="button" class="btn-cms-save" id="saveCmsBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            <span>Lưu Thay Đổi Nội Dung</span>
+          </button>
+          <button type="button" class="ghost" id="reloadCmsBtn" style="height:44px;padding:0 16px;border-radius:10px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            <span>Tải Lại</span>
+          </button>
+        </div>
+        <a class="btn-cms-preview" href="/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span>Xem Trước Trang Chủ</span>
+        </a>
+      </div>
     </div>
   </main>
 
@@ -820,6 +1155,175 @@
     $("loginWrap").classList.remove("hidden");
     $("pw").value = "";
     $("loginMsg").textContent = "";
+  });
+
+  // ================= CMS MANAGEMENT LOGIC =================
+  let currentTab = "crm";
+  let cmsData = null;
+
+  function switchTab(tab) {
+    currentTab = tab;
+    if (tab === "crm") {
+      $("tabCrmBtn").classList.add("active");
+      $("tabCmsBtn").classList.remove("active");
+      $("crmSection").classList.remove("hidden");
+      $("cmsSection").classList.add("hidden");
+    } else {
+      $("tabCrmBtn").classList.remove("active");
+      $("tabCmsBtn").classList.add("active");
+      $("crmSection").classList.add("hidden");
+      $("cmsSection").classList.remove("hidden");
+      loadCms();
+    }
+  }
+
+  async function loadCms() {
+    try {
+      const res = await fetch("/api/content");
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      if (data.ok && data.content) {
+        cmsData = data.content;
+        populateCmsFields(cmsData);
+      }
+    } catch (err) {
+      console.warn("Could not fetch /api/content, trying local fallback:", err);
+      try {
+        const fRes = await fetch("/data/content.json");
+        if (fRes.ok) {
+          cmsData = await fRes.json();
+          populateCmsFields(cmsData);
+        }
+      } catch (e) {
+        toast("⚠️ Không thể tải dữ liệu nội dung.");
+      }
+    }
+  }
+
+  function populateCmsFields(c) {
+    if (!c) return;
+    // Brand
+    if (c.brand) {
+      $("cms_brand_title").value = c.brand.title || "";
+      $("cms_brand_subtitle").value = c.brand.subtitle || "";
+    }
+    // Contact
+    if (c.contact) {
+      $("cms_hotline").value = c.contact.hotline || "";
+      $("cms_zalo").value = c.contact.zalo || "";
+      $("cms_facebook").value = c.contact.facebook || "";
+      $("cms_youtube").value = c.contact.youtube || "";
+    }
+    // Event
+    if (c.event) {
+      $("cms_event_name").value = c.event.name || "";
+      $("cms_event_date").value = c.event.date || "";
+      $("cms_event_time").value = c.event.time || "";
+      $("cms_event_venue").value = c.event.venue || "";
+    }
+    // Speaker
+    if (c.speaker) {
+      $("cms_speaker_name").value = c.speaker.name || "";
+      $("cms_speaker_role").value = c.speaker.role || "";
+      $("cms_speaker_headline").value = c.speaker.headline || "";
+      $("cms_speaker_bio").value = c.speaker.bio || "";
+      $("cms_speaker_learnings").value = c.speaker.learnings || "";
+      $("cms_speaker_method_banner").value = c.speaker.method_banner || "";
+      $("cms_speaker_method_desc").value = c.speaker.method_desc || "";
+      $("cms_speaker_quote").value = c.speaker.quote || "";
+      $("cms_speaker_slogan").value = c.speaker.slogan || "";
+    }
+    // Banking
+    if (c.banking) {
+      $("cms_bank_name").value = c.banking.bank_name || "";
+      $("cms_account_number").value = c.banking.account_number || "";
+      $("cms_account_holder").value = c.banking.account_holder || "";
+    }
+    // Tickets
+    if (c.tickets) {
+      $("cms_ticket_standard_price").value = c.tickets.standard_price || "";
+      $("cms_ticket_vip_price").value = c.tickets.vip_price || "";
+      $("cms_ticket_supervip_price").value = c.tickets.supervip_price || "";
+    }
+  }
+
+  async function saveCms() {
+    const saveBtn = $("saveCmsBtn");
+    const origHtml = saveBtn.innerHTML;
+    saveBtn.disabled = true;
+    saveBtn.innerHTML = `<span>⏳ Đang lưu thay đổi...</span>`;
+
+    const newContent = {
+      brand: {
+        title: $("cms_brand_title").value.trim(),
+        subtitle: $("cms_brand_subtitle").value.trim()
+      },
+      contact: {
+        hotline: $("cms_hotline").value.trim(),
+        zalo: $("cms_zalo").value.trim(),
+        facebook: $("cms_facebook").value.trim(),
+        youtube: $("cms_youtube").value.trim()
+      },
+      event: {
+        name: $("cms_event_name").value.trim(),
+        date: $("cms_event_date").value.trim(),
+        time: $("cms_event_time").value.trim(),
+        venue: $("cms_event_venue").value.trim()
+      },
+      speaker: {
+        name: $("cms_speaker_name").value.trim(),
+        role: $("cms_speaker_role").value.trim(),
+        headline: $("cms_speaker_headline").value.trim(),
+        bio: $("cms_speaker_bio").value.trim(),
+        learnings: $("cms_speaker_learnings").value.trim(),
+        method_banner: $("cms_speaker_method_banner").value.trim(),
+        method_desc: $("cms_speaker_method_desc").value.trim(),
+        quote: $("cms_speaker_quote").value.trim(),
+        slogan: $("cms_speaker_slogan").value.trim()
+      },
+      banking: {
+        bank_name: $("cms_bank_name").value.trim(),
+        account_number: $("cms_account_number").value.trim(),
+        account_holder: $("cms_account_holder").value.trim()
+      },
+      tickets: {
+        standard_price: $("cms_ticket_standard_price").value.trim(),
+        vip_price: $("cms_ticket_vip_price").value.trim(),
+        supervip_price: $("cms_ticket_supervip_price").value.trim()
+      }
+    };
+
+    try {
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": pw
+        },
+        body: JSON.stringify({ content: newContent })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        cmsData = data.content;
+        toast("✅ Đã lưu và cập nhật nội dung website thành công!");
+      } else {
+        toast("❌ Lỗi: " + (data.error || "Không thể lưu nội dung"));
+      }
+    } catch (err) {
+      console.error("Save error:", err);
+      toast("❌ Lỗi kết nối khi lưu nội dung website.");
+    } finally {
+      saveBtn.disabled = false;
+      saveBtn.innerHTML = origHtml;
+    }
+  }
+
+  $("tabCrmBtn").addEventListener("click", () => switchTab("crm"));
+  $("tabCmsBtn").addEventListener("click", () => switchTab("cms"));
+  $("saveCmsBtn").addEventListener("click", saveCms);
+  $("reloadCmsBtn").addEventListener("click", () => {
+    loadCms();
+    toast("🔄 Đã tải lại nội dung từ hệ thống!");
   });
 
   if (pw) load();

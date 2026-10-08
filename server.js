@@ -11,8 +11,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Path to data file
+// Path to data files
 const DATA_FILE = path.join(__dirname, 'data', 'leads.json');
+const CONTENT_FILE = path.join(__dirname, 'data', 'content.json');
 
 // Helper to ensure data file exists
 function readLeads() {
@@ -37,6 +38,29 @@ function writeLeads(leads) {
     return true;
   } catch (err) {
     console.error('Error writing leads:', err);
+    return false;
+  }
+}
+
+function readContent() {
+  try {
+    if (fs.existsSync(CONTENT_FILE)) {
+      const data = fs.readFileSync(CONTENT_FILE, 'utf8');
+      return JSON.parse(data || '{}');
+    }
+  } catch (err) {
+    console.error('Error reading content:', err);
+  }
+  return {};
+}
+
+function writeContent(content) {
+  try {
+    fs.mkdirSync(path.dirname(CONTENT_FILE), { recursive: true });
+    fs.writeFileSync(CONTENT_FILE, JSON.stringify(content, null, 2), 'utf8');
+    return true;
+  } catch (err) {
+    console.error('Error writing content:', err);
     return false;
   }
 }
@@ -259,6 +283,29 @@ app.get('/api/export-csv', (req, res) => {
   res.setHeader('Content-Type', 'text/csv; charset=utf-8');
   res.setHeader('Content-Disposition', 'attachment; filename="danh-sach-dang-ky-business-meeting-2026.csv"');
   res.send(csvContent);
+});
+
+// 8. API: Get Content (CMS)
+app.get('/api/content', (req, res) => {
+  const content = readContent();
+  res.json({ ok: true, content });
+});
+
+// 9. API: Update Content (CMS Admin)
+app.post('/api/content', checkAdminAuth, (req, res) => {
+  try {
+    const { content } = req.body;
+    if (!content || typeof content !== 'object') {
+      return res.status(400).json({ ok: false, error: 'Dữ liệu nội dung không hợp lệ.' });
+    }
+    const current = readContent();
+    const merged = { ...current, ...content };
+    writeContent(merged);
+    res.json({ ok: true, content: merged });
+  } catch (err) {
+    console.error('Update content error:', err);
+    res.status(500).json({ ok: false, error: 'Lỗi lưu nội dung website.' });
+  }
 });
 
 // Static assets (images)
