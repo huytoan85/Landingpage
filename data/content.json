@@ -7,13 +7,13 @@
     "hotline": "0933.750.577",
     "zalo": "https://zalo.me/0933750577",
     "facebook": "https://facebook.com",
-    "youtube": "https://youtube.com"
+    "youtube": "https://www.youtube.com/@mdrtletoan4114"
   },
   "event": {
     "name": "AI Thực Chiến Cùng Toàn Lê",
-    "date": "Thứ Bảy, 10/10/2026",
-    "time": "08:00 – 17:30",
-    "venue": "Khách sạn Athena Hotel, 280 Tô Hiến Thành, Phường 15, Quận 10, TP. Hồ Chí Minh"
+    "date": "",
+    "time": "",
+    "venue": "Online qua MS Team"
   },
   "speaker": {
     "name": "Lê Huy Toàn",
@@ -27,13 +27,13 @@
     "slogan": "🚀 TOÀN LÊ – ĐỒNG HÀNH CÙNG BẠN LÀM CHỦ AI!"
   },
   "banking": {
-    "bank_name": "VietinBank - Ngân hàng TMCP Công Thương Việt Nam",
-    "account_number": "101878345678",
+    "bank_name": "Vietcombank (Ngân hàng TMCP Ngoại Thương Việt Nam)",
+    "account_number": "9917722256",
     "account_holder": "LÊ HUY TOÀN"
   },
   "tickets": {
-    "standard_price": "339.000đ",
-    "vip_price": "699.000đ",
-    "supervip_price": "1.299.000đ"
+    "standard_price": "99.000đ",
+    "vip_price": "499.000đ",
+    "supervip_price": "999.000đ"
   }
 }

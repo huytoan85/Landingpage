@@ -33,8 +33,8 @@ const DEFAULT_CONTENT = {
     slogan: "🚀 TOÀN LÊ – ĐỒNG HÀNH CÙNG BẠN LÀM CHỦ AI!"
   },
   banking: {
-    bank_name: "VietinBank - Ngân hàng TMCP Công Thương Việt Nam",
-    account_number: "101878345678",
+    bank_name: "Vietcombank - Ngân hàng TMCP Ngoại Thương Việt Nam",
+    account_number: "9917722256",
     account_holder: "LÊ HUY TOÀN"
   },
   tickets: {

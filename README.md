@@ -17,7 +17,7 @@ Hệ thống website sự kiện **AI Thực Chiến Cùng Toàn Lê** được 
 - **Hồ sơ diễn giả**:
   - Chuyên gia **Lê Huy Toàn** (Chuyên gia AI Thực Chiến | Giảng viên đào tạo ứng dụng AI trong công việc và kinh doanh)
 - **Form đăng ký thông minh**: Kiểm tra tính hợp lệ số điện thoại, chống spam honeypot, lưu trữ trực tiếp vào CRM.
-- **Thanh toán VietQR**: Tích hợp mã QR VietinBank, nút sao chép số tài khoản tức thì, hướng dẫn cú pháp chuyển khoản.
+- **Thanh toán VietQR**: Tích hợp mã QR Vietcombank, nút sao chép số tài khoản tức thì, hướng dẫn cú pháp chuyển khoản.
 - **Tối ưu in ấn**: Hỗ trợ định dạng in A4 Brochure 2 trang sẵn sàng.
 
 ---
