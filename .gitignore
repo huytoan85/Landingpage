@@ -18,11 +18,7 @@ yarn-error.log*
 Thumbs.db
 desktop.ini
 
-# IDE & Editor
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Local helpers
+push.bat
+git.cmd
+
