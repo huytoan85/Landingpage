@@ -1,6 +1,6 @@
-# Business Meeting 2026 · ASTRONIXA & Cộng Đồng Ohana
+# AI Thực Chiến Cùng Toàn Lê
 
-Hệ thống website sự kiện **Business Meeting & Workshop AI 2026** được xây dựng với đầy đủ tính năng: Landing Page giới thiệu sự kiện, Công cụ tạo thiệp mời VIP cá nhân hóa, và Hệ thống CRM quản lý khách đăng ký.
+Hệ thống website sự kiện **AI Thực Chiến Cùng Toàn Lê** được xây dựng với đầy đủ tính năng: Landing Page giới thiệu sự kiện, Công cụ tạo thiệp mời VIP cá nhân hóa, và Hệ thống CRM quản lý khách đăng ký.
 
 ---
 
@@ -25,7 +25,7 @@ Hệ thống website sự kiện **Business Meeting & Workshop AI 2026** đượ
 ### 2. Công cụ tạo thiệp mời VIP (`/thiep-moi` hoặc `thiep-moi.html`)
 - Thiết kế chuẩn tỷ lệ **1080px (Ultra-HD 2x)**.
 - **Tải ảnh đại diện**: Hỗ trợ kéo thả ảnh đại diện, thanh trượt phóng to/thu nhỏ và căn chỉnh vị trí X/Y.
-- **Tùy biến thông tin**: Nhập họ tên, chức danh/doanh nghiệp, hạng vé (VIP Guest, SuperVIP, Pioneer Partner...).
+- **Tùy biến thông tin**: Nhập họ tên, Khóa học/Tool (Tool, Học 1:1,...).
 - **Tạo mã QR Check-in**: Tự động sinh mã vé và mã QR code định danh cho từng khách mời.
 - **3 giao diện phong cách**:
   - Cosmic Neon (Màu tím neon huyền ảo)
