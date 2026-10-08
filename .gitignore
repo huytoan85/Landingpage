@@ -20,5 +20,6 @@ desktop.ini
 
 # Local helpers
 push.bat
+push.ps1
 git.cmd
 
