@@ -818,34 +818,73 @@
       transform: scale(1.02);
     }
 
+    .course-card.card-work::before {
+      background: linear-gradient(90deg, #3b82f6, #6366f1, #8b5cf6);
+    }
+    .course-card.card-media::before {
+      background: linear-gradient(90deg, #ec4899, #f59e0b, #ef4444);
+    }
+
     .course-title {
       font-family: "Be Vietnam Pro", sans-serif;
-      font-weight: 800;
-      font-size: 23px;
-      line-height: 1.35;
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: -.01em;
       color: #ea580c;
+      margin-bottom: 4px;
+    }
+    .course-card.card-work .course-title { color: #4f46e5; }
+    .course-card.card-media .course-title { color: #ea580c; }
+
+    .course-subtitle {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      line-height: 1.4;
       margin-bottom: 16px;
     }
+    .course-card.card-work .course-subtitle { color: #6366f1; }
+    .course-card.card-media .course-subtitle { color: #d97706; }
+
     .course-meta {
-      font-size: 15px;
+      font-size: 14.5px;
       line-height: 1.6;
       color: #334155;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
       flex: 1;
     }
-    .course-meta-row {
-      display: block;
+    .course-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-    .course-meta-row b, .course-meta-row strong {
+    .course-block-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 14px;
+      font-weight: 800;
       color: #0f172a;
-      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }
+    .course-block-title svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.2;
+      flex-shrink: 0;
+    }
+    .course-card.card-work .course-block-title svg { stroke: #4f46e5; }
+    .course-card.card-media .course-block-title svg { stroke: #ea580c; }
+
     .course-list {
       list-style: none;
       padding: 0;
-      margin: 8px 0 4px 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -854,6 +893,7 @@
       position: relative;
       padding-left: 18px;
       color: #475569;
+      font-size: 14px;
       line-height: 1.5;
     }
     .course-list li::before {
@@ -865,6 +905,97 @@
       line-height: 1.2;
     }
     
+    .course-format-box {
+      border-radius: 12px;
+      padding: 13px 15px;
+      margin: 2px 0;
+    }
+    .course-card.card-work .course-format-box {
+      background: rgba(99, 102, 241, 0.06);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    .course-card.card-media .course-format-box {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.24);
+    }
+    .course-format-head {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .course-format-head b {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+    }
+    .course-card.card-work .course-format-head b { color: #4338ca; }
+    .course-card.card-media .course-format-head b { color: #b45309; }
+
+    .course-check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .course-check-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #334155;
+    }
+    .course-check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 800;
+      font-size: 13.5px;
+    }
+    .course-card.card-work .course-check-list li::before { color: #4f46e5; }
+    .course-card.card-media .course-check-list li::before { color: #ea580c; }
+
+    .course-outcomes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .course-outcomes-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 14px;
+      line-height: 1.52;
+      color: #475569;
+    }
+    .course-outcomes-list li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .course-card.card-work .course-outcomes-list li::before {
+      background: #4f46e5;
+      box-shadow: 0 0 6px rgba(79, 70, 229, 0.4);
+    }
+    .course-card.card-media .course-outcomes-list li::before {
+      background: #ea580c;
+      box-shadow: 0 0 6px rgba(234, 88, 12, 0.4);
+    }
+    .course-outcomes-list li b, .course-outcomes-list li strong {
+      color: #0f172a;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+
     .course-price-box {
       font-family: "Be Vietnam Pro", sans-serif;
       font-weight: 800;
@@ -885,12 +1016,12 @@
       justify-content: center;
       gap: 8px;
       height: 48px;
-      border-radius: 10px;
+      border-radius: 12px;
       background: linear-gradient(180deg, #2b6cb0, #1e4e8c);
       color: #ffffff;
       font-family: "Be Vietnam Pro", sans-serif;
       font-weight: 800;
-      font-size: 15px;
+      font-size: 14.5px;
       letter-spacing: .04em;
       text-transform: uppercase;
       text-decoration: none;
@@ -901,9 +1032,24 @@
       width: 100%;
     }
     .course-btn:hover {
-      background: linear-gradient(180deg, #3182ce, #2b6cb0);
       transform: translateY(-2px);
       box-shadow: 0 10px 24px rgba(30, 78, 140, .42);
+    }
+    .course-btn.btn-work {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+    }
+    .course-btn.btn-work:hover {
+      background: linear-gradient(135deg, #4338ca, #6d28d9);
+      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.45);
+    }
+    .course-btn.btn-media {
+      background: linear-gradient(135deg, #ea580c, #dc2626);
+      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.3);
+    }
+    .course-btn.btn-media:hover {
+      background: linear-gradient(135deg, #c2410c, #b91c1c);
+      box-shadow: 0 10px 24px rgba(234, 88, 12, 0.45);
     }
 
     /* Key Topics / Pillars */
@@ -2400,57 +2546,114 @@
       </div>
 
       <div class="courses-grid">
-        <!-- Khóa học 1: AI Thực Chiến Cho Sales & Văn Phòng -->
-        <div class="course-card">
+        <!-- Khóa học 1: MODUL 1: MASTERING AI FOR WORK -->
+        <div class="course-card card-work">
           <div class="course-poster">
-            <img src="images/course-ai-sales.png" alt="Workshop AI Thực Chiến Cho Sales & Văn Phòng" loading="lazy">
+            <img src="images/course-ai-sales.png" alt="MODUL 1: MASTERING AI FOR WORK (Làm Chủ Hiệu Suất Cùng AI)" loading="lazy">
           </div>
-          <h3 class="course-title">AI Thực Chiến Cho Sales &amp; Văn Phòng</h3>
+          <h3 class="course-title">MODUL 1: MASTERING AI FOR WORK</h3>
+          <div class="course-subtitle">(Làm Chủ Hiệu Suất Cùng AI)</div>
+          
           <div class="course-meta">
-            <div class="course-meta-row">
-              <b>Dành cho:</b> <span>Người làm sales, tư vấn viên, nhân viên văn phòng và người mới bắt đầu.</span>
-            </div>
-            <div class="course-meta-row">
-              <b>Nội dung dự kiến:</b>
+            <!-- Đối tượng phù hợp -->
+            <div class="course-block">
+              <div class="course-block-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>Đối tượng phù hợp:</span>
+              </div>
               <ul class="course-list">
-                <li>Viết yêu cầu cho AI rõ ràng, đúng mục tiêu.</li>
-                <li>Soạn email, bài giới thiệu sản phẩm và kịch bản tư vấn.</li>
-                <li>Tóm tắt tài liệu, lên kế hoạch và chuẩn bị nội dung thuyết trình.</li>
-                <li>Kiểm tra, chỉnh sửa kết quả AI trước khi sử dụng.</li>
+                <li>Chuyên viên kinh doanh (Sales), tư vấn viên trong các mảng tài chính, ngân hàng, bảo hiểm, bất động sản, dịch vụ... thường xuyên phải soạn thảo kịch bản tư vấn, xử lý từ chối, làm email chăm sóc khách hàng và chuẩn bị tài liệu thuyết trình.</li>
+                <li>Nhân viên văn phòng, chuyên viên hành chính – nhân sự, đào tạo, quản lý cấp trung muốn giải phóng thời gian khỏi các tác vụ thủ công lặp lại để tập trung vào công việc chiến lược và nâng cao chất lượng báo cáo.</li>
+                <li>Người mới bắt đầu làm quen với AI, chưa biết cách giao tiếp hay ra lệnh (prompting) hiệu quả, muốn có một lộ trình thực chiến, bài bản từ con số 0 mà không cần hiểu biết kỹ thuật phức tạp.</li>
               </ul>
             </div>
-            <div class="course-meta-row">
-              <b>Hình thức:</b> <span>Online</span>
+
+            <!-- Hình thức đào tạo -->
+            <div class="course-format-box">
+              <div class="course-format-head">
+                <b>Hình thức đào tạo:</b> Online (Cầm tay chỉ việc) – Tối ưu trực tiếp trên chính sản phẩm, ngành hàng và mục tiêu cá nhân của bạn:
+              </div>
+              <ul class="course-check-list">
+                <li>Thực hành 100% dựa trên quy trình làm việc, mẫu biểu, văn bản và tài liệu thực tế của chính học viên.</li>
+                <li>Hướng dẫn từng cú click: từ cách cài đặt, cấu hình trợ lý, viết câu lệnh (prompt) đến kiểm soát tính chính xác của dữ liệu.</li>
+                <li>Hỗ trợ giải quyết dứt điểm các vướng mắc, "nút thắt cổ chai" trong công việc thường ngày của bạn ngay trong từng buổi học.</li>
+              </ul>
+            </div>
+
+            <!-- Bạn sẽ làm được gì sau khóa học -->
+            <div class="course-block">
+              <div class="course-block-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                <span>Bạn sẽ làm được gì sau khóa học?</span>
+              </div>
+              <ul class="course-outcomes-list">
+                <li><b>Làm chủ nghệ thuật viết Prompt:</b> Nắm vững công thức ra lệnh chuẩn xác từ câu hỏi cơ bản đến các prompt hướng dẫn phức tạp (Mega Prompt), giúp AI hiểu đúng 100% ý định và trả kết quả trúng đích ngay lần đầu tiên.</li>
+                <li><b>Xử lý tài liệu &amp; Soạn thảo siêu tốc:</b> Tóm tắt báo cáo, hợp đồng, văn bản luật hay tập tài liệu dày hàng trăm trang chỉ trong vài phút; tự động hóa việc soạn thảo email chuyên nghiệp, công văn và biên bản cuộc họp chỉn chu.</li>
+                <li><b>Xây dựng cỗ máy bán hàng &amp; Chăm sóc khách hàng:</b> Tự động tạo kịch bản tư vấn, bộ câu hỏi gợi mở nhu cầu, kịch bản xử lý từ chối và chuỗi tin nhắn/email chăm sóc khách hàng cá nhân hóa theo từng nhóm đối tượng.</li>
+                <li><b>Chuyển hóa dữ liệu thành bài thuyết trình sắc nét:</b> Nhanh chóng biến các ý tưởng, tài liệu thô hoặc file PDF thành dàn ý slide PowerPoint mạch lạc, nội dung thuyết trình lôi cuốn và các bảng biểu/dashboard trực quan.</li>
+                <li><b>Tự tạo Trợ lý AI chuyên biệt cho bản thân:</b> Thiết lập thành công các Chatbot/Trợ lý cá nhân hóa (như GPTs/Gems) được nạp sẵn tri thức ngành và kinh nghiệm của bạn, hoạt động 24/7 để giảm tải tối đa các công việc lặp đi lặp lại.</li>
+                <li><b>Thẩm định &amp; Kiểm soát rủi ro thông tin:</b> Biết cách tư duy phản biện, kiểm tra và hiệu chỉnh kết quả đầu ra của AI trước khi áp dụng vào thực tế công việc, đảm bảo tính chuẩn xác, an toàn và chuyên nghiệp tuyệt đối.</li>
+              </ul>
             </div>
           </div>
-          <a href="#dang-ky" class="course-btn" onclick="selectCourse('AI Thực Chiến Cho Sales & Văn Phòng')">
-            <span>ĐĂNG KÝ NGAY</span>
+          
+          <a href="#dang-ky" class="course-btn btn-work" onclick="selectCourse('Modul 1: MASTERING AI FOR WORK')">
+            <span>ĐĂNG KÝ MODUL 1</span>
           </a>
         </div>
 
-        <!-- Khóa học 2: Khóa Đồng Hành Master Video AI + 3 ngày -->
-        <div class="course-card">
+        <!-- Khóa học 2: MODUL 2: MASTERING AI FOR MEDIA -->
+        <div class="course-card card-media">
           <div class="course-poster">
-            <img src="images/course-master-video.png" alt="Khóa Đồng Hành Master Video AI + 3 ngày" loading="lazy">
+            <img src="images/course-master-video.png" alt="MODUL 2: MASTERING AI FOR MEDIA (Làm chủ sáng tạo & Truyền thông bán hàng cùng AI)" loading="lazy">
           </div>
-          <h3 class="course-title">Khóa Đồng Hành Master Video AI + 3 ngày</h3>
+          <h3 class="course-title">MODUL 2: MASTERING AI FOR MEDIA</h3>
+          <div class="course-subtitle">(Làm chủ sáng tạo &amp; Truyền thông bán hàng cùng AI)</div>
+          
           <div class="course-meta">
-            <div class="course-meta-row">
-              <b>Dành cho:</b> <span>Người làm sales, tư vấn viên, nhân viên văn phòng và người mới bắt đầu.</span>
+            <!-- Đối tượng phù hợp -->
+            <div class="course-block">
+              <div class="course-block-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>Đối tượng phù hợp:</span>
+              </div>
+              <ul class="course-list">
+                <li>Chuyên viên kinh doanh (Sales), tư vấn viên trong các lĩnh vực tài chính, bảo hiểm, bất động sản, dịch vụ... muốn xây dựng thương hiệu cá nhân uy tín để thu hút khách hàng tiềm năng.</li>
+                <li>Nhân sự văn phòng, marketing tự do (freelancer) muốn nâng cấp kỹ năng truyền thông hình ảnh, video để tối ưu công việc hoặc gia tăng thu nhập.</li>
+                <li>Người mới bắt đầu, không có nền tảng về thiết kế hay kỹ thuật dựng phim nhưng muốn tự tay làm truyền thông đa kênh chuyên nghiệp.</li>
+              </ul>
             </div>
-            <div class="course-meta-row">
-              <b>Nội dung dự kiến:</b>
-              <p style="margin-top: 6px; color: #475569; line-height: 1.55;">Lộ trình 5 ngày đồng hành làm chủ, tạo hình ảnh, poster và thumbnail, video AI bán hàng</p>
+
+            <!-- Hình thức đào tạo -->
+            <div class="course-format-box">
+              <div class="course-format-head">
+                <b>Hình thức đào tạo:</b> Online (Cầm tay chỉ việc) – Tối ưu trực tiếp trên chính sản phẩm, ngành hàng và mục tiêu cá nhân của bạn:
+              </div>
+              <ul class="course-check-list">
+                <li>Thực chiến 100% trên bài toán kinh doanh và tệp khách hàng thực tế của học viên.</li>
+                <li>Hướng dẫn từng bước từ cài đặt, sử dụng công cụ đến tinh chỉnh sản phẩm cuối cùng ngay trong buổi học.</li>
+                <li>Hỗ trợ gỡ rối, phản hồi và sửa bài trực tiếp để học viên làm được việc ngay.</li>
+              </ul>
             </div>
-            <div class="course-meta-row">
-              <b>Hình thức:</b> <span>Kèm 1:1 online</span>
-            </div>
-            <div class="course-price-box">
-              Học phí: 999k tặng kèm Tool tạo video đa ngành, tool tạo ảnh tự động
+
+            <!-- Bạn sẽ làm được gì sau khóa học -->
+            <div class="course-block">
+              <div class="course-block-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Bạn sẽ làm được gì sau khóa học?</span>
+              </div>
+              <ul class="course-outcomes-list">
+                <li><b>Tự tạo hình ảnh &amp; concept bán hàng chuẩn thương mại:</b> Tự sản xuất ảnh sản phẩm, ảnh chân dung phục vụ xây dựng nhân hiệu và hình ảnh minh họa bài viết sắc nét mà không cần tốn chi phí thuê ngoài hay chụp studio.</li>
+                <li><b>Thiết kế ấn phẩm marketing siêu tốc:</b> Tự tay làm poster quảng bá sự kiện, banner chào hàng, infographic tóm tắt chính sách/quy trình và thumbnail thu hút lượt click với tốc độ vượt trội so với cách thiết kế truyền thống.</li>
+                <li><b>Sản xuất video ngắn/video viral tự động:</b> Tự lên kịch bản, tạo giọng đọc truyền cảm, ghép nhạc nền bản quyền và dựng video ngắn (TikTok, Reels, Shorts) mà không cần đứng trước ống kính hay sở hữu máy quay cồng kềnh.</li>
+                <li><b>Đồng bộ nhận diện thương hiệu cá nhân:</b> Sở hữu một phong cách thị giác và ngôn ngữ truyền thông nhất quán, chuyên nghiệp trên mạng xã hội, giúp tạo dựng lòng tin và nâng cao tỷ lệ chuyển đổi đơn hàng.</li>
+                <li><b>Nắm trọn quy trình sáng tạo độc lập:</b> Làm chủ bộ công cụ AI media hiện đại nhất, tự tin vận hành một "phòng truyền thông mini" của riêng mình với chi phí gần như bằng 0.</li>
+              </ul>
             </div>
           </div>
-          <a href="#dang-ky" class="course-btn" onclick="selectCourse('Khóa Đồng Hành Master Video AI + 3 ngày')">
-            <span>ĐĂNG KÝ NGAY</span>
+          
+          <a href="#dang-ky" class="course-btn btn-media" onclick="selectCourse('Modul 2: MASTERING AI FOR MEDIA')">
+            <span>ĐĂNG KÝ MODUL 2</span>
           </a>
         </div>
       </div>
