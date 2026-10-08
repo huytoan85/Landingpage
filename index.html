@@ -1048,6 +1048,256 @@
     }
     .row.vvip .t { color: var(--amber-2); }
 
+    /* 2 Modules Curriculum Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 10px;
+    }
+    .mod-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 26px 24px 22px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1.5px solid var(--line);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 36px rgba(46, 16, 101, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mod-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(124, 58, 237, 0.16);
+      border-color: rgba(124, 58, 237, 0.4);
+    }
+    .mod-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+    }
+    .mod-card.mod-work::before {
+      background: linear-gradient(90deg, #3b82f6, #6366f1, #8b5cf6);
+    }
+    .mod-card.mod-media::before {
+      background: linear-gradient(90deg, #ec4899, #f59e0b, #ef4444);
+    }
+    .mod-card::after {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 150px; height: 150px;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(45px);
+      opacity: 0.16;
+    }
+    .mod-card.mod-work::after {
+      background: radial-gradient(circle, #6366f1, #38bdf8);
+    }
+    .mod-card.mod-media::after {
+      background: radial-gradient(circle, #f59e0b, #ec4899);
+    }
+    .mod-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .mod-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mod-pill svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
+    }
+    .mod-work .mod-pill {
+      background: rgba(99, 102, 241, 0.12);
+      color: #4f46e5;
+      border: 1px solid rgba(99, 102, 241, 0.28);
+    }
+    .mod-media .mod-pill {
+      background: rgba(245, 158, 11, 0.14);
+      color: #b45309;
+      border: 1px solid rgba(245, 158, 11, 0.32);
+    }
+    .mod-badge-duration {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--w60);
+      background: rgba(124, 58, 237, 0.05);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      text-transform: uppercase;
+    }
+    .mod-head {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.12);
+    }
+    .mod-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--amber);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .mod-subtitle {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--gold-2);
+      letter-spacing: 0.01em;
+    }
+    .mod-sessions {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      margin: 0;
+      padding: 0;
+    }
+    .session-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 13px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      border-radius: 11px;
+      transition: all 0.22s ease;
+    }
+    .session-item:hover {
+      background: #ffffff;
+      border-color: rgba(124, 58, 237, 0.35);
+      transform: translateX(4px);
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.07);
+    }
+    .session-badge {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .mod-work .session-badge {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(59, 130, 246, 0.12));
+      color: #4338ca;
+      border: 1px solid rgba(99, 102, 241, 0.22);
+    }
+    .mod-media .session-badge {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(236, 72, 153, 0.14));
+      color: #9a3412;
+      border: 1px solid rgba(245, 158, 11, 0.28);
+    }
+    .session-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #1e1b4b;
+      flex: 1;
+    }
+    .session-arrow {
+      width: 14px;
+      height: 14px;
+      stroke: var(--p-400);
+      fill: none;
+      stroke-width: 2.2;
+      opacity: 0.45;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      flex-shrink: 0;
+    }
+    .session-item:hover .session-arrow {
+      transform: translateX(2px);
+      opacity: 1;
+      stroke: var(--amber-2);
+    }
+    .mod-foot {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(124, 58, 237, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .mod-target {
+      font-size: 12.5px;
+      color: var(--w80);
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+    .mod-target-ic {
+      width: 15px;
+      height: 15px;
+      stroke: var(--gold-2);
+      fill: none;
+      stroke-width: 2.2;
+      flex-shrink: 0;
+    }
+    .mod-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 12.5px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .mod-work .mod-btn {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+    .mod-work .mod-btn:hover {
+      background: linear-gradient(135deg, #4338ca, #6d28d9);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.45);
+    }
+    .mod-media .mod-btn {
+      background: linear-gradient(135deg, #d97706, #e11d48);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
+    }
+    .mod-media .mod-btn:hover {
+      background: linear-gradient(135deg, #b45309, #be123c);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.45);
+    }
+
     /* Target Audience */
     .aud { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .aud div {
@@ -1987,7 +2237,9 @@
       .hero h1 { font-size: 38px; }
       .hero .theme { font-size: 18px; }
       .hero .lead { font-size: 15px; }
-      .info, .pillars, .mb-list, .tickets, .fields { grid-template-columns: 1fr; }
+      .info, .pillars, .modules-grid, .mb-list, .tickets, .fields { grid-template-columns: 1fr; }
+      .mod-foot { flex-direction: column; align-items: stretch; gap: 10px; }
+      .mod-btn { justify-content: center; width: 100%; }
       .info > div + div { border-left: none; border-top: 1px solid var(--line); }
       .row { grid-template-columns: 1fr; }
       .row .t { border-right: none; border-bottom: 1px solid var(--line); padding: 12px 16px; }
@@ -2258,38 +2510,149 @@
       </div>
     </div>
 
-    <!-- Detailed Agenda -->
+    <!-- Detailed Curriculum Modules (2 Columns) -->
     <div class="sec" id="chuong-trinh">
       <div class="sec-head"><span class="sec-no">02</span><h2 class="sec-title">Chương trình chi tiết</h2></div>
-      <div class="tl">
-        <div class="row glass">
-          <div class="t">08h30 – 12h00<small>Phiên sáng</small></div>
-          <div class="d">
-            <h4>Business Meeting Toàn Cầu</h4>
-            <p>Bức tranh thị trường AI · Giới thiệu doanh nghiệp công nghệ Hoa Kỳ · Cơ hội sở hữu cổ phần · Hỏi đáp trực tiếp cùng Ban lãnh đạo</p>
+      
+      <div class="modules-grid">
+        <!-- Modul 1: MASTERING AI FOR WORK -->
+        <div class="mod-card mod-work glass">
+          <div class="mod-badge-row">
+            <span class="mod-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              Modul 1
+            </span>
+            <span class="mod-badge-duration">8 Buổi Thực Chiến</span>
+          </div>
+          
+          <div class="mod-head">
+            <h3 class="mod-title">MASTERING AI FOR WORK</h3>
+            <div class="mod-subtitle">(Công việc &amp; Hiệu suất)</div>
+          </div>
+
+          <ul class="mod-sessions">
+            <li class="session-item">
+              <span class="session-badge">Buổi 1</span>
+              <span class="session-title">Nền tảng AI &amp; Kỹ thuật viết Prompt</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 2</span>
+              <span class="session-title">Soạn thảo, tìm kiếm &amp; Tóm tắt dữ liệu</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 3</span>
+              <span class="session-title">Truy vấn &amp; Tổng hợp thông tin đa nguồn</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 4</span>
+              <span class="session-title">Làm báo cáo &amp; Trực quan hoá thông tin</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 5</span>
+              <span class="session-title">Thiết kế Slide &amp; Infographic thuyết trình</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 6</span>
+              <span class="session-title">Phân tích dữ liệu bảng tính (Excel/Sheets)</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 7</span>
+              <span class="session-title">Tự tạo Trợ lý AI &amp; Chatbot riêng</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 8</span>
+              <span class="session-title">Đóng gói Skill AI &amp; Kế hoạch ứng dụng</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+          </ul>
+
+          <div class="mod-foot">
+            <div class="mod-target">
+              <svg viewBox="0 0 24 24" class="mod-target-ic"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+              <span>Thực hành trực tiếp · Tối ưu hiệu suất làm việc 300%</span>
+            </div>
+            <a href="#dang-ky" class="mod-btn" onclick="selectCourse('Modul 1: MASTERING AI FOR WORK')">
+              <span>Đăng ký Modul 1</span>
+              <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" fill="none" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
         </div>
-        <div class="row glass mini">
-          <div class="t">12h00 – 13h30<small>Nghỉ trưa</small></div>
-          <div class="d"><h4>Buffet trưa &amp; Giao lưu kết nối doanh nhân</h4></div>
-        </div>
-        <div class="row glass">
-          <div class="t">13h30 – 16h00<small>Phiên chiều</small></div>
-          <div class="d">
-            <h4>Workshop AI Thực Chiến</h4>
-            <p>Thực hành chuyên sâu Tool AI &amp; Skill Agent · Tự động hóa nội dung &amp; marketing · Xây dựng quy trình làm việc đột phá cùng Speaker</p>
+
+        <!-- Modul 2: MASTERING AI FOR MEDIA -->
+        <div class="mod-card mod-media glass">
+          <div class="mod-badge-row">
+            <span class="mod-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+              Modul 2
+            </span>
+            <span class="mod-badge-duration">8 Buổi Thực Chiến</span>
           </div>
-        </div>
-        <div class="row glass">
-          <div class="t">16h00 – 17h00<small>Phiên chiều</small></div>
-          <div class="d">
-            <h4>Chia Sẻ Cơ Hội Ohana Career Affiliate AI</h4>
-            <p>Con đường sự nghiệp kiến tạo tương lai thịnh vượng và chia sẻ công thức xây dựng hệ thống Affiliate bứt phá.</p>
+
+          <div class="mod-head">
+            <h3 class="mod-title">MASTERING AI FOR MEDIA</h3>
+            <div class="mod-subtitle">(Sáng tạo &amp; Truyền thông)</div>
           </div>
-        </div>
-        <div class="row glass mini vvip">
-          <div class="t">Sau 17h00<small>VIP Dinner</small></div>
-          <div class="d"><h4>Tiệc tối thân mật cùng Diễn giả &amp; Ban điều hành · Dành riêng cho hạng SUPERVIP</h4></div>
+
+          <ul class="mod-sessions">
+            <li class="session-item">
+              <span class="session-badge">Buổi 1</span>
+              <span class="session-title">Tổng quan &amp; Thiết lập tư duy AI Media</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 2</span>
+              <span class="session-title">Vai trò Giám đốc sáng tạo cùng AI</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 3</span>
+              <span class="session-title">Tạo hình ảnh sản phẩm &amp; Bán hàng</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 4</span>
+              <span class="session-title">Thiết kế ấn phẩm quảng cáo siêu tốc</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 5</span>
+              <span class="session-title">Trực quan hoá nội dung &amp; Câu chuyện</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 6</span>
+              <span class="session-title">Studio âm thanh: Giọng đọc, Nhạc nền, Podcast</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 7</span>
+              <span class="session-title">Sản xuất Video Viral không cần lộ mặt</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+            <li class="session-item">
+              <span class="session-badge">Buổi 8</span>
+              <span class="session-title">Đóng gói Thương hiệu cá nhân &amp; Kế hoạch 90 ngày</span>
+              <svg class="session-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </li>
+          </ul>
+
+          <div class="mod-foot">
+            <div class="mod-target">
+              <svg viewBox="0 0 24 24" class="mod-target-ic"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>Sáng tạo viral · Làm chủ âm thanh, video &amp; thương hiệu cá nhân</span>
+            </div>
+            <a href="#dang-ky" class="mod-btn" onclick="selectCourse('Modul 2: MASTERING AI FOR MEDIA')">
+              <span>Đăng ký Modul 2</span>
+              <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" fill="none" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -2553,8 +2916,11 @@
               <label for="f-ticket">Khóa học / Hạng vé quan tâm <i>*</i></label>
               <select id="f-ticket" name="ticket" required>
                 <option value="">— Chọn khóa học hoặc hạng vé —</option>
+                <option value="MODUL_WORK">Modul 1: MASTERING AI FOR WORK (Công việc &amp; Hiệu suất)</option>
+                <option value="MODUL_MEDIA">Modul 2: MASTERING AI FOR MEDIA (Sáng tạo &amp; Truyền thông)</option>
+                <option value="COMBO_2_MODUL">Combo 2 Modul Toàn Diện (Work + Media)</option>
                 <option value="AI_SALES">AI Thực Chiến Cho Sales &amp; Văn Phòng (Online)</option>
-                <option value="MASTER_VIDEO_999K" selected>Khóa Đồng Hành Master Video AI + 3 ngày · 999.000đ</option>
+                <option value="MASTER_VIDEO_999K">Khóa Đồng Hành Master Video AI + 3 ngày · 999.000đ</option>
                 <option value="THUONG">Vé STANDARD · 339.000đ</option>
                 <option value="VIP">Vé VIP · 699.000đ</option>
                 <option value="VVIP">Vé SUPERVIP · 1.299.000đ</option>
@@ -2942,7 +3308,11 @@
     window.selectCourse = function(courseName) {
       const select = document.getElementById("f-ticket");
       if (select) {
-        if (courseName && courseName.includes("Sales")) {
+        if (courseName && (courseName.includes("WORK") || courseName.includes("Work"))) {
+          select.value = "MODUL_WORK";
+        } else if (courseName && (courseName.includes("MEDIA") || courseName.includes("Media"))) {
+          select.value = "MODUL_MEDIA";
+        } else if (courseName && courseName.includes("Sales")) {
           select.value = "AI_SALES";
         } else if (courseName && courseName.includes("Video")) {
           select.value = "MASTER_VIDEO_999K";
