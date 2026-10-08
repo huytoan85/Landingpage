@@ -391,64 +391,127 @@
       stroke-linejoin: round;
     }
 
-    /* Countdown Timer */
-    .countdown-wrap {
+    /* Gift Promo Banner */
+    .gift-wrap {
       margin-top: 24px;
-      padding: 16px 20px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(124, 58, 237, .1), rgba(56, 189, 248, .08));
-      border: 1px solid rgba(124, 58, 237, .2);
+      padding: 24px 28px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, .12), rgba(245, 158, 11, .08) 50%, rgba(56, 189, 248, .1));
+      border: 1.5px solid rgba(124, 58, 237, .25);
+      box-shadow: 0 10px 30px rgba(124, 58, 237, .08);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
+      gap: 28px;
+      position: relative;
+      overflow: hidden;
     }
-    .countdown-label {
+    .gift-wrap::before {
+      content: "";
+      position: absolute;
+      top: -40%; right: -15%;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(124, 58, 237, .18), transparent 70%);
+      pointer-events: none;
+    }
+    .gift-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1;
+    }
+    .gift-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: #ffffff;
       font-family: "Be Vietnam Pro", sans-serif;
       font-weight: 800;
-      font-size: 13.5px;
-      letter-spacing: .06em;
+      font-size: 11.5px;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      width: fit-content;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, .35);
+    }
+    .gift-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 850;
+      font-size: 21px;
+      line-height: 1.35;
       color: var(--amber);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin: 0;
     }
-    .countdown-timer {
-      display: flex;
-      gap: 8px;
-      align-items: center;
+    .gift-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--w80);
+      margin: 0;
+      max-width: 640px;
     }
-    .cd-box {
+    .gift-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 46px;
+      padding: 0 24px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 14.5px;
+      letter-spacing: .02em;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, .32);
+      transition: all .25s ease;
+      width: fit-content;
+      margin-top: 4px;
+    }
+    .gift-btn:hover {
+      background: linear-gradient(135deg, #0369a1, #1d4ed8);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(37, 99, 235, .45);
+    }
+    .gift-qr-box {
+      flex-shrink: 0;
       background: #ffffff;
-      border: 1px solid rgba(124, 58, 237, .2);
-      box-shadow: 0 4px 12px rgba(46, 16, 101, .06);
-      border-radius: 10px;
-      padding: 6px 12px;
+      padding: 12px 14px 10px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(124, 58, 237, .2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .07);
       text-align: center;
-      min-width: 58px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
     }
-    .cd-box b {
+    .gift-qr-box img {
+      width: 120px;
+      height: 120px;
       display: block;
-      font-family: "Be Vietnam Pro", sans-serif;
-      font-weight: 900;
-      font-size: 20px;
-      line-height: 1;
-      color: var(--amber);
+      border-radius: 8px;
     }
-    .cd-box span {
-      font-size: 10px;
+    .gift-qr-box span {
+      font-size: 11.5px;
       font-weight: 700;
-      text-transform: uppercase;
-      color: var(--w60);
-      letter-spacing: .04em;
+      color: #64748b;
+      margin-top: 6px;
+      display: block;
     }
-    .cd-colon {
-      font-family: "Be Vietnam Pro", sans-serif;
-      font-weight: 900;
-      font-size: 18px;
-      color: var(--amber-2);
+    @media (max-width: 768px) {
+      .gift-wrap {
+        flex-direction: column;
+        padding: 20px 18px;
+        text-align: left;
+        gap: 18px;
+      }
+      .gift-title { font-size: 18px; }
+      .gift-qr-box { width: 100%; max-width: 220px; margin: 0 auto; }
+      .gift-btn { width: 100%; justify-content: center; }
     }
 
     /* Hero Section */
@@ -2015,20 +2078,26 @@
       <div>Chương trình đào tạo thực chiến 2026</div>
     </div>
 
-    <!-- Countdown Header -->
-    <div class="countdown-wrap">
-      <div class="countdown-label">
-        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        <span>Đếm ngược ngày hội tụ:</span>
+    <!-- Quà Tặng Đặc Biệt (Gift Promo Banner) -->
+    <div class="gift-wrap" id="qua-tang">
+      <div class="gift-content">
+        <div class="gift-badge">
+          <span>🎁</span>
+          <span data-cms="gift-badge">QUÀ TẶNG</span>
+        </div>
+        <h3 class="gift-title" data-cms="gift-title">Tặng bạn 100 mã code tạo ảnh/video siêu đẹp miễn phí</h3>
+        <p class="gift-desc" data-cms="gift-desc">Quét mã QR vào nhóm Zalo — link tải 100 mã code sẽ hiện ngay sau khi bạn vào nhóm. Muốn đi xa hơn? Bộ 2000 mã code và các quyền lợi đồng hành đang chờ ở bên dưới.</p>
+        <div>
+          <a class="gift-btn" href="https://zalo.me/g/4akhl5xv4arle8pmrdtb" data-cms="gift-link" target="_blank" rel="noopener">
+            <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.22-1.31C8.61 21.53 10.26 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+            <span data-cms="gift-btn">Nhận quà trong nhóm Zalo</span>
+            <svg style="width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2.5;" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="countdown-timer" id="countdown">
-        <div class="cd-box"><b id="cdDays">00</b><span>Ngày</span></div>
-        <div class="cd-colon">:</div>
-        <div class="cd-box"><b id="cdHours">00</b><span>Giờ</span></div>
-        <div class="cd-colon">:</div>
-        <div class="cd-box"><b id="cdMins">00</b><span>Phút</span></div>
-        <div class="cd-colon">:</div>
-        <div class="cd-box"><b id="cdSecs">00</b><span>Giây</span></div>
+      <div class="gift-qr-box">
+        <img src="images/zalo-gift-qr.png" alt="Mã QR Nhóm Zalo Nhận Quà 100 Mã Code" width="120" height="120" loading="lazy">
+        <span>📱 Quét mã vào nhóm Zalo</span>
       </div>
     </div>
 
@@ -2988,6 +3057,13 @@
             if (c.hero.theme) document.querySelectorAll('[data-cms="hero-theme"]').forEach(el => el.textContent = c.hero.theme);
             if (c.hero.lead) document.querySelectorAll('[data-cms="hero-lead"]').forEach(el => el.textContent = c.hero.lead);
             if (c.hero.cta_btn) document.querySelectorAll('[data-cms="hero-cta-btn"]').forEach(el => el.textContent = c.hero.cta_btn);
+          }
+          if (c.gift) {
+            if (c.gift.badge) document.querySelectorAll('[data-cms="gift-badge"]').forEach(el => el.textContent = c.gift.badge);
+            if (c.gift.title) document.querySelectorAll('[data-cms="gift-title"]').forEach(el => el.textContent = c.gift.title);
+            if (c.gift.desc) document.querySelectorAll('[data-cms="gift-desc"]').forEach(el => el.textContent = c.gift.desc);
+            if (c.gift.cta_btn) document.querySelectorAll('[data-cms="gift-btn"]').forEach(el => el.textContent = c.gift.cta_btn);
+            if (c.gift.zalo_link) document.querySelectorAll('[data-cms="gift-link"]').forEach(el => el.href = c.gift.zalo_link);
           }
           if (c.brand) {
             document.querySelectorAll('[data-cms="brand-title"]').forEach(el => el.textContent = c.brand.title || '');

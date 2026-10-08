@@ -571,6 +571,35 @@
           </div>
         </div>
 
+        <!-- Card 0.1: Quà Tặng Nhóm Zalo (Gift Promo) -->
+        <div class="cms-card">
+          <div class="cms-card-title">
+            <span>🎁 Quà Tặng Nhóm Zalo (100 Mã Code AI)</span>
+          </div>
+          <div class="cms-grid">
+            <div class="cms-field">
+              <label for="cms_gift_badge">Nhãn huy hiệu:</label>
+              <input id="cms_gift_badge" placeholder="VD: QUÀ TẶNG">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_gift_title">Tiêu đề quà tặng:</label>
+              <input id="cms_gift_title" placeholder="VD: Tặng bạn 100 mã code tạo ảnh/video siêu đẹp miễn phí">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_gift_desc">Nội dung mô tả quà tặng:</label>
+              <textarea id="cms_gift_desc" rows="3" placeholder="Quét mã QR vào nhóm Zalo..."></textarea>
+            </div>
+            <div class="cms-field">
+              <label for="cms_gift_cta_btn">Chữ nút kêu gọi (CTA):</label>
+              <input id="cms_gift_cta_btn" placeholder="VD: Nhận quà trong nhóm Zalo">
+            </div>
+            <div class="cms-field">
+              <label for="cms_gift_zalo_link">Đường link nhóm Zalo:</label>
+              <input id="cms_gift_zalo_link" placeholder="VD: https://zalo.me/g/4akhl5xv4arle8pmrdtb">
+            </div>
+          </div>
+        </div>
+
         <!-- Card 1: Thương hiệu & Liên hệ -->
         <div class="cms-card">
           <div class="cms-card-title">
@@ -1245,6 +1274,14 @@
       if ($("cms_hero_lead")) $("cms_hero_lead").value = c.hero.lead || "";
       if ($("cms_hero_cta_btn")) $("cms_hero_cta_btn").value = c.hero.cta_btn || "";
     }
+    // Gift
+    if (c.gift) {
+      if ($("cms_gift_badge")) $("cms_gift_badge").value = c.gift.badge || "";
+      if ($("cms_gift_title")) $("cms_gift_title").value = c.gift.title || "";
+      if ($("cms_gift_desc")) $("cms_gift_desc").value = c.gift.desc || "";
+      if ($("cms_gift_cta_btn")) $("cms_gift_cta_btn").value = c.gift.cta_btn || "";
+      if ($("cms_gift_zalo_link")) $("cms_gift_zalo_link").value = c.gift.zalo_link || "";
+    }
     // Brand
     if (c.brand) {
       $("cms_brand_title").value = c.brand.title || "";
@@ -1303,6 +1340,13 @@
         theme: $("cms_hero_theme") ? $("cms_hero_theme").value.trim() : "",
         lead: $("cms_hero_lead") ? $("cms_hero_lead").value.trim() : "",
         cta_btn: $("cms_hero_cta_btn") ? $("cms_hero_cta_btn").value.trim() : ""
+      },
+      gift: {
+        badge: $("cms_gift_badge") ? $("cms_gift_badge").value.trim() : "",
+        title: $("cms_gift_title") ? $("cms_gift_title").value.trim() : "",
+        desc: $("cms_gift_desc") ? $("cms_gift_desc").value.trim() : "",
+        cta_btn: $("cms_gift_cta_btn") ? $("cms_gift_cta_btn").value.trim() : "",
+        zalo_link: $("cms_gift_zalo_link") ? $("cms_gift_zalo_link").value.trim() : ""
       },
       brand: {
         title: $("cms_brand_title").value.trim(),
