@@ -542,6 +542,35 @@
     <div id="cmsSection" class="hidden">
       <div class="cms-container">
 
+        <!-- Card 0: Banner Đầu Trang (Hero Section) -->
+        <div class="cms-card">
+          <div class="cms-card-title">
+            <span>🚀 0. Banner Đầu Trang (Hero Section)</span>
+          </div>
+          <div class="cms-grid">
+            <div class="cms-field">
+              <label for="cms_hero_pill">Nhãn huy hiệu (Badge):</label>
+              <input id="cms_hero_pill" placeholder="VD: Dành cho người mới bắt đầu">
+            </div>
+            <div class="cms-field">
+              <label for="cms_hero_title">Tiêu đề chính (H1):</label>
+              <input id="cms_hero_title" placeholder="VD: AI Không Khó!">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_hero_theme">Thông điệp cốt lõi (Phụ đề nổi bật):</label>
+              <input id="cms_hero_theme" placeholder="VD: Học dễ hiểu – Làm được ngay – Ứng dụng thực tế">
+            </div>
+            <div class="cms-field full">
+              <label for="cms_hero_lead">Đoạn mô tả chi tiết:</label>
+              <textarea id="cms_hero_lead" rows="3" placeholder="Đồng hành cùng bạn làm chủ ChatGPT/Gemini..."></textarea>
+            </div>
+            <div class="cms-field">
+              <label for="cms_hero_cta_btn">Chữ nút kêu gọi hành động (CTA):</label>
+              <input id="cms_hero_cta_btn" placeholder="VD: Khám phá khóa học">
+            </div>
+          </div>
+        </div>
+
         <!-- Card 1: Thương hiệu & Liên hệ -->
         <div class="cms-card">
           <div class="cms-card-title">
@@ -1202,6 +1231,14 @@
 
   function populateCmsFields(c) {
     if (!c) return;
+    // Hero
+    if (c.hero) {
+      if ($("cms_hero_pill")) $("cms_hero_pill").value = c.hero.pill || "";
+      if ($("cms_hero_title")) $("cms_hero_title").value = c.hero.title || "";
+      if ($("cms_hero_theme")) $("cms_hero_theme").value = c.hero.theme || "";
+      if ($("cms_hero_lead")) $("cms_hero_lead").value = c.hero.lead || "";
+      if ($("cms_hero_cta_btn")) $("cms_hero_cta_btn").value = c.hero.cta_btn || "";
+    }
     // Brand
     if (c.brand) {
       $("cms_brand_title").value = c.brand.title || "";
@@ -1254,6 +1291,13 @@
     saveBtn.innerHTML = `<span>⏳ Đang lưu thay đổi...</span>`;
 
     const newContent = {
+      hero: {
+        pill: $("cms_hero_pill") ? $("cms_hero_pill").value.trim() : "",
+        title: $("cms_hero_title") ? $("cms_hero_title").value.trim() : "",
+        theme: $("cms_hero_theme") ? $("cms_hero_theme").value.trim() : "",
+        lead: $("cms_hero_lead") ? $("cms_hero_lead").value.trim() : "",
+        cta_btn: $("cms_hero_cta_btn") ? $("cms_hero_cta_btn").value.trim() : ""
+      },
       brand: {
         title: $("cms_brand_title").value.trim(),
         subtitle: $("cms_brand_subtitle").value.trim()

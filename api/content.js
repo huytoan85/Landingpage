@@ -5,6 +5,13 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Duyanh1401';
 const CONTENT_FILE = path.join(process.cwd(), 'data', 'content.json');
 
 const DEFAULT_CONTENT = {
+  hero: {
+    pill: "Dành cho người mới bắt đầu",
+    title: "AI Không Khó!",
+    theme: "Học dễ hiểu – Làm được ngay – Ứng dụng thực tế",
+    lead: "Đồng hành cùng bạn làm chủ ChatGPT/Gemini và các công cụ AI để sáng tạo nội dung, hình ảnh, video, xây dựng thương hiệu cá nhân và phát triển kinh doanh.",
+    cta_btn: "Khám phá khóa học"
+  },
   brand: {
     title: "AI Thực Chiến",
     subtitle: "CÙNG TOÀN LÊ"

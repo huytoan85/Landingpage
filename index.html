@@ -471,6 +471,57 @@
       margin-top: 14px;
     }
 
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-hero-explore {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 50px;
+      padding: 0 30px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7c3aed, #2563eb);
+      color: #ffffff;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 800;
+      font-size: 15.5px;
+      letter-spacing: .02em;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+      transition: all .25s ease;
+    }
+    .btn-hero-explore:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(124, 58, 237, 0.55);
+      background: linear-gradient(135deg, #9333ea, #3b82f6);
+    }
+    .btn-hero-register {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 50px;
+      padding: 0 24px;
+      border-radius: 12px;
+      background: rgba(124, 58, 237, 0.08);
+      border: 1.5px solid rgba(124, 58, 237, 0.3);
+      color: var(--amber);
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+      font-size: 14.5px;
+      text-decoration: none;
+      transition: all .25s ease;
+    }
+    .btn-hero-register:hover {
+      background: rgba(124, 58, 237, 0.16);
+      border-color: var(--amber-2);
+      transform: translateY(-2px);
+    }
+
     /* Member Benefits */
     .members {
       margin-top: 36px;
@@ -1897,11 +1948,20 @@
     <!-- Hero Section -->
     <div class="hero">
       <div style="margin-top: 16px;">
-        <span class="pill"><span class="pill-dot"></span>Business Meeting · TP. Hồ Chí Minh</span>
+        <span class="pill"><span class="pill-dot"></span><span data-cms="hero-pill">Dành cho người mới bắt đầu</span></span>
       </div>
-      <h1>Business<br><span class="grad">Meeting 2026</span></h1>
-      <p class="theme">AI – Động lực tăng trưởng &amp; Cơ hội đồng hành cùng doanh nghiệp công nghệ Hoa Kỳ</p>
-      <p class="lead">Một ngày chuyên đề đặc biệt dành riêng cho các doanh nhân, chuyên gia và nhà quản lý: cập nhật xu hướng AI đột phá, áp dụng thực chiến tối ưu hóa vận hành và mở ra cơ hội trở thành cổ đông của công ty công nghệ Toàn cầu.</p>
+      <h1 data-cms="hero-title"><span class="grad">AI Không Khó!</span></h1>
+      <p class="theme" data-cms="hero-theme">Học dễ hiểu – Làm được ngay – Ứng dụng thực tế</p>
+      <p class="lead" data-cms="hero-lead">Đồng hành cùng bạn làm chủ ChatGPT/Gemini và các công cụ AI để sáng tạo nội dung, hình ảnh, video, xây dựng thương hiệu cá nhân và phát triển kinh doanh.</p>
+      <div class="hero-actions">
+        <a href="#noi-dung" class="btn-hero-explore">
+          <span data-cms="hero-cta-btn">Khám phá khóa học</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#dang-ky" class="btn-hero-register">
+          <span>Đăng ký giữ chỗ ngay</span>
+        </a>
+      </div>
     </div>
 
     <!-- Key Info Cards -->
@@ -2824,6 +2884,13 @@
       (async function initCmsHydration() {
         function applyCms(c) {
           if (!c) return;
+          if (c.hero) {
+            if (c.hero.pill) document.querySelectorAll('[data-cms="hero-pill"]').forEach(el => el.textContent = c.hero.pill);
+            if (c.hero.title) document.querySelectorAll('[data-cms="hero-title"]').forEach(el => el.innerHTML = `<span class="grad">${c.hero.title}</span>`);
+            if (c.hero.theme) document.querySelectorAll('[data-cms="hero-theme"]').forEach(el => el.textContent = c.hero.theme);
+            if (c.hero.lead) document.querySelectorAll('[data-cms="hero-lead"]').forEach(el => el.textContent = c.hero.lead);
+            if (c.hero.cta_btn) document.querySelectorAll('[data-cms="hero-cta-btn"]').forEach(el => el.textContent = c.hero.cta_btn);
+          }
           if (c.brand) {
             document.querySelectorAll('[data-cms="brand-title"]').forEach(el => el.textContent = c.brand.title || '');
             document.querySelectorAll('[data-cms="brand-subtitle"]').forEach(el => el.textContent = c.brand.subtitle || '');
