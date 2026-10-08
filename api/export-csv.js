@@ -9,9 +9,9 @@ export default function handler(req, res) {
   }
 
   const TICKET_MAP = {
-    MODUL_WORK: 'Modul 1: AI For Work',
-    MODUL_MEDIA: 'Modul 2: AI For Media',
-    COMBO_2_MODUL: 'Combo 2 Modul (Work + Media)',
+    MODUL_WORK: 'Module 1: AI For Work (999k)',
+    MODUL_MEDIA: 'Module 2: AI For Media (1.490k)',
+    COMBO_2_MODUL: 'Combo Toàn Năng: Work & Media (2.190k)',
     AI_SALES: 'Khóa AI Sales & Văn Phòng',
     MASTER_VIDEO_999K: 'Khóa Master Video AI (999k)',
     THUONG: 'STANDARD',
