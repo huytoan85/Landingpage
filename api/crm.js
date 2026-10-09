@@ -314,7 +314,8 @@ export default async function handler(req, res) {
 
   // ================= 7. DELETE LEAD =================
   if (method === 'DELETE') {
-    const id = req.query.id || body.id;
+    const urlId = url.split('/').pop().split('?')[0];
+    const id = (req.query && req.query.id) || body.id || (urlId && urlId.startsWith('reg-') ? urlId : null);
     if (!id) return res.status(400).json({ ok: false, error: 'Thiếu ID khách để xóa.' });
 
     let leads = readLeads().filter(l => String(l.id) !== String(id));
