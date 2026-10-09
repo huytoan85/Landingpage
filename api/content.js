@@ -65,6 +65,9 @@ const DEFAULT_CONTENT = {
     col2_lbl: "Chương Trình Đào Tạo Thực Chiến",
     col2_title: "Nội Dung Bài Giảng",
     col2_lessons: "Hiểu AI và sử dụng đúng cách: Nhận biết khả năng, giới hạn của AI và cách kiểm tra kết quả trước khi sử dụng.\nViết câu lệnh rõ ràng: Thực hành giao nhiệm vụ cho AI bằng mục tiêu, thông tin đầu vào và yêu cầu đầu ra cụ thể.\nSáng tạo nội dung phục vụ công việc: Ứng dụng AI để viết bài đăng, nội dung giới thiệu sản phẩm và kịch bản video ngắn.\nThực hành tạo hình ảnh: Học cách mô tả chủ thể, bối cảnh, phong cách và bố cục để tạo hình ảnh phù hợp với mục đích sử dụng.\nXây dựng kế hoạch ứng dụng cá nhân: Chọn một công việc đang làm để thử áp dụng AI sau khóa học.\nĐặc quyền đào tạo: Học 1:1 cùng Toàn đến khi thành thạo AI."
+  },
+  crm: {
+    webhook_url: ""
   }
 };
 

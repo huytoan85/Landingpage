@@ -1,6 +1,12 @@
 {
   "rewrites": [
     { "source": "/thiep-moi", "destination": "/thiep-moi.html" },
-    { "source": "/admin", "destination": "/admin.html" }
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/api/register", "destination": "/api/crm" },
+    { "source": "/api/leads/sync-all", "destination": "/api/crm" },
+    { "source": "/api/leads/sync-deleted", "destination": "/api/crm" },
+    { "source": "/api/leads/:id", "destination": "/api/crm" },
+    { "source": "/api/leads", "destination": "/api/crm" },
+    { "source": "/api/export-csv", "destination": "/api/crm" }
   ]
 }

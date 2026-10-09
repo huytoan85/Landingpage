@@ -77,6 +77,15 @@ function checkAdminAuth(req, res, next) {
   next();
 }
 
+function getWebhookUrl() {
+  if (process.env.CRM_WEBHOOK_URL) return process.env.CRM_WEBHOOK_URL;
+  try {
+    const c = readContent();
+    if (c && c.crm && c.crm.webhook_url) return c.crm.webhook_url;
+  } catch (e) {}
+  return null;
+}
+
 // 1. API: Register Lead
 app.post('/api/register', (req, res) => {
   try {
@@ -107,8 +116,8 @@ app.post('/api/register', (req, res) => {
 
     const leads = readLeads();
     const newLead = {
-      id: `reg-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-      received_at: new Date().toISOString(),
+      id: req.body.id || `reg-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      received_at: req.body.received_at || new Date().toISOString(),
       full_name: full_name.trim(),
       phone: phone.trim(),
       email: (email || '').trim(),
@@ -120,12 +129,24 @@ app.post('/api/register', (req, res) => {
       utm_source: utm_source || '',
       utm_medium: utm_medium || '',
       utm_campaign: utm_campaign || '',
-      event: event || 'Business Meeting 2026 - 10/10/2026 - Athena Hotel',
+      event: event || 'AI Thực Chiến Cùng Toàn Lê',
       source: source || 'landing-page'
     };
 
     leads.unshift(newLead);
     writeLeads(leads);
+
+    // Forward to CRM Webhook if configured
+    const webhookUrl = getWebhookUrl();
+    if (webhookUrl) {
+      try {
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newLead)
+        }).catch(err => console.warn('Webhook post error:', err));
+      } catch (e) {}
+    }
 
     res.json({ ok: true, lead: newLead });
   } catch (err) {
@@ -164,11 +185,25 @@ app.patch('/api/leads', checkAdminAuth, (req, res) => {
 });
 
 // 4. API: Delete Lead (Admin)
+app.delete('/api/leads', checkAdminAuth, (req, res) => {
+  try {
+    const id = req.query.id || (req.body && req.body.id);
+    if (!id) return res.status(400).json({ ok: false, error: 'Thiếu ID khách để xóa.' });
+    let leads = readLeads();
+    leads = leads.filter(l => String(l.id) !== String(id));
+    writeLeads(leads);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('Delete lead error:', err);
+    res.status(500).json({ ok: false, error: 'Lỗi xóa khách.' });
+  }
+});
+
 app.delete('/api/leads/:id', checkAdminAuth, (req, res) => {
   try {
     const { id } = req.params;
     let leads = readLeads();
-    leads = leads.filter(l => l.id !== id);
+    leads = leads.filter(l => String(l.id) !== String(id));
     writeLeads(leads);
     res.json({ ok: true });
   } catch (err) {
@@ -210,8 +245,9 @@ app.post('/api/leads/sync-all', checkAdminAuth, (req, res) => {
       const merged = Array.from(map.values());
       merged.sort((a, b) => new Date(b.received_at || 0) - new Date(a.received_at || 0));
       writeLeads(merged);
+      return res.json({ ok: true, leads: merged });
     }
-    res.json({ ok: true });
+    res.json({ ok: true, leads: readLeads() });
   } catch (err) {
     console.error('Sync all error:', err);
     res.status(500).json({ ok: false, error: 'Lỗi đồng bộ dữ liệu.' });
@@ -224,6 +260,8 @@ app.get('/api/export-csv', (req, res) => {
   if (!pw || pw !== ADMIN_PASSWORD) {
     return res.status(401).send('Mật khẩu quản trị không hợp lệ.');
   }
+
+  const leads = readLeads();
 
   const TICKET_MAP = {
     MODUL_WORK: 'Module 1: AI For Work (999k)',

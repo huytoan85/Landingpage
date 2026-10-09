@@ -3692,7 +3692,10 @@
           if (!form.ticket.value) return setStatus("Vui lòng chọn hạng thư mời.", "err"), form.ticket.focus();
           if (!form.consent.checked) return setStatus("Vui lòng xác nhận đồng ý lưu thông tin.", "err");
 
+          const leadId = `reg-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
           const payload = {
+            id: leadId,
+            received_at: new Date().toISOString(),
             full_name: name,
             phone: phone,
             email: email,
@@ -3701,6 +3704,8 @@
             attendees: form.attendees.value,
             event: "Toàn Lê - Khóa Học AI Thực Chiến",
             source: "landing-page",
+            status: "moi",
+            note: "",
             consent: true,
             website: form.website.value,
             utm_source: params.get("utm_source") || "",
@@ -3712,6 +3717,29 @@
           btn.disabled = true;
           setStatus("Đang gửi đăng ký...", "");
 
+          // 1. Guaranteed Immediate Local CRM Storage
+          try {
+            const curRaw = localStorage.getItem("bm_crm_master_leads_v2");
+            let leadList = [];
+            try { leadList = JSON.parse(curRaw || "[]"); } catch (err) { leadList = []; }
+            if (!Array.isArray(leadList)) leadList = [];
+            
+            // Deduplicate same person submitting multiple times
+            leadList = leadList.filter(l => !(l.phone === payload.phone && l.full_name === payload.full_name && Math.abs(new Date(l.received_at) - new Date(payload.received_at)) < 180000));
+            leadList.unshift(payload);
+            
+            localStorage.setItem("bm_crm_master_leads_v2", JSON.stringify(leadList));
+            localStorage.setItem("bm_latest_lead", JSON.stringify(payload));
+
+            // Instant broadcast to any open CRM tabs
+            const ch = new BroadcastChannel("bm_crm_channel");
+            ch.postMessage({ type: "new_lead", lead: payload });
+            ch.close();
+          } catch (storageErr) {
+            console.warn("CRM local storage warning:", storageErr);
+          }
+
+          // 2. Post to backend server / Vercel API
           try {
             const res = await fetch("/api/register", {
               method: "POST",
@@ -3719,27 +3747,31 @@
               body: JSON.stringify(payload)
             });
             const out = await res.json().catch(() => ({}));
-            if (!res.ok || out.ok === false) {
-              throw new Error(out.error || ("Lỗi kết nối HTTP " + res.status));
+            if (res.ok && out.ok && out.lead && out.lead.id) {
+              payload.id = out.lead.id;
             }
-            
-            // Broadcast and store locally for instant CRM pickup
-            const savedLead = out.lead || Object.assign({ id: "reg-" + Date.now(), received_at: new Date().toISOString() }, payload);
-            try {
-              localStorage.setItem("bm_latest_lead", JSON.stringify(savedLead));
-              const ch = new BroadcastChannel("bm_crm_channel");
-              ch.postMessage({ type: "new_lead", lead: savedLead });
-              ch.close();
-            } catch (e) {}
-
-            form.reset();
-            setStatus("🎉 Đăng ký thành công! Ban tổ chức sẽ liên hệ với Quý khách trong 24 giờ.", "ok");
-          } catch (err) {
-            console.error(err);
-            setStatus((err && err.message ? err.message + " " : "Gửi chưa thành công. ") + "Quý khách vui lòng gọi Hotline 0933.750.577.", "err");
-          } finally {
-            btn.disabled = false;
+          } catch (apiErr) {
+            console.warn("Backend API register notice:", apiErr);
           }
+
+          // 3. Forward to external CRM / Google Sheets Webhook if configured
+          const webhookUrl = window._crmWebhookUrl || (window._cmsContent && window._cmsContent.crm && window._cmsContent.crm.webhook_url);
+          if (webhookUrl) {
+            try {
+              fetch(webhookUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+              }).catch(() => {});
+            } catch (whErr) {
+              console.warn("CRM webhook forward notice:", whErr);
+            }
+          }
+
+          form.reset();
+          setStatus("🎉 Đăng ký thành công! Ban tổ chức sẽ liên hệ với Quý khách trong 24 giờ.", "ok");
+          btn.disabled = false;
         });
       }
       // Copy Account Number Helper
@@ -3844,8 +3876,11 @@
                   return `<li><b>${escapeHtml(line)}</b></li>`;
                 }).join('');
               }
-            }
           }
+          if (c.crm && c.crm.webhook_url) {
+            window._crmWebhookUrl = c.crm.webhook_url;
+          }
+          window._cmsContent = c;
         }
 
         try {
